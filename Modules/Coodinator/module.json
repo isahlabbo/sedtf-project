@@ -1,0 +1,13 @@
+{
+    "name": "Coodinator",
+    "alias": "coodinator",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Coodinator\\Providers\\CoodinatorServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

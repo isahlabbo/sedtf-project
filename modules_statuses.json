@@ -1,0 +1,7 @@
+{
+    "Coodinator": true,
+    "Lecturer": true,
+    "Management": true,
+    "ExamOfficer": true,
+    "Student": true
+}
