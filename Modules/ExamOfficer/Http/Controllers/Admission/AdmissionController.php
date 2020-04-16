@@ -11,17 +11,18 @@ use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 class AdmissionController extends ExamOfficerBaseController
 {
-    /**
+   /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('examofficer::admission.index',['route'=>[
-            'delete'=>'exam.officer.student.admission.delete',
-            'edit'=>'exam.officer.student.admission.edit',
-            'revoke'=>'exam.officer.student.admission.revoke',
-        ]]);
+        return view('examofficer::admission.index');
+    }
+
+    public function generateNumberIndex()
+    {
+        return view('examofficer::admission.create');
     }
 
     /**
@@ -30,7 +31,7 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function create()
     {
-        return view('examofficer::admission.create',['route'=>'exam.officer.student.admission.register']);
+        return view('examofficer::admission.create');
     }
 
     /**
@@ -38,15 +39,29 @@ class AdmissionController extends ExamOfficerBaseController
      * @param Request $request
      * @return Response
      */
-    public function register(Request $request)
+    public function generateNumber(Request $request)
     {
+
         $request->validate([
             'programme'=>'required',
         ]);
         
-        $admission = Programme::find($request->programme)->generateNewAdmission($request->all());
+        $admissionNo = Programme::find($request->programme)->generateAdmissionNo($request->schedule);
 
-        return redirect()->route('exam.officer.student.admission.edit',[$admission->id]);
+        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[str_replace('/','-',$admissionNo),$request->schedule]);
+    }
+
+    public function generatedNumberRegistration()
+    {       
+        return view('examofficer::.admission.register',[
+            'admissionNo'=>str_replace('-','/',request()->route('admissionNo'))
+        ]);
+    }
+
+    public function registerGeneratedNumber(AdmissionFormRequest $request)
+    {
+        $student = Programme::where('code',substr($request->admissionNo, 0, 3))->first()->registerNewStudent($request->all());
+        return redirect()->route('exam.officer.student.view.biodata',[$student->id]);
     }
 
     /**
@@ -57,6 +72,7 @@ class AdmissionController extends ExamOfficerBaseController
     public function revokeAdmission($admission_id)
     {
         Admission::find($admission_id)->revokeThisAdmission();
+
         return redirect()->route('exam.officer.student.admission.index');
     }
 
@@ -67,10 +83,7 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function edit($admission_id)
     {
-        return view('examofficer::admission.edit',[
-            'route'=>'exam.officer.student.admission.update',
-            'admission'=>Admission::find($admission_id)
-        ]);
+        return view('examofficer::admission.edit',['admission'=>Admission::find($admission_id)]);
     }
 
     /**
@@ -81,10 +94,10 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function update(Request $request, $admission_id)
     {
-        
         Admission::find($admission_id)->updateThisAdmission($request->all());
-    
+
         return back();
+
     }
 
     /**
@@ -94,7 +107,14 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function delete($admission_id)
     {
-        Admission::find($admission_id)->deleteThisAdmission();
+        
+        $admission = Admission::find($admission_id);
+        $admission->reservedThisAdmissionNo();
+        $admission->student->studentAccount->delete();
+        $admission->student->delete();
+        $admission->delete();
+
+        session()->flash('message','Congratulation this admission is deleted successfully');
         return redirect()->route('exam.officer.student.admission.index');
     }
 }
