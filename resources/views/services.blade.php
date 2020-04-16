@@ -15,7 +15,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/earth-globe.svg" alt="">
+						<img src="img/welcome/earth-globe.svg" alt="">
 					</div>
 					<h3>Online Courses</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -23,7 +23,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/exam.svg" alt="">
+						<img src="img/welcome/exam.svg" alt="">
 					</div>
 					<h3>Indoor Courses</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -31,7 +31,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/books.svg" alt="">
+						<img src="img/welcome/books.svg" alt="">
 					</div>
 					<h3>Amazing Library</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -39,7 +39,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/professor.svg" alt="">
+						<img src="img/welcome/professor.svg" alt="">
 					</div>
 					<h3>Exceptional Professors</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -47,7 +47,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/blackboard.svg" alt="">
+						<img src="img/welcome/blackboard.svg" alt="">
 					</div>
 					<h3>Top Programs</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -55,7 +55,7 @@
 
 				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/mortarboard.svg" alt="">
+						<img src="img/welcome/mortarboard.svg" alt="">
 					</div>
 					<h3>Graduate Diploma</h3>
 					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
@@ -97,7 +97,7 @@
 									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
 									<div class="testimonial_user">
 										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
+											<img src="img/welcome/testimonials_user.jpg" alt="">
 										</div>
 										<div class="testimonial_name">james cooper</div>
 										<div class="testimonial_title">Graduate Student</div>
@@ -112,7 +112,7 @@
 									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
 									<div class="testimonial_user">
 										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
+											<img src="img/welcome/testimonials_user.jpg" alt="">
 										</div>
 										<div class="testimonial_name">james cooper</div>
 										<div class="testimonial_title">Graduate Student</div>
@@ -127,7 +127,7 @@
 									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
 									<div class="testimonial_user">
 										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
+											<img src="img/welcome/testimonials_user.jpg" alt="">
 										</div>
 										<div class="testimonial_name">james cooper</div>
 										<div class="testimonial_title">Graduate Student</div>
