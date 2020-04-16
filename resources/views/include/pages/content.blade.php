@@ -1,5 +1,3 @@
-
-@include('slide')
-@include('procedure')
-@include('course')
-@include('contact')
+@include('menu')
+@include('services')
+@include('events')
