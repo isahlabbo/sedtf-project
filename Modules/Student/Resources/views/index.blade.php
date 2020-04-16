@@ -5,7 +5,7 @@
     <br>
     <div class="card shadow">
         <div class="card-header shadow bt-color-1">
-            <b class="text text-danger" >General Notification !!!</b> 
+            <b class="" >General Notification !!!</b> 
         </div>
         <div class="card-body">
             
