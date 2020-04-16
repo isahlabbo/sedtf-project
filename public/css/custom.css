@@ -1,0 +1,42 @@
+.bt-color-4{
+    background-color: #8e9674;
+    border-color: #8e9674;
+    color: ffffff;
+}
+
+.bt-color-3{
+    background-color: #875903;
+    border-color: #875903;
+    color: #ffffff;
+}
+
+.bt-color-2{
+    background-color: #b87802;
+    border-color: #b87802;
+    color: #ffffff;
+}
+
+.bt-color-1{
+    background-color: #4a2d09;
+    border-color: #4a2d09;
+    color: #ffffff;
+}
+body.h2{
+    color: #4a2d09;
+}
+.txt-color-4{
+    color: #8e9674;
+}
+
+.txt-color-3{
+    color: #875903;
+}
+
+.txt-color-2{
+    color: #b87802;
+}
+
+.txt-color-1{
+    color: #4a2d09;
+}
+

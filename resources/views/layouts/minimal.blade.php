@@ -4,7 +4,6 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
     <!-- style -->
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
@@ -24,23 +23,23 @@
     </main>
     <!-- footer -->
     <!-- scripts -->
-   <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
-<script src="{{asset('styles/bootstrap4/popper.js')}}"></script>
-<script src="{{asset('styles/bootstrap4/bootstrap.min.js')}}"></script>
-<script src="{{asset('plugins/greensock/TweenMax.min.js')}}"></script>
-<script src="{{asset('plugins/greensock/TimelineMax.min.js')}}"></script>
-<script src="{{asset('plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
-<script src="{{asset('plugins/greensock/animation.gsap.min.js')}}"></script>
-<script src="{{asset('plugins/greensock/ScrollToPlugin.min.js')}}"></script>
-<script src="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
-<script src="{{asset('plugins/progressbar/progressbar.min.js')}}"></script>
-<script src="{{asset('plugins/scrollTo/jquery.scrollTo.min.js')}}"></script>
-<script src="{{asset('plugins/easing/easing.js')}}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="{{asset('js/custom.js')}}"></script>
-<script src="{{asset('js/elements_custom.js')}}"></script>
-<script src="{{asset('js/contact_custom.js')}}"></script>
-
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script type='text/javascript' src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/jquery.form.min.js')}}"></script>
+    <script src="{{asset('js/TweenMax.min.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/select2.js')}}"></script>
+    <script src="{{asset('js/jquery.isotope.min.js')}}"></script>
+    
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/jflickrfeed.min.js')}}"></script>
+    <script src="{{asset('js/jquery.tweet.js')}}"></script>
+    <script type='text/javascript' src="{{asset('tuner/js/colorpicker.js')}}"></script>
+    <script type='text/javascript' src="{{asset('tuner/js/scripts.js')}}"></script>
+    <script src="{{asset('js/jquery.fancybox.pack.js')}}"></script>
+    <script src="{{asset('js/jquery.fancybox-media.js')}}"></script>
+    <script src="{{asset('js/retina.min.js')}}"></script>
     <!-- scripts -->
 </body>
 </html>
