@@ -38,7 +38,7 @@
                     </div>
                     <br>
                     <p class="">
-                        <a href="#">Forgot Password ?</a>
+                        <a href="#" style="color: #4a2d09">Forgot Password ?</a>
                     </p>
                     <button class="btn btn-block bt-color-1 shadow">{{ __('Login') }}</button>
                     
