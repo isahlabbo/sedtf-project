@@ -9,6 +9,8 @@ use Modules\Coodinator\Entities\Lga;
 use Modules\Coodinator\Entities\State;
 use Modules\Coodinator\Entities\Programme;
 use Illuminate\Notifications\Notifiable;
+use Modules\Lecturer\Entities\Gender;
+use Modules\Lecturer\Entities\Religion;
 use Modules\Coodinator\Entities\Semester;
 use Modules\Student\Entities\Schedule;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,6 +74,16 @@ class ExamOfficer extends Authenticatable
     public function semesters()
     {
         return Semester::all();
+    }
+    
+    public function genders()
+    {
+        return Gender::all();
+    }
+
+    public function religions()
+    {
+        return Religion::all();
     }
 
     public function programmes()

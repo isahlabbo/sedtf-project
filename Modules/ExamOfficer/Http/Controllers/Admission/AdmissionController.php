@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Modules\Coodinator\Entities\Admission;
 use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Http\Requests\AdmissionFormRequest;
 use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 class AdmissionController extends ExamOfficerBaseController
@@ -49,7 +50,8 @@ class AdmissionController extends ExamOfficerBaseController
     public function generatedNumberRegistration()
     {       
         return view('examofficer::.admission.register',[
-            'admissionNo'=>str_replace('-','/',request()->route('admissionNo'))
+            'admissionNo'=>str_replace('-','/',request()->route('admissionNo')),
+            'route'=>'exam.officer.student.admission.register.generated.number'
         ]);
     }
 
