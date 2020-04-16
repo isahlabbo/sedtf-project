@@ -20,18 +20,13 @@ class AdmissionController extends ExamOfficerBaseController
         return view('examofficer::admission.index');
     }
 
-    public function generateNumberIndex()
-    {
-        return view('examofficer::admission.create');
-    }
-
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function generateNumberIndex()
     {
-        return view('examofficer::admission.create');
+        return view('examofficer::admission.create',['route'=>'exam.officer.student.admission.generate.number']);
     }
 
     /**

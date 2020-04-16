@@ -45,17 +45,37 @@ Route::prefix('exam-officer')
 
 			Route::get('/', 'AdmissionController@index')->name('index');
 
-			Route::get('/create-admission', 'AdmissionController@create')->name('create');
+			Route::get('/generate-admission-number', 
+			'AdmissionController@generateNumberIndex')
+			->name('generate.number.index');
 
-			Route::post('{admission_id}/update-admission', 'AdmissionController@update')->name('update');
+			Route::post('{admission_id}/update-admission', 
+			'AdmissionController@update')
+			->name('update');
 
-			Route::get('{admission_id}/edit-admission', 'AdmissionController@edit')->name('edit');
+			Route::post('{admissionNo}/schedule/{schedule}/register-genrated-number', 
+			'AdmissionController@registerGeneratedNumber')
+			->name('register.generated.number');
 
-			Route::get('{admission_id}/revoke-admission', 'AdmissionController@revokeAdmission')->name('revoke');
+			Route::get('{admission_id}/edit-admission', 
+			'AdmissionController@edit')
+			->name('edit');
 
-			Route::post('/register-admission', 'AdmissionController@register')->name('register');
+			Route::get('{admissionNo}/schedule/{schedule}/generated-number-registration', 
+			'AdmissionController@generatedNumberRegistration')
+			->name('register.generated.number.index');
 
-			Route::get('{admission_id}/delete-admission', 'AdmissionController@delete')->name('delete');
+			Route::get('{admission_id}/revoke-admission', 
+			'AdmissionController@revokeAdmission')
+			->name('revoke');
+
+			Route::post('/generate-number', 
+			'AdmissionController@generateNumber')
+			->name('generate.number');
+
+			Route::get('{admission_id}/delete-admission', 
+			'AdmissionController@delete')
+			->name('delete');
 			
 		});
 

@@ -1,7 +1,7 @@
 @extends('examofficer::layouts.master')
 
 @section('title')
-    department register student
+    generate student admission number
 @endsection
 
 @section('page-content')

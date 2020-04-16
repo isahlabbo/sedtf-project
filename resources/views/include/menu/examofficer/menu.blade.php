@@ -3,10 +3,10 @@
     <a href="#">Admission</a>
     <ul>
         <li>
-            <a href="{{route('exam.officer.student.admission.create')}}">New Admission</a>
+            <a href="{{route('exam.officer.student.admission.generate.number.index')}}">New Admission</a>
         </li>
         <li>
-            <a href="{{route('exam.officer.student.admission.index')}}">View Student Detail</a>
+            <a href="{{route('exam.officer.student.admission.index')}}">Registered Students</a>
         </li>
     </ul>
 </li>
