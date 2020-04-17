@@ -8,6 +8,7 @@ use Modules\Lecturer\Entities\Staff;
 use Modules\Coodinator\Entities\Lga;
 use Modules\Coodinator\Entities\State;
 use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Entities\Admission;
 use Illuminate\Notifications\Notifiable;
 use Modules\Lecturer\Entities\Gender;
 use Modules\Lecturer\Entities\Religion;
@@ -104,5 +105,14 @@ class ExamOfficer extends Authenticatable
     public function schedules()
     {
         return Schedule::all()->where('id','>','1');
+    }
+
+    public function admissions()
+    {
+        $admissions = [];
+        foreach(Admission::where('session_id',currentSession()->id)->get() as $admission){
+           $admissions[] = $admission;
+        }
+        return $admissions;
     }
 }

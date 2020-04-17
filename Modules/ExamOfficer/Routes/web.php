@@ -78,8 +78,20 @@ Route::prefix('exam-officer')
 			->name('delete');
 			
 		});
+		
+		//student biodatas route
+		Route::prefix('students/')
+		->name('student.')
+		->namespace('Student')
+		->group(function() {
+            Route::get('{studentID}/biodata/view', 'StudentController@viewBiodata')->name('view.biodata');
+            Route::get('{studentID}/biodata/edit', 'StudentController@editBiodata')->name('biodata.edit');
+            Route::post('{studentID}/biodata/update', 'StudentController@updateBiodata')->name('biodata.update');
+            Route::get('/', 'StudentController@student')->name('student.index');
+            Route::get('/{state}/{session}/admitted', 'StudentController@availableStudent')->name('student.available');
+            Route::post('/search', 'StudentController@searchStudent')->name('student.search');
 
-
+		});
 
 
         Route::get('/', 'ExamOfficerController@verify')->name('verify');

@@ -18,7 +18,13 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function index()
     {
-        return view('examofficer::admission.index');
+        return view('examofficer::admission.index',['route'=>[
+            'revoke'=>'exam.officer.student.admission.revoke',
+            'delete'=>'exam.officer.student.admission.delete',
+            'edit'=>'exam.officer.student.biodata.edit',
+
+        ]
+        ]);
     }
 
     /**
