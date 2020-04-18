@@ -1,9 +1,7 @@
 
 
-<div class="card">
-	<div class="card-header text text-center">{{student()->admission->programme->name}} {{currentSession()->name}} Session Courses</div>
-	<div class="card-body table-responsive">
-		<table class="table">
+
+		<table class="table shadow">
 			<head>
 				<tr>
 					<td>S/N</td>
@@ -30,7 +28,7 @@
 						{{$levelCourse->semester->name}}
 					</td>
 					<td>
-						{{$levelCourse->currentCourseLecturer() ? $levelCourse->currentCourseLecturer()->staff->first_name.' '.$levelCourse->currentCourseLecturer()->staff->last_name : 'Not available'}}
+						{{$levelCourse->courseLecturer() ? $levelCourse->courseLecturer()->staff->first_name.' '.$levelCourse->courseLecturer()->staff->last_name : 'Not available'}}
 					</td>
 					<td>
 						<input type="checkbox" name="course[]" value="{{$levelCourse->id}}" checked class="form-control">  
@@ -47,5 +45,4 @@
 				</tr>
 			</tbody>
 		</table>	
-	</div>
-</div>
+	

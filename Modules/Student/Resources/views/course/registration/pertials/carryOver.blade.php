@@ -30,9 +30,11 @@
 						<td>
 							{{$course->semester->name}}
 						</td>
+						
 						<td>
 							{{$course->currentCourseMaster() ??  'Not available'}}
 						</td>
+
 						<td>
 							<input type="checkbox" value="{{$course->id}}" class="form-control" name="add[]">  
 						</td>
