@@ -4,7 +4,7 @@
 <div class="col-md-1"></div>
 <div class="col-md-10">
 	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3">{{student()->admission->programme->name}}  Batch {{student()->batch()}} {{currentSession()->name}} Registered Courses</div>
+		<div class="card-header h3 bt-color-1">{{student()->admission->programme->name}}  Batch {{student()->batch()}} {{currentSession()->name}} Registered Courses</div>
 		<div class="card-body table-responsive">
 			<table class="table">
 				<head>

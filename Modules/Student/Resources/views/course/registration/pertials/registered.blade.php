@@ -1,8 +1,8 @@
 <div class="card">
-	<div class="card-header text text-center">{{student()->admission->programme->name}} {{currentSession()->name}} Session Courses Registered</div>
+	<div class="card-header text text-center h3 bt-color-1">{{student()->admission->programme->name}} {{currentSession()->name}} Session Courses Registered</div>
 	<div class="card-body ">
 		<div class="table-responsive">
-			<table class="table">
+			<table class="table table-triped">
 				<head>
 					<tr>
 						<td>S/N</td>

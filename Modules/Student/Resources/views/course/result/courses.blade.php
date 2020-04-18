@@ -8,10 +8,11 @@ $count = 1;
 <div class="col-md-1"></div>
 <div class="col-md-10">
 	@foreach(student()->sessionRegistrations as $session_registration)
-	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3"> Batch {{student()->batch()}} {{$session_registration->session->name}} {{student()->admission->programme->name}} Registered Courses</div>
-		<div class="card-body">
-			<table class="table">
+	<br>
+	<div class="card shadow">
+		<div class="card-header h3 bt-color-1"> Batch {{student()->batch()}} {{$session_registration->session->name}} {{student()->admission->programme->name}} Registered Courses</div>
+		<div class="card-body shadow">
+			<table class="table shadow">
 				<head>
 					<tr>
 						<td>S/N</td>

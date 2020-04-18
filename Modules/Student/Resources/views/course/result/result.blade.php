@@ -4,13 +4,14 @@
 <input type="checkbox" name="">
 <div class="col-md-1"></div>
 <div class="col-md-10">
+    <br>
 	@if(count(student()->sessionRegistrations)>0)
 	@foreach(student()->sessionRegistrations as $session_registration)
-	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3">{{student()->admission->programme->name}} Batch {{student()->batch()}} Courses Result</div>
-		<div class="card-body">
+	<div class="card shadow">
+		<div class="card-header h3 bt-color-1 shadow">{{student()->admission->programme->name}} Batch {{student()->batch()}} Courses Result</div>
+		<div class="card-body shadow">
 			@if($session_registration->hasApprovedResult())
-			<table class="table">
+			<table class="table shadow">
 				<head>
 					<tr>
 						<td>S/N</td>
@@ -62,7 +63,7 @@
 				</tbody>
 			</table>	
 			@else
-				<div class="alert alert-danger text-center h4">
+				<div class="alert alert-danger text-center h3 shadow">
 					{{'Sorry none of Batch '.student()->batch().' registered courses result are available for '.$session_registration->session->name}}
 				</div>
             @endif
