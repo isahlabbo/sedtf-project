@@ -2,6 +2,7 @@
 
 use Modules\Coodinator\Entities\Session;
 use Modules\Coodinator\Entities\Coodinator;
+use Modules\Coodinator\Entities\Programme;
 
 if (!function_exists('logout_route')) {
     function logout_route()
@@ -18,6 +19,13 @@ if (!function_exists('logout_route')) {
             $route = 'student.auth.logout';
         }
         return $route;
+    }
+}
+
+if (!function_exists('programmes')) {
+    function programmes()
+    {
+        return Programme::all();
     }
 }
 

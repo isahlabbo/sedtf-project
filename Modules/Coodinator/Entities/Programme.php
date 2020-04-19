@@ -3,13 +3,14 @@
 namespace Modules\Coodinator\Entities;
 
 use App\BaseModel;
+use Modules\Coodinator\Services\Results\UnApprovedResult;
 use Modules\Coodinator\Services\Admission\FileUpload;
 use Modules\Coodinator\Services\Admission\CanAdmittStudent;
 use Modules\Coodinator\Services\Admission\AdmissionNumberGenerator;
 
 class Programme extends BaseModel
 {
-	use AdmissionNumberGenerator, CanAdmittStudent, FileUpload;
+	use AdmissionNumberGenerator, CanAdmittStudent, FileUpload, UnApprovedResult;
 
     public function programmeCourses()
     {

@@ -8,12 +8,12 @@ class LecturerCourseResultUpload extends BaseModel
 {
     public function lecturerCourse()
     {
-    	return $this->belongsTo('Modules\Department\Entities\LecturerCourse');
+    	return $this->belongsTo('Modules\Lecturer\Entities\LecturerCourse');
     }
 
     public function session()
     {
-    	return $this->belongsTo('Modules\Admin\Entities\Session');
+    	return $this->belongsTo('Modules\Coodinator\Entities\Session');
     }
     public function results()
     {
