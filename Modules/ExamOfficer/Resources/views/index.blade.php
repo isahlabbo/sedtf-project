@@ -25,11 +25,7 @@
                             {{$upload->session->name}} {{$upload->lecturerCourse->course->code}} Results Uploaded at {{$upload->created_at}}
                         </div>
                         <div class="card-body">
-                            
                             <button class="btn bt-color-1 shadow"><a href="{{route('exam.officer.result.course.review',[$upload->id])}}" style="color: white">Review This Result</a></button>
-                        
-                            <button class="btn bt-color-4 shadow"><a href="{{route('exam.officer.result.course.edit',[$upload->id])}}" style="color: white">Edit This Result</a></button>
-                                        
                         </div>
                     </div>
                 </div>
