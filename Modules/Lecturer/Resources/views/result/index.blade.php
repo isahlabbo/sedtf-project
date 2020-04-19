@@ -3,8 +3,8 @@
 @section('page-content')
 <div class="col-md-3"></div>
 <div class="col-md-6">
-	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3">Search your uploaded result</div>
+	<div class="card shadow">
+		<div class="card-header h3 bt-color-1 shadow">Search your uploaded result</div>
 		<div class="card-body">
 			<form action="{{route('lecturer.result.search')}}" method="post">
 				@csrf
@@ -12,7 +12,7 @@
 		    	<br>
 		    	@include('lecturer::result.pertials.session')
 		    	<br>
-		    	<button class="btn-block button-fullwidth cws-button bt-color-3">Search Result</button>
+		    	<button class="btn btn-block bt-color-1">Search Result</button>
 		    </form>
 		</div>
 	</div>

@@ -9,7 +9,7 @@
 	<option value="">Course</option>
 	@if(lecturer())
 		@foreach($lecturer->lecturerCourses->where('is_active',1) as $lecturer_course)
-		    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->is_active == 1 && $lecturer_course->course->hasRegisteredStudent())
+		    @if($lecturer_course->is_active == 1 && $lecturer_course->course->hasRegisteredStudent())
 		    <option value="{{$lecturer_course->course->id}}">
 		    	{{$lecturer_course->course->code}}
 		    </option>

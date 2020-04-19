@@ -3,9 +3,9 @@
 @section('page-content')
 <div class="col-md-1"></div> 
 <div class="col-md-10">
-	<div class="card">
+	<div class="card shadow">
 		<div class="card-body table-responsive">
-			<table class="table table-default">
+			<table class="table shadow">
 				<thead>
 					<tr>
 						<td>S/N</td>
@@ -16,24 +16,28 @@
 					</tr>
 				</thead>
 				<tbody>
-					@if(!empty($student_courses))
-						@foreach($student_courses as $student_course)
+					@if(!empty($students))
+						@foreach($students as $student)
 						<tr>
 							<td>{{$loop->index+1}}</td>
 							<td>
-								{{$student_course->semesterRegistration->sessionRegistration->student->first_name}} {{$student_course->semesterRegistration->sessionRegistration->student->last_name}}
+								{{$student->first_name}} {{$student->last_name}}
 							</td>
 							<td>
-								{{$student_course->semesterRegistration->sessionRegistration->student->admission->admission_no}}
+								{{$student->admission->admission_no}}
 							</td>
 							<td>
-								{{$student_course->semesterRegistration->sessionRegistration->student->email}}
+								{{$student->email}}
 							</td>
 							<td>
-								{{$student_course->semesterRegistration->sessionRegistration->student->phone}}
+								{{$student->phone}}
 							</td>
 						</tr>
 						@endforeach
+				    @else
+					<div class="alert alert-danger shadow">
+					    There are no registered students for the specify the course in the specify programme
+					</div>		
 					@endif
 				</tbody>
 			</table>

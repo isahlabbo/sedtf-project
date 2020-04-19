@@ -38,7 +38,12 @@ class Admission extends BaseModel
         return $this->belongsTo('Modules\Student\Entities\Schedule');
     }
 
-     public function genders()
+    public function courseRegistrations()
+    {
+        return $this->hasMany('Modules\Student\Entities\CourseRegistration');
+    }
+
+    public function genders()
     {
         return Gender::all();
     }

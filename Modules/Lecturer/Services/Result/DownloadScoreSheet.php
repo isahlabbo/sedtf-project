@@ -4,8 +4,8 @@ namespace Modules\Lecturer\Services\Result;
 * this class will download the score sheet of the course at particular session
 */
 use Maatwebsite\Excel\Facades\Excel;
-use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Session;
+use Modules\Coodinator\Entities\Course;
 use Modules\Lecturer\Exports\ResultTemplete;
 use Modules\Student\Entities\CourseRegistration;
 

@@ -1,17 +1,22 @@
 <?php
 namespace Modules\Lecturer\Services\Result;
 
-use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Session;
+use Modules\Coodinator\Entities\Course;
 
 trait VerifyUploadFile
 {
 	public function verifyThisFile($data)
 	{
 		$errors = [];
-		if($this->getDowloadedFileSession($data)->id != currentSession()->id){
+		if(is_null($this->getDowloadedFileSession($data))){
+			$errors[] = 'Invalid File selected';
+		}
+        
+		if(empty($errors) && $this->getDowloadedFileSession($data)->id != currentSession()->id){
             $errors[] = 'This seems to be you either change the name of the dowloaded file or trying to upload the last session result if this error persist please download the new score sheet and upload it again';
 		}
+
         if($this->getUploadedFileCourse($data)->id != $data['course']){
         	$errors[] = 'Invalid conbination of selected course or course score sheet please make sure the first six character of the file name to upload must matches the name of the selected course';
         }
@@ -20,12 +25,12 @@ trait VerifyUploadFile
 
 	public function getDowloadedFileSession($data)
 	{
-		return $this->getThisSession(str_replace('_', '/',(substr($data['result']->getClientOriginalName(), 7,9))));
+		return $this->getThisSession(str_replace('_', '/',(substr($data['result']->getClientOriginalName(), 8,9))));
 	}
 
     public function getUploadedFileCourse($data)
     {
-    	return $this->getThisCourse(str_replace('_', '/',(substr($data['result']->getClientOriginalName(), 0,6))));
+    	return $this->getThisCourse(str_replace('_', '/',(substr($data['result']->getClientOriginalName(), 0,7))));
     }
 
 	public function getThisSession($name)

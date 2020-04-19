@@ -5,7 +5,8 @@ namespace Modules\Lecturer\Http\Controllers\Course;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Student\Entities\Student;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Course;
+use Modules\Coodinator\Entities\Programme;
 use App\Http\Controllers\Lecturer\LecturerBaseController;
 
 class CourseStudentController extends LecturerBaseController
@@ -14,6 +15,7 @@ class CourseStudentController extends LecturerBaseController
 
     public function index()
     {
+        
         return view('lecturer::course.student.index');
     }
     /**
@@ -22,6 +24,7 @@ class CourseStudentController extends LecturerBaseController
      */
     public function availableStudents()
     {
+      
         return view('lecturer::course.student.available_student',['students'=>session('students')]);
     }
 
@@ -38,6 +41,7 @@ class CourseStudentController extends LecturerBaseController
     {
         $request->validate([
             'session'=>'required',
+            'programme'=>'required',
             'specification'=>'required',
             'course'=>'required'
         ]);
@@ -46,11 +50,10 @@ class CourseStudentController extends LecturerBaseController
         switch ($request->specification) {
             case '1':
                 //get all the available students for this course
-                foreach (Student::all() as $student) {
-                    if($student->level()->name == $course->level->name){
-                        $students[] = $student;
-                    }
+                foreach (Programme::find($request->programme)->admissions->where('session_id',$request->session) as $admission){
+                    $students[] = $admission->student;
                 }
+                
                 session(['students'=>$students]);
                 $route = "lecturer.courses.students.available";
                 $message = count($students).' Available Student Found for '.$course->code.' in '.currentSession()->name.' Session';
@@ -59,7 +62,9 @@ class CourseStudentController extends LecturerBaseController
             default:
                 //get all the registered students for this course
                 foreach ($course->courseRegistrations->where('session_id',currentSession()->id) as $course_registration) {
-                    $students[] = $course_registration;
+                    if($course_registration->semesterRegistration->sessionRegistration->student->admission->programme->id == $request->programme){
+                        $students[] = $course_registration->semesterRegistration->sessionRegistration->student;
+                    }
                 }
                 
                 $route = "lecturer.courses.students.registered";

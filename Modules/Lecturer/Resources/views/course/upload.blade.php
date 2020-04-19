@@ -9,10 +9,11 @@
             <div class="modal-body">
             	<form action="{{route('lecturer.result.upload.upload')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="course_id" value="{{$lecturer_course->course->id}}">
+                    <input type="hidden" name="course" value="{{$lecturer_course->course->id}}">
+                    <input type="hidden" name="session" value="{{currentSession()->id}}">
                     <label>Choose the result sheet you have dowloaded at {{currentSession()->name}} for {{$lecturer_course->course->code}}</label>
                     <input type="file" name="result" class="form-control"><br>
-                    <button class="btn-block button-fullwidth cws-button bt-color-3">Upload Result</button>
+                    <button class="btn btn-block bt-color-1">Upload Result</button>
                 </form>
             </div>
             <div class="modal-footer">

@@ -3,10 +3,14 @@
 @section('page-content')
 <div class="col-md-1"></div> 
 <div class="col-md-10">
-	<div class="card">
+<br>
+	<div class="card shadow">
+	    <div class="card-header shadow h3 bt-color-3">
+		{{lecturer()->staff->first_name}} {{lecturer()->staff->last_name}} 
+		Allocated Course For {{currentSession()->name}} Academic Session</div>
 		<div class="card-body table-responsive">
 			@if(count(lecturer()->lecturerCourses->where('is_active',1))>0)
-			<table class="table table-default">
+			<table class="table shadow">
 				<thead>
 					<tr>
 						<td>S/N</td>
@@ -14,6 +18,7 @@
 						<td>Course Code</td>
 						<td>Course Unit</td>
 						<td>Semester</td>
+						<td></td>
 						<td></td>
 					</tr>
 				</thead>
@@ -28,11 +33,13 @@
 						<td>
 							<form action="{{route('lecturer.result.templete.download')}}" method="post">
 								@csrf
-								<input type="hidden" name="course_id" value="{{$lecturer_course->course->id}}">
-								<button class="btn btn-info" style="color: white"><i class="fa fa-download"></i>Download Result Sheet</button>
+								<input type="hidden" name="course" value="{{$lecturer_course->course->id}}">
+								<input type="hidden" name="session" value="{{currentSession()->id}}">
+								<button class="btn bt-color-1" style="color: white"><i class="fa fa-download"></i>Download Result Sheet</button>
 							</form>
-
-							<button data-toggle="modal" data-target="#result_{{$lecturer_course->course->id}}" class="btn btn-info" style="color: white">
+						</td>
+						<td>
+							<button data-toggle="modal" data-target="#result_{{$lecturer_course->course->id}}" class="btn bt-color-2" style="color: white">
 								<i class="fa fa-upload"></i>Uplaod Result
 							</button>
 							@include('lecturer::course.upload')

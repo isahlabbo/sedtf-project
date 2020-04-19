@@ -35,7 +35,7 @@
 									{{$course_registration->course->semester->name}}
 								</td>
 								<td>
-									{{$course_registration->course->currentCourseLecturer() ??  'Not available'}}
+									{{$course_registration->course->courseLecturer() ? $course_registration->course->courseLecturer()->staff->first_name.' '.$course_registration->course->courseLecturer()->staff->last_name :  'Not available'}}
 								</td>
 								<td>
 									<input type="checkbox" value="{{$course_registration->course->id}}" checked="1" class="form-control" name="remove[]">

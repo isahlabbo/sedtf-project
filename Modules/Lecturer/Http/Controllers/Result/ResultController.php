@@ -4,7 +4,7 @@ namespace Modules\Lecturer\Http\Controllers\Result;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Course;
 use App\Http\Controllers\Lecturer\LecturerBaseController;
 
 class ResultController extends LecturerBaseController
@@ -31,11 +31,10 @@ class ResultController extends LecturerBaseController
         ]); 
         $results = [];
         $course = Course::find($request->course);
-        foreach ($course->courseRegistrations as $course_registration) {
-            if(substr($course_registration->created_at,0,4) == substr($request->session, 0,4) || substr($course_registration->created_at,0,4) == substr($request->session, 5,4)){
-                $results[] = $course_registration->result;
-            }
+        foreach ($course->courseRegistrations->where('session_id',$request->session) as $course_registration) {
+            $results[] = $course_registration->result;
         }
+        
         session(['results'=>$results]);
         return redirect()->route('lecturer.result.show');
     }

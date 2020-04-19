@@ -51,6 +51,7 @@ class CourseRegistrationController extends StudentBaseController
             $course_registration = $semester_registration->courseRegistrations()->firstOrCreate([
                 'course_id'=>$course_id,
                 'session_id'=> currentSession()->id,
+                'admission_id'=> student()->admission->id,
             ]);
 
             $course_registration->result()->firstOrCreate([]);

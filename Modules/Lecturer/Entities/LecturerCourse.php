@@ -15,4 +15,17 @@ class LecturerCourse extends BaseModel
     {
     	return $this->belongsTo('Modules\Coodinator\Entities\Course');
     }
+    
+    public function lecturerCourseResultUploads()
+    {
+        return $this->hasMany(LecturerCourseResultUpload::class);
+    }
+    public function hasUploadedCurrentSessionResult()
+    {
+        $flag = false;
+        foreach($this->lecturerCourseResultUploads->where('session_id',currentSession()->id) as $upload){
+            $flag = true;
+        }
+        return $flag;
+    }
 }

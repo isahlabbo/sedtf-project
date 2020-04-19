@@ -4,6 +4,7 @@ namespace Modules\Lecturer\Entities;
 
 use Illuminate\Support\Carbon;
 use Modules\Admin\Entities\Session;
+use Modules\Coodinator\Entities\Programme;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -42,10 +43,10 @@ class Lecturer extends Authenticatable
         return $this->belongsTo(Staff::class);
     }
 
-    // public function departmentalAppointments()
-    // {
-    //     //return $this->hasMany('Modules\Department\Entities\DepartmentalAppointment');
-    // }
+    public function programmes()
+    {
+        return Programme::all();
+    }
     
     
     public function lecturerCourses()

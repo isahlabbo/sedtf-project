@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Lecturer\Services\Result;
 
+use Modules\Coodinator\Entities\Course;
 /**
 * this class will upload the score sheet of the course at particular session
 */
@@ -14,7 +15,7 @@ class UploadScoreSheet extends DownloadScoreSheet
     
     public function uploadedBy()
     {
-    	$course_lecturer = $this->course->currentCourseLecturer();
-        return $course_lecturer->lecturerCourseResultUploads()->firstOrCreate(['session_id'=>$this->data['session']]);
+    	$allocation = Course::find($this->data['course'])->courseAllocation();
+        return $allocation->lecturerCourseResultUploads()->firstOrCreate(['session_id'=>$this->data['session']]);
     }
 }

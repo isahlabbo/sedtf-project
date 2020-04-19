@@ -32,7 +32,7 @@
 						</td>
 						
 						<td>
-							{{$course->currentCourseMaster() ??  'Not available'}}
+							{{$course->courseLecturer() ??  'Not available'}}
 						</td>
 
 						<td>

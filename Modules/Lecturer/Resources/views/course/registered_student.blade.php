@@ -18,7 +18,7 @@
 				</thead>
 				<tbody>
 					@foreach($student_courses as $student_course)
-					{{dd($student_course)}}
+					
 					<tr>
 						<td>{{$loop->index+1}}</td>
 						<td>

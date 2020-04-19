@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Course;
 use Modules\Lecturer\Services\Result\VerifyUploadFile;
 use Modules\Lecturer\Imports\UploadResult;
 use Modules\Lecturer\Services\Result\UploadScoreSheet;

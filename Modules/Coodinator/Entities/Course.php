@@ -18,12 +18,15 @@ class Course extends BaseModel
 
     public function lecturerCourses()
     {
-    	return $this->hasMany('Modules\Lecturer\Entities\LecturerCourse');
+        return $this->hasMany('Modules\Lecturer\Entities\LecturerCourse');
     }
-
+    
+    public function courseRegistrations()
+    {
+        return $this->hasMany('Modules\Student\Entities\CourseRegistration');
+    }
     public function courseProgramme()
     {
-
     	$programme = null;
     	foreach ($this->programmeCourses as $programmeCourse) {
     		$programme = $programmeCourse->programme;
@@ -37,5 +40,20 @@ class Course extends BaseModel
         foreach ($this->lecturerCourses->where('is_active',1) as $lecturerCourse) {
             return $lecturerCourse->lecturer;
         }
+    }
+
+    public function courseAllocation()
+    {
+        foreach ($this->lecturerCourses->where('is_active',1) as $lecturerCourse) {
+            return $lecturerCourse;
+        }
+    }
+
+    public function hasRegisteredStudent()
+    {
+        if(count($this->courseRegistrations->where('session_id',currentSession()->id)) > 0){
+            return true;
+        }
+        return false;
     }
 }

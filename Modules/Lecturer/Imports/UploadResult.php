@@ -3,7 +3,7 @@
 namespace Modules\Lecturer\Imports;
 
 use Modules\Student\Entities\Result;
-use Modules\Department\Entities\Admission;
+use Modules\Coodinator\Entities\Admission;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class UploadResult implements ToModel
@@ -22,10 +22,13 @@ class UploadResult implements ToModel
     */
     public function model(array $results)
     {
-        $this->data['admission_no'] = substr($results[2],0,9);
+        
+        $this->data['admission_no'] = substr($results[2],0,13);
         
         $result = $this->getCurrentSessionCourseRegistrationResult();
+        
         if($result){
+            
             $result->update(['lecturer_course_result_upload_id'=>$this->uploaded_by->id,'ca'=>$results[3],'exam'=>$results[4]]);
             $result->computeGrade();
         }else{
@@ -44,6 +47,7 @@ class UploadResult implements ToModel
                 return $registration->result;
             }
         }
+        
         return $result;
     }
 }
