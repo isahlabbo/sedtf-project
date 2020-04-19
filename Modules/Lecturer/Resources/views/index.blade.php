@@ -14,10 +14,30 @@
     <br>
     <div class="card shadow">
         <div class="card-header shadow bt-color-1">
-            <b class="" >{{currentSession()->name}} Un Approved Results</b> 
+            <b class="" >{{currentSession()->name}} Uploaded Results</b> 
         </div>
         <div class="card-body">
-            
+            <div class="row">
+            @foreach(lecturer()->lecturerCourses
+                ->where('is_active',1) as $lecturerCourse)
+                @foreach($lecturerCourse->lecturerCourseResultUploads as $upload)
+                    @if($upload->lecturerCourseResultUploadNotifications)
+                        @foreach($upload->lecturerCourseResultUploadNotifications as $notification)
+                        <div class="col-md-4">
+                            <div class="card shadow">
+                                <div class="card-header bt-color-2">
+                                    Results Notification
+                                </div>
+                                <div class="card-body">
+                                    {{$notification->notification->comment}}
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
+                @endforeach
+            @endforeach    
+            </div>
         </div>
     </div>
 </div>

@@ -65,9 +65,10 @@
 							</form>
 						</td>
 						<td>
-							<button class="btn btn-block bt-color-1" data-toggle="moda" data-target="#newComment">
+							<button class="btn btn-block bt-color-1" data-toggle="modal" data-target="#newComment">
 								Leave Comment 
 							</button>
+							@include('coodinator::department.course.result.pertials.comment')
 						</tad>
 						@else
 						

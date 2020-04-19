@@ -11,8 +11,8 @@ class Notification extends BaseModel
         return $this->belongsTo(Notification::class);
     }
 
-    public function lecturerNotification()
+    public function lecturerCourseResultUploadNotification()
     {
-        return $this->belongsTo('Modules\Lecturer\Entities\LecturerNotification');
+        return $this->belongsTo('Modules\Lecturer\Entities\LecturerCourseResultUploadNotification');
     }
 }

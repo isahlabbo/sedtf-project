@@ -3,6 +3,7 @@
 use Modules\Coodinator\Entities\Session;
 use Modules\Coodinator\Entities\Coodinator;
 use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Entities\NotificationType;
 
 if (!function_exists('logout_route')) {
     function logout_route()
@@ -26,6 +27,13 @@ if (!function_exists('programmes')) {
     function programmes()
     {
         return Programme::all();
+    }
+}
+
+if (!function_exists('notificationTypes')) {
+    function notificationTypes()
+    {
+        return NotificationType::all();
     }
 }
 

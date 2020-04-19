@@ -171,6 +171,7 @@ Route::prefix('exam-officer')
 	    ->group(function() {
             Route::get('/create', 'CourseResultController@index')->name('index');
             Route::get('upload/{upload_id}/view', 'CourseResultController@review')->name('review');
+            Route::post('upload/{upload_id}/comment', 'ResultCommentController@store')->name('comment');
             Route::post('/search', 'CourseResultController@search')->name('search');
             Route::get('result/{result_id}/amend', 'CourseResultController@amend')->name('amend');
 			Route::post('result/{result_id}/approve', 'CourseResultController@approve')->name('approve');

@@ -10,6 +10,11 @@ class LecturerCourseResultUpload extends BaseModel
     {
     	return $this->belongsTo('Modules\Lecturer\Entities\LecturerCourse');
     }
+    
+    public function lecturerCourseResultUploadNotifications()
+    {
+    	return $this->hasMany('Modules\Lecturer\Entities\LecturerCourseResultUploadNotification');
+    }
 
     public function session()
     {
