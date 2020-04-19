@@ -1,10 +1,10 @@
 <div class="col-md-12"><br>
-     	<div class="card">
-     		<div class="card-header button-fullwidth cws-button bt-color-3">
+     	<div class="card shadow">
+     		<div class="card-header h3 bt-color-1">
      			The brief overview of {{$result->lecturerCourse->course->code}} Results Uploaded at {{$result->created_at}} at {{$result->session->name}} 
      		</div>
-     		<div class="card-body">
-     			<table class="table">
+     		<div class="card-body shadow">
+     			<table class="table shadow">
      				<tr>
      					<td>Registered Students</td>
      					<td>{{count($result->results)}}</td>
@@ -55,33 +55,19 @@
      					<td>{{$result->numberOfFs()}}</td>
      					<td></td>
      				</tr>
-     				<tr>
-     					<td>S</td>
-     					<td>{{$result->numberOfSs()}}</td>
-     					<td></td>
-     				</tr>
-     				<tr>
-     					<td>I</td>
-     					<td>{{$result->numberOfIs()}}</td>
-     					<td></td>
-     				</tr>
-     				<tr>
-     					<td>X</td>
-     					<td>{{$result->numberOfXs()}}</td>
-     					<td></td>
-     				</tr>
+     				
      				<tr>
      					<td>
-		         		    <button class="button-fullwidth cws-button bt-color-3"><a href="{{route($routes['amend'] ??  'department.result.course.amend',[$result->id])}}" style="color: white">Amend This Result</a> </button>
+		         		    <button class="btn btn-block bt-color-1"><a href="{{route($routes['amend'] ??  'department.result.course.amend',[$result->id])}}" style="color: white">Amend This Result</a> </button>
 		         		</td>
      					<td>
      						<form method="post" action="{{route($routes['approve'] ??  'department.result.course.approve',[$result->id])}}">
      							@csrf
-		         				<button class="button-fullwidth cws-button bt-color-3">{{$result->verification_status == 0 ? 'Approve This Result' : 'Dis Approve This Result'}}</button>
+		         				<button class="btn btn-block bt-color-2">{{$result->verification_status == 0 ? 'Approve This Result' : 'Dis Approve This Result'}}</button>
      		         			</form>
      		         		</td>
 		         		<td>
-		         			<button class="button-fullwidth cws-button bt-color-3 btn-block"><a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
+		         			<button class="btn btn-block bt-color-4 btn-block"><a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
 		         		</td>
      				</tr>
      			</table>

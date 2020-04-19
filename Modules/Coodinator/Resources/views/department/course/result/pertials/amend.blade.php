@@ -1,7 +1,7 @@
 <div class="col-md-3"></div>
 <div class="col-md-6"><br>
- 	<div class="card">
- 		<div class="card-header">
+ 	<div class="card shadow">
+ 		<div class="card-header bt-color-1">
  			You can amend {{$result->lecturerCourse->course->code}} Results by adding or removing some marks using positive or negative number. 
  		</div>
  		<div class="card-body">
@@ -10,7 +10,7 @@
  				<label>Marks</label>
      			<input type="number" name="marks" class="form-control">
      			<br>
-     			<button class="button-fullwidth cws-button bt-color-3 btn-block">Amend Result</button>
+     			<button class="btn bt-color-2 btn-block shadow">Amend Result</button>
  			</form>
  		</div>
  	</div>

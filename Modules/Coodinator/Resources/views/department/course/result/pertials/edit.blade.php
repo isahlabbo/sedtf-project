@@ -1,8 +1,10 @@
 <div class="col-md-1"></div>
 <div class="col-md-10">
-	<div class="card">
+	<br>
+	<div class="card shadow">
+		<div class="card-header bt-color-2">Edit Result</div>
 		<div class="card-body">
-			<table class="table">
+			<table class="table shadow">
 				<head>
 					<tr>
 						<td>S/N</td>
@@ -48,7 +50,7 @@
 							{{$result->remark ? $result->remark->name : ' '}}
 						</td>
 						<td>
-							<button class="btn btn-info"><a href="{{route($route ?? 'department.result.student.edit',[$result->id])}}" style="color: white">Edit</a></button>
+							<button class="btn bt-color-4"><a href="{{route($route ?? 'department.result.student.edit',[$result->id])}}" style="color: white">Edit</a></button>
 						</td>
 					</tr>
 					@endforeach
