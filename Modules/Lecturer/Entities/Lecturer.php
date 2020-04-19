@@ -48,6 +48,10 @@ class Lecturer extends Authenticatable
         return Programme::all();
     }
     
+    public function lecturerNotifications()
+    {
+        return $this->hasMany(LecturerNotification::class);
+    }
     
     public function lecturerCourses()
     {

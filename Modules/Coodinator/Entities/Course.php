@@ -25,6 +25,7 @@ class Course extends BaseModel
     {
         return $this->hasMany('Modules\Student\Entities\CourseRegistration');
     }
+    
     public function courseProgramme()
     {
     	$programme = null;
@@ -56,4 +57,10 @@ class Course extends BaseModel
         }
         return false;
     }
+
+    public function lecturerNotifications()
+    {
+        return $this->hasMany('Modules\Lecturer\Entities\LecturerNotification');
+    }
+
 }

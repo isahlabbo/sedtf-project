@@ -15,7 +15,30 @@ class CreateLecturerNotificationsTable extends Migration
     {
         Schema::create('lecturer_notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->integer('lecturer_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('lecturers')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('course_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('courses')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('notification_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('notifications')
+            ->delete('restrict')
+            ->update('cascade');
             $table->timestamps();
         });
     }

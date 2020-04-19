@@ -2,9 +2,22 @@
 
 namespace Modules\Lecturer\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class LecturerNotification extends Model
+class LecturerNotification extends BaseModel
 {
-    protected $fillable = [];
+    public function notification()
+    {
+        return $this->belongsTo('Modules\Coodinator\Entities\Notification');
+    }
+
+    public function lecturer()
+    {
+        return $this->belongsTo(Lecturer::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('Modules\Coodinator\Entities\Course');
+    }
 }

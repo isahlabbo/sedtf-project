@@ -2,9 +2,12 @@
 
 namespace Modules\Coodinator\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use App\BaseModel;
 
-class NotificationType extends Model
+class NotificationType extends BaseModel
 {
-    protected $fillable = [];
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

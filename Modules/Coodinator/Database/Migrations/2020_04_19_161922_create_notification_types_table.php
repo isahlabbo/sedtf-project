@@ -15,7 +15,7 @@ class CreateNotificationTypesTable extends Migration
     {
         Schema::create('notification_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->string('name');
             $table->timestamps();
         });
     }
