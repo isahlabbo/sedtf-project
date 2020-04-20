@@ -63,6 +63,7 @@
 							</button>
 							@include('coodinator::department.course.result.pertials.comment')
 						</td>
+						<td></td>
 						@else
 						
      					<td>
