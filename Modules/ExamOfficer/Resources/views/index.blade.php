@@ -17,20 +17,22 @@
             <b class="" >{{currentSession()->name}} Un Approved Results</b> 
         </div>
         <div class="card-body">
-            @foreach(programmes() as $programme)
-                @foreach($programme->unApprovedResults() as $upload)
-                <div class="col-md-4">
-                    <div class="card shadow">
-                        <div class="card-header bt-color-2">
-                            {{$upload->session->name}} {{$upload->lecturerCourse->course->code}} Results Uploaded at {{$upload->created_at}}
-                        </div>
-                        <div class="card-body">
-                            <button class="btn bt-color-1 shadow"><a href="{{route('exam.officer.result.course.review',[$upload->id])}}" style="color: white">Review This Result</a></button>
+            <div class="row">
+                @foreach(programmes() as $programme)
+                    @foreach($programme->unApprovedResults() as $upload)
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <div class="card-header bt-color-2">
+                                {{$upload->session->name}} {{$upload->lecturerCourse->course->code}} Results Uploaded at {{$upload->created_at}}
+                            </div>
+                            <div class="card-body">
+                                <button class="btn bt-color-1 shadow"><a href="{{route('exam.officer.result.course.review',[$upload->id])}}" style="color: white">Review This Result</a></button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endforeach
                 @endforeach
-            @endforeach
+            </div>
         </div>
     </div>
 </div>

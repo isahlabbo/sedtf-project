@@ -16,6 +16,11 @@ class Course extends BaseModel
     	return $this->belongsTo(Semester::class);
     }
 
+    public function repeatCourses()
+    {
+        return $this->hasMany('Modules\Student\Entities\RepeatCourse');
+    }
+
     public function lecturerCourses()
     {
         return $this->hasMany('Modules\Lecturer\Entities\LecturerCourse');

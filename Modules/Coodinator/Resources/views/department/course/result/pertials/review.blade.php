@@ -15,31 +15,19 @@
      					<td>{{$result->numberOfAs()}}</td>
      					<td></td>
      				</tr>
-     				<tr>
-     					<td>AB</td>
-     					<td>{{$result->numberOfABs()}}</td>
-     					<td></td>
-     				</tr>
+     				
      				<tr>
      					<td>B</td>
      					<td>{{$result->numberOfBs()}}</td>
      					<td></td>
      				</tr>
-     				<tr>
-     					<td>BC</td>
-     					<td>{{$result->numberOfBCs()}}</td>
-     					<td></td>
-     				</tr>
+     				
      				<tr>
      					<td>C</td>
      					<td>{{$result->numberOfCs()}}</td>
      					<td></td>
      				</tr>
-     				<tr>
-     					<td>CD</td>
-     					<td>{{$result->numberOfCDs()}}</td>
-     					<td></td>
-     				</tr>
+     				
      				<tr>
      					<td>D</td>
      					<td>{{$result->numberOfDs()}}</td>

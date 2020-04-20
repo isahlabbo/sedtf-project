@@ -14,7 +14,7 @@
     <br>
     <div class="card shadow">
         <div class="card-header shadow bt-color-1">
-            <b class="" >{{currentSession()->name}} Uploaded Results</b> 
+            <b class="" >{{currentSession()->name}} Uploaded Result Notifications</b> 
         </div>
         <div class="card-body">
             <div class="row">
@@ -26,7 +26,7 @@
                         <div class="col-md-4">
                             <div class="card shadow">
                                 <div class="card-header bt-color-2">
-                                    Results Notification
+                                    {{$upload->lecturerCourse->course->code}} Results Notification
                                 </div>
                                 <div class="card-body">
                                     {{$notification->notification->comment}}
