@@ -7,40 +7,45 @@
      			<table class="table shadow">
      				<tr>
      					<td>Registered Students</td>
-     					<td>{{count($result->results)}}</td>
+     					<td class="btn bt-color-1">{{count($result->results)}}</td>
      					<td></td>
      				</tr>
      				<tr>
+     					<td>Comments</td>
+     					<td class="btn bt-color-1">{{count($result->lecturerCourseResultUploadNotifications->where('status',1))}}</td>
+     					<td></td>
+     				</tr>
+					 <tr>
      					<td>A</td>
-     					<td>{{$result->numberOfAs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfAs()}}</td>
      					<td></td>
      				</tr>
      				
      				<tr>
      					<td>B</td>
-     					<td>{{$result->numberOfBs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfBs()}}</td>
      					<td></td>
      				</tr>
      				
      				<tr>
      					<td>C</td>
-     					<td>{{$result->numberOfCs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfCs()}}</td>
      					<td></td>
      				</tr>
      				
      				<tr>
      					<td>D</td>
-     					<td>{{$result->numberOfDs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfDs()}}</td>
      					<td></td>
      				</tr>
      				<tr>
      					<td>E</td>
-     					<td>{{$result->numberOfEs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfEs()}}</td>
      					<td></td>
      				</tr>
      				<tr>
      					<td>F</td>
-     					<td>{{$result->numberOfFs()}}</td>
+     					<td class="btn bt-color-2">{{$result->numberOfFs()}}</td>
      					<td></td>
      				</tr>
      				
@@ -57,7 +62,7 @@
 								Leave Comment 
 							</button>
 							@include('coodinator::department.course.result.pertials.comment')
-						</tad>
+						</td>
 						@else
 						
      					<td>
