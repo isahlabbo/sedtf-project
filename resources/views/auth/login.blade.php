@@ -1,7 +1,7 @@
 
 @extends('layouts.minimal')
 @section('title')
-    Sokoto state poly student lonin page
+    SEDTF-Student lonin
 @endsection
 @section('page-content')
     <br><br>
