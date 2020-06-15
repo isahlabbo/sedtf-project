@@ -10,6 +10,21 @@
 	<div class="card shadow">
 		<div class="card-header h3 bt-color-1 shadow">{{student()->admission->programme->name}} Batch {{student()->batch()}} Courses Result</div>
 		<div class="card-body shadow">
+			<table>
+				<tr>
+					<td class="strong">Name</td>
+					<td>{{student()->first_name.' '.student()->middle_name.' '.student()->last_name}}</td>
+				</tr>
+				<tr>
+					<td class="strong">Admission No</td>
+					<td>{{student()->admission->admission_no}}</td>
+				</tr>
+				<tr>
+					<td class="strong">programme</td>
+					<td>{{student()->admission->programme->name}}</td>
+				</tr>
+				
+			</table>
 			@if($session_registration->hasApprovedResult())
 			<table class="table shadow">
 				<head>
