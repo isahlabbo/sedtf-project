@@ -23,6 +23,7 @@ class Student extends Authenticatable
         'email',
         'user_name',
         'password',
+        'real_pass',
         'student_type_id',
         'student_session_id'
     ];

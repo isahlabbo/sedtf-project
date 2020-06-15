@@ -20,7 +20,8 @@ class Staff extends Authenticatable
         'staffID',
         'staff_type_id',
         'staff_category_id',
-        'employed_at'
+        'employed_at',
+        'real_pass'
     ];
 
     /**

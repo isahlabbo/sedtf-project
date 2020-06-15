@@ -26,7 +26,8 @@ class ExamOfficer extends Authenticatable
     	'lecturer_id',
     	'from',
     	'to',
-    	'coodinator_id'
+        'coodinator_id',
+    	'real_pass'
     ];
 
     public function lecturer()

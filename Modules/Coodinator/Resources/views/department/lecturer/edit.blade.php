@@ -30,7 +30,7 @@
                     </div>
             		<div class="form-group">
                         <label class="text text-danger">E-mail</label>
-                        <input type="text" name="email" class="form-control" value="{{$staff->email}}">
+                        <input type="text" name="email" class="form-control" value="{{$staff->lecturer->email}}">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -41,6 +41,15 @@
                         <label class="text text-danger">Phone</label>
                         <input type="text" name="phone" class="form-control" value="{{$staff->phone}}">
                         @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="text text-danger">Password</label>
+                        <input type="text" name="real_pass" class="form-control" value="{{$staff->real_pass}}">
+                        @error('real_pass')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -82,6 +91,15 @@
                         <label class="text text-danger">Date of birth</label>
                         <input type="date" name="date" class="form-control" value="{{$staff->profile->date_of_birth}}">
                         @error('date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="text text-danger">Employed At</label>
+                        <input type="date" name="employed_at" class="form-control" value="{{$staff->employed_at}}">
+                        @error('employed_at')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

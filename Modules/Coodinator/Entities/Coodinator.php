@@ -22,7 +22,8 @@ class Coodinator extends Authenticatable
     	'phone',
     	'from',
     	'to',
-    	'is_active'
+        'is_active',
+    	'real_pass'
     ];
 
     public function staff()

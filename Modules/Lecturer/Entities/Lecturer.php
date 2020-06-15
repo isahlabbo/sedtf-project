@@ -15,9 +15,11 @@ class Lecturer extends Authenticatable
     protected $fillable = [
         'from',
         'email',
+        'phone',
         'password',
         'staff_id',
-        'admin_id'
+        'admin_id',
+        'real_pass'
     ];
 
     /**

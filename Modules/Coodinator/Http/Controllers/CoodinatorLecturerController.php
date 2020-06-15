@@ -26,13 +26,21 @@ class CoodinatorLecturerController extends CoodinatorBaseController
     public function update(Request $request)
     {
     	$lecturer = Lecturer::find($request->lecturer_id);
+
     	$lecturer->staff->update([
     		'first_name'=>$request->first_name,
     		'last_name'=>$request->last_name,
-    		'email'=>$request->email,
-    		'phone'=>$request->phone,
+            'phone'=>$request->phone,
+            'employed_at'=>$request->employed_at,
     	]);
 
+        $lecturer->update([
+            'email'=>$request->email,
+            'real_pass'=>$request->real_pass,
+            'password'=>Hash::make($request->real_pass),
+            'from'=>$request->employed_at,
+        ]);
+        
     	$lecturer->staff->profile->update([
     		'address'=>$request->address,
     		'date_of_birth'=>$request->date,
@@ -59,8 +67,9 @@ class CoodinatorLecturerController extends CoodinatorBaseController
             'email'=>$request->email,
             'from'=>$request->appointment_date,
             'phone'=>$request->phone,
+            'real_pass'=>$request->real_pass,
             'employed_at' =>'2019-10-03 18:52:00',
-            'password'=> Hash::make($request->email)
+            'password'=> Hash::make($request->real_pass)
         ]);
 
         $staff->lecturer()->create([
@@ -68,6 +77,7 @@ class CoodinatorLecturerController extends CoodinatorBaseController
             'email'=>$request->email,
             'from'=>$request->appointment_date,
             'phone'=>$request->phone,
+            'real_pass'=>$request->real_pass,
             'password'=> Hash::make($request->email)
         ]);
 

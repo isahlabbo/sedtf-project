@@ -27,9 +27,9 @@
 	     		    @if($staff->lecturer)
 		     		<tr>
 		     			<td>{{$loop->index+1}}</td>
-		     			<td>{{$staff->lecturer->first_name.' '.$staff->last_name}}</td>
+		     			<td>{{$staff->first_name.' '.$staff->last_name}}</td>
 		     			<td>{{$staff->lecturer->email}}</td>
-		     			<td>{{$staff->lecturer->phone}}</td>
+		     			<td>{{$staff->phone}}</td>
 		     			<td>{{$staff->lecturer->real_pass}}</td>
 		     			<td>{{$staff->employed_at}}</td>
 		     			<td>{{$staff->lecturer->duration()}}</td>
