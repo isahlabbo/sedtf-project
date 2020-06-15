@@ -48,6 +48,15 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label class="text text-danger">Password</label>
+                        <input type="password" name="real_pass" class="form-control" value="{{old('real_pass')}}">
+                        @error('real_pass')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label class="text text-danger">StaffID</label>
                         <input type="text" name="staffID" class="form-control" value="{{old('staffID')}}" placeholder="staffID">
                         @error('staffID')
@@ -121,13 +130,9 @@
                             <label class="text text-danger">Local Government</label>
                             <select name="lga" class="form-control">
                                 <option value=""></option>
-                                @foreach(administrator()->lgas() as $lga)
-                                    <option value="{{$lga->id}}">
-                                        {{$lga->name}}
-                                    </option>
-                                @endforeach
+                                
                             </select>
-                            @error('student_session')
+                            @error('lga')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -156,4 +161,9 @@
     	</div>
     </div>
 </div>    
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/imagePreview.js')}}"></script>
+    <script src="{{asset('js/Ajax/address.js')}}"></script>
 @endsection

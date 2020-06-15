@@ -76,9 +76,8 @@ class CoodinatorLecturerController extends CoodinatorBaseController
             'admin_id'=>administrator()->id,
             'email'=>$request->email,
             'from'=>$request->appointment_date,
-            'phone'=>$request->phone,
             'real_pass'=>$request->real_pass,
-            'password'=> Hash::make($request->email)
+            'password'=> Hash::make($request->real_pass)
         ]);
 
         $profile = $staff->profile()->create([
