@@ -9,24 +9,11 @@ trait CanComputeGrade
     		case 'A':
     			$point = 4.00;
     			break;
-    		case 'AB':
-    			$point = 3.75;
-    			break;
-    		
     		case 'B':
     			$point = 3.50;
     			break;
-    		
-    		case 'BC':
-    			$point = 3.25;
-    			break;
-    		
     		case 'C':
     			$point = 3.00;
-    			break;
-    		
-    		case 'CD':
-    			$point = 2.75;
     			break;
     		case 'D':
     			$point = 2.50;
@@ -34,15 +21,7 @@ trait CanComputeGrade
     		case 'E':
     			$point = 2.00;
     			break;
-            case 'S':
-                $point = -1.00;
-                break;
-            case 'I':
-                $point = -2.00;
-                break;
-            case 'X':
-                $point = -3.00;
-                break;
+            
     		default:
     			$point = 0.00;
     			break;
@@ -82,40 +61,16 @@ trait CanComputeGrade
             $score = $this->accessment() + $this->exam + $this->amended_by;
             if($score >= 75){
                 $grade = 'A';
-            }elseif($score >= 70){
-                $grade = 'AB';
             }elseif($score >= 65){
                 $grade = 'B';
-            }elseif($score >= 60){
-                $grade = 'BC';
             }elseif($score >= 55){
                 $grade = 'C';
-            }elseif($score >= 50){
-                $grade = 'CD';
             }elseif($score >= 45){
                 $grade = 'D';
             }elseif($score >= 40){
                 $grade = 'E';
             }else{
                 $grade = 'F';
-            }
-        }else{
-            switch (strtoupper($this->exam)) {
-                case 'S':
-                    $grade = 'S';
-                    break;
-                
-                case 'X':
-                    $grade = 'X';
-                    break;
-                
-                case 'I':
-                    $grade = 'I';
-                    break;
-                
-                default:
-                    $grade = '';
-                    break;
             }
         }
     	
