@@ -30,6 +30,7 @@ class CreateStaffTable extends Migration
             $table->string('employed_at');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('real_pass');
             $table->rememberToken();
             $table->string('staffID');
             $table->timestamps();

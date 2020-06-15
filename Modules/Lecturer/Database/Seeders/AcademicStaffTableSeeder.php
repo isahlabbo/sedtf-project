@@ -32,6 +32,7 @@ class AcademicStaffTableSeeder extends Seeder
            'email' => $number.'@sedtf.com',
            'staffID' => $number,
            'password'=>Hash::make($number),
+           'real_pass'=>$number,
            'employed_at' => '2019-10-03 18:52:00'
         ]);
 

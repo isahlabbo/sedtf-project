@@ -31,6 +31,7 @@ class CreateStudentsTable extends Migration
             $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('real_pass')->nullable();
             $table->string('is_active')->default(1);
             $table->rememberToken();
             $table->timestamps();

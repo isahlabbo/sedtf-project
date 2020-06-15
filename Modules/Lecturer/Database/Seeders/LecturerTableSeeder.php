@@ -21,6 +21,7 @@ class LecturerTableSeeder extends Seeder
             $staff->lecturer()->firstOrCreate([
                 'email'=>$staff->email,
                 'password'=>$staff->password,
+                'real_pass'=>$staff->real_pass,
                 'admin_id'=>1,
                 'from' =>'2019-10-03 18:52:00'
             ]);

@@ -37,6 +37,7 @@ class CreateCoodinatorsTable extends Migration
             $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('real_pass')->nullable();
             $table->string('from')->nullable();
             $table->string('to')->nullable();
             $table->integer('is_active')->default(1);
