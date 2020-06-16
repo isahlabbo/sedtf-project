@@ -5,9 +5,13 @@ namespace Modules\Lecturer\Imports;
 use Modules\Student\Entities\Result;
 use Modules\Coodinator\Entities\Admission;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Modules\Coodinator\Entities\Course;
+use Modules\Coodinator\Services\Admission\FileUpload;
 
 class UploadResult implements ToModel
 {
+    use FileUpload;
+
     public $uploaded_by;
 
     public function __construct($uploaded_by, $data)
@@ -24,7 +28,8 @@ class UploadResult implements ToModel
     {
         
         $this->data['admission_no'] = substr($results[2],0,13);
-        
+        #save the uploaded file in the server
+        $this->storeFile($this->data['result'],'Result/'.Course::find($this->data['course'])->code);
         $result = $this->getCurrentSessionCourseRegistrationResult();
         
         if($result){
