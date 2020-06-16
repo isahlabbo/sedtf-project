@@ -74,7 +74,7 @@
                 
                 <!-- Hero Slide -->
                 <div class="hero_slide">
-                    <div class="hero_slide_background" style="background-image:url(img/welcome/slider_background.jpg)"></div>
+                    <div class="hero_slide_background" style="background-image:url(img/welcome/1.jpeg)"></div>
                     <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
                         <div class="hero_slide_content text-center">
                             <h2 class="h2" data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Certificate in Computer Science</span></h2>
@@ -84,7 +84,7 @@
                 
                 <!-- Hero Slide -->
                 <div class="hero_slide">
-                    <div class="hero_slide_background" style="background-image:url(img/welcome/slider_background.jpg)"></div>
+                    <div class="hero_slide_background" style="background-image:url(img/welcome/2.jpeg)"></div>
                     <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
                         <div class="hero_slide_content text-center">
                             <h2 class="h2" data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Certifate in Computer Engineering</span></h2>
@@ -94,7 +94,7 @@
                 
                 <!-- Hero Slide -->
                 <div class="hero_slide">
-                    <div class="hero_slide_background" style="background-image:url(img/welcome/slider_background.jpg)"></div>
+                    <div class="hero_slide_background" style="background-image:url(img/welcome/3.jpeg)"></div>
                     <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
                         <div class="hero_slide_content text-center">
                             <h2 class="h2" data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Diplomer in Computer Science</span></h2>

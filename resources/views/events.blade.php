@@ -35,7 +35,7 @@
 
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="img/welcome/event_1.jpg" alt="https://unsplash.com/@theunsteady5">
+									<img src="img/welcome/4.jpeg" alt="https://unsplash.com/@theunsteady5">
 								</div>
 							</div>
 
@@ -65,7 +65,7 @@
 
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="img/welcome/event_2.jpg" alt="https://unsplash.com/@claybanks1989">
+									<img src="img/welcome/5.jpeg" alt="https://unsplash.com/@claybanks1989">
 								</div>
 							</div>
 
@@ -95,7 +95,7 @@
 
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="img/welcome/event_3.jpg" alt="https://unsplash.com/@juanmramosjr">
+									<img src="img/welcome/6.jpeg" alt="https://unsplash.com/@juanmramosjr">
 								</div>
 							</div>
 
