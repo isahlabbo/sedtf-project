@@ -16,7 +16,8 @@
             			    <option value="1">Exam Officer</option>
             			@endif
             		</select><br>
-            		<input type="date" name="appointment_date" class="form-control"><br>
+                    <input type="date" name="appointment_date" class="form-control"><br>
+            		<input type="password" name="password" class="form-control" placeholder="password"><br>
                     <button class="button-fullwidth cws-button bt-color-1 btn-block">Register</button>
             	</form>
             </div>

@@ -13,6 +13,7 @@
 	     			<th>Name</th>
 	     			<th>Email</th>
 	     			<th>Phone</th>
+	     			<th>Password</th>
 	     			<th>Appointed at</th>
 	     			<th>Year Since Appointment</th>
 	     			<th>Status</th>
@@ -24,8 +25,9 @@
 		     		<tr>
 		     			<td>{{$loop->index+1}}</td>
 		     			<td>{{$examOfficer->lecturer->staff->first_name.' '.$examOfficer->lecturer->staff->last_name}}</td>
-		     			<td>{{$examOfficer->lecturer->staff->email}}</td>
+		     			<td>{{$examOfficer->email}}</td>
 		     			<td>{{$examOfficer->lecturer->staff->phone}}</td>
+		     			<td>{{$examOfficer->real_pass}}</td>
 		     			<td>{{$examOfficer->from}}</td>
 		     			<td>{{$examOfficer->duration()}}</td>
 		     			<td>

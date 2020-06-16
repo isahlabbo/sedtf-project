@@ -4,7 +4,7 @@ namespace Modules\Coodinator\Entities;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Notifiable;
-use Modules\Department\Entities\Semester;
+use Modules\Coodinator\Entities\Semester;
 use Modules\Lecturer\Entities\Staff;
 use Modules\Lecturer\Entities\Gender;
 use Modules\Lecturer\Entities\Religion;
@@ -55,8 +55,6 @@ class Coodinator extends Authenticatable
         return $count.' '.$month;
     }
     
-    
-
     public function sessions()
     {
         return Session::all();
