@@ -8,6 +8,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/imagePreview.js')}}"></script>
     <script src="{{asset('js/Ajax/address.js')}}"></script>
+    <script src="{{asset('js/imagePreview.js')}}"></script>
 @endsection
