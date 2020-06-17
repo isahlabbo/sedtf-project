@@ -5,7 +5,7 @@
                 <div class="grid-row clear-fix">
                     <!-- logo -->
                     <a href="{{url('/')}}" class="logo">
-                        <img src="{{ asset('img/logo.png') }}"  data-at2x="img/logo@2x.png" alt>
+                        <img src="{{ asset('img/login_logo.png') }}"  data-at2x="img/logo@2x.png" alt>
                         <h1>SEDTF</h1>
                     </a>
                     <!-- / logo -->

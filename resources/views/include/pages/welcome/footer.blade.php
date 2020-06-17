@@ -40,8 +40,8 @@
                         <!-- Logo -->
                         <div class="logo_container">
                             <div class="logo">
-                                <img src="{{asset('images/logo-img.png')}}" alt="">
-                                <span>SEDTF</span>
+                                <img src="{{asset('images/logo2.png')}}" alt="">
+                                <span>SEDTFs</span>
                             </div>
                         </div>
 

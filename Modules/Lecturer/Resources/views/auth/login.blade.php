@@ -1,7 +1,7 @@
 
 @extends('layouts.minimal')
 @section('title')
-    Sokoto state poly admin lonin page
+    SEDTF Lecturer login
 @endsection
 @section('page-content')
     <br><br>
@@ -9,7 +9,7 @@
         <div class="grid-row">
             <div class="login-block shadow">
                 <div class="logo">
-                    <img src="{{asset('img/logo.png')}}">
+                    <img src="{{asset('img/login_logo.png')}}">
                     <h2 style="color: #4a2d09;">Leturer Login</h2>
                 </div>
                 <form class="login-form" action="{{route('lecturer.login')}}" method="post">

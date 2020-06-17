@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="logo_container">
                 <div class="logo">
-                    <img src="{{asset('img/welcome/logo-img.png') }}" alt="">
+                    <img src="{{asset('img/logo2.png') }}" alt="">
                     <span>SEDTF</span>
                 </div>
             </div>

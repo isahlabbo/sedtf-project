@@ -1,7 +1,7 @@
 
 @extends('layouts.minimal')
 @section('title')
-    SEDTF student lonin page
+    SEDTF student login
 @endsection
 @section('page-content')
     <br><br>
@@ -10,7 +10,7 @@
             <div class="login-block shadow">
                 @include('include.pages.feed_back')
                 <div class="logo">
-                    <img src="{{asset('img/logo.png')}}" data-at2x='img/logo@2x.png' alt>
+                    <img src="{{asset('img/login_logo.png')}}" data-at2x='img/logo@2x.png' alt>
                     <h2 style="color: #4a2d09">Student Login</h2>
                 </div>
                 <form class="login-form" method="post" action="{{route('student.auth.login')}}">
