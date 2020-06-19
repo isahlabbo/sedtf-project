@@ -47,10 +47,14 @@
 							{{$result->points}}
 						</td>
 						<td>
-							{{$result->remark ? $result->remark->name : ' '}}
+							{{$result->points > 0 ? 'PASSED' : 'FAILED'}}
 						</td>
 						<td>
-							<button class="btn bt-color-4"><a href="{{route($route ?? 'department.result.student.edit',[$result->id])}}" style="color: white">Edit</a></button>
+							@if(lecturer())
+							<button class="btn bt-color-4">
+								<a href="{{route($route ?? 'department.result.student.edit',[$result->id])}}" style="color: white">Edit</a>
+							</button>
+							@endif
 						</td>
 					</tr>
 					@endforeach

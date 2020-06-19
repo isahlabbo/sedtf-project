@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Department\Services\Results\Course;
 
-use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\Course;
+use Modules\Coodinator\Entities\Session;
+use Modules\Coodinator\Entities\Course;
 use Modules\Lecturer\Entities\LecturerCourseResultUpload;
 
 /**
@@ -35,7 +35,7 @@ class GenerateCourseResult
     private function hasUploadedResult()
     {
     	$uploaded_result = LecturerCourseResultUpload::where([
-            'lecturer_course_id'=>$this->course->currentCourseLecturer()->id,
+            'lecturer_course_id'=>$this->course->courseAllocation()->id,
             'session_id'=>$this->session->id,
         ])->first();
         if(blank($uploaded_result)){

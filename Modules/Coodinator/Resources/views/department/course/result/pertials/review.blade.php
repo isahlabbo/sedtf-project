@@ -63,16 +63,20 @@
 							</button>
 							@include('coodinator::department.course.result.pertials.comment')
 						</td>
-						<td></td>
+						<td>
+                                   <button class="btn btn-block bt-color-4 btn-block">
+                                        <a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a>
+                                   </button>                        
+                              </td>
 						@else
 						
      					<td>
-		         		    <button class="btn btn-block bt-color-1"><a href="{{route($routes['amend'] ??  'department.result.course.amend',[$result->id])}}" style="color: white">Amend This Result</a> </button>
-		         		</td>
+     		         		    <button class="btn btn-block bt-color-1"><a href="{{route($routes['amend'] ??  'department.result.course.amend',[$result->id])}}" style="color: white">Amend This Result</a> </button>
+     		         		</td>
      					
-		         		<td>
-		         			<button class="btn btn-block bt-color-4 btn-block"><a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
-						 </td>
+     		         		<td>
+     		         			<button class="btn btn-block bt-color-4 btn-block"><a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
+     					</td>
 						@endif 
      				</tr>
      			</table>
