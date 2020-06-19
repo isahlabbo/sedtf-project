@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Department\Services\Results\Student;
 
-use Modules\Department\Entities\Admission;
-use Modules\Admin\Entities\Session;
+use Modules\coodinator\Entities\Admission;
+use Modules\Coodinator\Entities\Session;
 /**
 * this class generate the student result for student on semester wise
 */
@@ -16,7 +16,7 @@ class GenerateStudentResult
 	function __construct(array $data)
 	{
 		$this->data = $data;
-		$this->department = $this->currentUserDepartment();
+		
 		$this->errors = $this->validateThisRequest();
 		$this->verifyTheSearch();
 	}
@@ -54,24 +54,18 @@ class GenerateStudentResult
 	public function getThisAdmission()
     {
         $admission = null;
-        foreach (Admission::where(['department_id'=>$this->department->id,'admission_no'=>$this->data['admission_no']])->get() as $currentAdmission) {
+        foreach (Admission::where(['admission_no'=>$this->data['admission_no']])->get() as $currentAdmission) {
         	$admission = $currentAdmission;
         }
         return $admission;
     }
 
-    public function currentUserDepartment()
-    {
-    	$user = headOfDepartment();
-    	if(!$user)
-    		$user = examOfficer();
-    	return $user->department;
-    }
+    
 
     public function getRegistration()
     {
     	if($this->admission)
-            return $this->admission ->student->sessionRegistrations->where('session_id',$this->data['session']); 
+            return $this->admission ->student->sessionRegistrations; 
     }
 
 }
