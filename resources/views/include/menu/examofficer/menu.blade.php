@@ -28,9 +28,6 @@
         <li>
             <a href="{{route('exam.officer.department.course.create')}}">Register Course</a>
         </li>
-        <li>
-            <a href="#">Upload Courses</a>
-        </li>
         
         <li>
             <a href="{{route('exam.officer.department.course.index')}}">View Courses</a>
@@ -54,17 +51,12 @@
         <li>
             <a href="{{route('exam.officer.result.student.index')}}">Check Student Results</a>
         </li>
-        <li>
-            <a href="#">View Courses Results Statistics</a>
-        </li>
+        
         <li>
             <a href="{{route('exam.officer.result.course.index')}}">View Course Result</a>
         </li>
         <li>
             <a href="{{route('exam.officer.result.vetting.index')}}">View AB Format</a>
-        </li>
-        <li>
-            <a href="{{route('exam.officer.result.student.remark.index')}}">Register EMC Remarks</a>
         </li>
         <li>
             <a href="{{route('exam.officer.result.student.wave.index')}}">Wave Student Result</a>
