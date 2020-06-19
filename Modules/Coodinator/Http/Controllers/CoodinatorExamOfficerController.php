@@ -5,6 +5,8 @@ namespace Modules\Coodinator\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\ExamOfficer\Entities\ExamOfficer;
+use Illuminate\Support\Facades\Hash;
+
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 
 

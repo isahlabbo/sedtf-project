@@ -28,6 +28,8 @@ class CreateProgrammesTable extends Migration
             $table->integer('duration');
             $table->text('about');
             $table->text('code');
+            $table->integer('semesters')->default(1);
+            $table->integer('batches')->default(2);
             $table->timestamps();
         });
     }

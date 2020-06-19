@@ -33,6 +33,9 @@ Auth::routes();
 		   ->group(function() {
 	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
 	        Route::get('/{programmeId}/get-programme-courses', 'ProgrammeController@getProgrammeCourses');
+
+	        Route::get('/{programmeId}/get-programme-batches', 'ProgrammeController@getProgrammeBatches');
+	        Route::get('/{programmeId}/get-programme-semesters', 'ProgrammeController@getProgrammeSemesters');
 		});
 
 		Route::prefix('department')

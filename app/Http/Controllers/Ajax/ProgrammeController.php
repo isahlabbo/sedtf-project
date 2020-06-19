@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Department\Entities\Course;
-use Modules\Student\Entities\Programme;
+use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\ProgrammeSchedule;
 
 class ProgrammeController extends Controller
@@ -58,5 +58,54 @@ class ProgrammeController extends Controller
             }
         }
         return $flag;
+    }
+
+    public function getProgrammeBatches($programmeId)
+    {
+        $programme = Programme::find($programmeId);
+        switch ($programme->batches) {
+            case '1':
+                $batches = ['A'];
+                break;
+
+            case '2':
+                $batches = ['A','B'];
+                break;
+
+            case '3':
+                $batches = ['A','B','C'];
+                break;
+
+            case '4':
+                $batches = ['A','B','C','D'];
+                break;    
+            default:
+                $batches = [];
+                break;
+        }
+        return response()->json(($batches));
+    }
+
+    public function getProgrammeSemesters($programmeId)
+    {
+        $programme = Programme::find($programmeId);
+        switch ($programme->semesters) {
+            case '1':
+                $batches = ['1'=>'First'];
+                break;
+
+            case '2':
+                $batches = ['1'=>'First','2'=>'Second'];
+                break;
+
+            case '3':
+                $batches = ['1'=>'First','2'=>'Second','3'=>'Third'];
+                break;
+   
+            default:
+                $batches = [];
+                break;
+        }
+        return response()->json(($batches));
     }
 }

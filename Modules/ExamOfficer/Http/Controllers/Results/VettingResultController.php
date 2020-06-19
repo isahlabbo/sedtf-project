@@ -32,11 +32,12 @@ class VettingResultController extends ExamOfficerBaseController
             'session'=>'required',
             'programme'=>'required',
             'batch'=>'required',
+            'semester'=>'required',
             'paginate'=>'required'
         ]);
 
         session(['course_registrations'=>$request->all()]);
-        return redirect()->route('exam.officer.result.vetting.view',[1]);
+        return redirect()->route('exam.officer.result.vetting.view',[$request->semester]);
         
     }
 

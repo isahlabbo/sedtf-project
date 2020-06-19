@@ -18,10 +18,12 @@
  				</select><br>
  				<select class="form-control" name="batch">
  					<option value="">Batch</option>
- 					<option value="A">A</option>
- 					<option value="B">B</option>
- 					<option value="C">C</option>
  				</select><br>
+
+ 				<select class="form-control" name="semester">
+ 					<option value="">Semester</option>
+ 				</select><br>
+
  				<label>Student/Page</label>
  				<input type="number" name="paginate" min="1" class="form-control"><br>
  				<button class="btn bt-color-2 btn-block">Search Result</button>

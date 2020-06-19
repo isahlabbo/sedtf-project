@@ -11,6 +11,7 @@
     <div class="row">
         
         @yield('page-content')
+        @include('sweetalert::alert')
     </div>
 </div>
 
