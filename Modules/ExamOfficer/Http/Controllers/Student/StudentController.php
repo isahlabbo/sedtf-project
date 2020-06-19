@@ -4,6 +4,7 @@ namespace Modules\ExamOfficer\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Student\Entities\Student;
 use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Department\Services\Results\Student;
+namespace Modules\Coodinator\Services\Results\Student;
 
 trait ResultGeneralRemark
 
@@ -68,13 +68,7 @@ trait ResultGeneralRemark
     {
     	$conditions = [];
 
-    	foreach($this->semesterRegistrationRemarks as $emc_remark){
-            $conditions[] = 'EMC '.$emc_remark->remark->name;
-        }
-
-        foreach($this->semesterRegistrationRemarks as $emc_remark){
-            $conditions[] = 'EMC '.$emc_remark->remark->name;
-    	}
+    	
     	return $conditions;
     }                  	
 }

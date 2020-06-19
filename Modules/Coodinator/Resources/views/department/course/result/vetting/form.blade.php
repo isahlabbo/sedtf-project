@@ -10,20 +10,21 @@
  					    <option value="{{$session->id}}">{{$session->name}}</option>
  					@endforeach    
  				</select><br>
- 				<select class="form-control" name="level">
- 					<option value="">Level</option>
- 					@foreach($levels as $level)
- 					    <option value="{{$level->id}}">{{$level->name}}</option>
+ 				<select class="form-control" name="programme">
+ 					<option value="">Programme</option>
+ 					@foreach($programmes as $programme)
+ 					    <option value="{{$programme->id}}">{{$programme->name}}</option>
  					@endforeach
  				</select><br>
- 				<select class="form-control" name="semester">
- 					<option value="">Semester</option>
- 					<option value="1">First Semester</option>
- 					<option value="2">Second Semester</option>
+ 				<select class="form-control" name="batch">
+ 					<option value="">Batch</option>
+ 					<option value="A">A</option>
+ 					<option value="B">B</option>
+ 					<option value="C">C</option>
  				</select><br>
  				<label>Student/Page</label>
  				<input type="number" name="paginate" min="1" class="form-control"><br>
- 				<button class="button-fullwidth cws-button bt-color-3 btn-block">Search Result</button>
+ 				<button class="btn bt-color-2 btn-block">Search Result</button>
  			</form>
  		</div>
  	</div>

@@ -1,6 +1,7 @@
     <tr>
     	<td>
-    		{{strtoupper($registration->sessionRegistration->student->first_name)}} {{strtoupper($registration->sessionRegistration->student->last_name)}}
+            {{strtoupper($registration->sessionRegistration->student->first_name)}} {{strtoupper($registration->sessionRegistration->student->middle_name)}}
+    		{{strtoupper($registration->sessionRegistration->student->last_name)}}
     	</td>
 
     	<td>
@@ -42,44 +43,16 @@
     		<br>
     		@endforeach
     	</td>
-            
-    	<td>
-    		{{$registration->previousUnits() ?? ' '}}
-    	</td>
-
-    	<td>
-    		{{$registration->currentUnits() ?? ' '}}
-    	</td>
-
-    	<td>
-    		{{$registration->cummulativeUnits() ?? ' '}}
-    	</td>
-
-    	<td>
-    		{{number_format($registration->currentSemesterGradePoints(),2) ?? ' '}}
-    	</td>
-
-    	<td>
-    		{{number_format($registration->gradePointAsAtLastSemester(),2) ?? ' '}}
-    	</td>
 
     	<td>
     		{{number_format($registration->cummulativeGradePoints(),2) ?? ' '}}
     	</td>
 
     	<td>
-    		{{number_format($registration->currentSemesterCummulativeGradePointsAverage(),2) ?? ' '}}
-    	</td>
-
-    	<td>
     		{{number_format($registration->cummulativeGradePointsAverage(),2) ?? ' '}}
     	</td>
 
-    	<td>
-    		@foreach($registration->courseRegistrations->where('cancelation_status',0) as $course_registration)
-    		{{$course_registration->result->remark->name ?? ' '}}<br>
-    		@endforeach
-    	</td>
+    	
     	<td>
             {{$registration->generalRemarks()['remark']}}<br>
             @foreach($registration->generalRemarks()['conditions'] as $condition)

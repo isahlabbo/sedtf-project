@@ -41,7 +41,8 @@ class CourseRegistrationController extends StudentBaseController
         $dropCourses = $this->getCurrentSessionDropCourses($request->course);
         $session_registration = student()->sessionRegistrations()->firstOrCreate([
             'session_id'=> currentSession()->id,
-            'programme_id'=> student()->admission->programme->id
+            'programme_id'=> student()->admission->programme->id,
+            'batch'=>student()->batch()
         ]);
         foreach ($courses as $course_id) {
             $course = Course::find($course_id);

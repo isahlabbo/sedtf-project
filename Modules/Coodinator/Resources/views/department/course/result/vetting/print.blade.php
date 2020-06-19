@@ -2,19 +2,23 @@
 
 @section('page-content')
 <div class="text text-center">
-	UMARU ALI SHINKAFI POLYTECHNIC SOKOTO<br>
-	COLEEGE OF COLLEGE OF SCIENCE AND TECHNOLOGY<br>
-	DEPARTMENT OF COMPUTER SCIENCE EXAMINATION RESULTS OF {{'2018/2019'}} SESSION<br><br>
-	NATIONAL DIPLOMA IN COMPUTER SCIENCE II (MORNING)<br><br>
-	NDSC II (M)
+	SOKOTO ENVIRONMENT DEVELOPMENT TRUST FUND
+	<br><br>
+	{{strtoupper($programme->name)}} 
+	<br><br>
+	BATCH {{$batch}} RESULTS OF 
+	<br><br>
+	{{$session->name}} SESSION
+	<br><br>
+	
 </div>
 <div class="table-responsive table-condenced">
 <table class="table table-bordered">
-        @include('department::department.course.result.student.table.header')
+        @include('coodinator::department.course.result.student.table.header')
 	<tbody>
 	@foreach($registrations as $registration)
         @foreach($registration->semesterRegistrations->where('semester_id',request()->route('semester_id')) as $registration)
-            @include('department::department.course.result.student.table.row')
+            @include('coodinator::department.course.result.student.table.row')
         @endforeach
 	@endforeach
     </tbody>

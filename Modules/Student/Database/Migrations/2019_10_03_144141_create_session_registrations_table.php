@@ -28,7 +28,7 @@ class CreateSessionRegistrationsTable extends Migration
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('departments')
+            ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('session_id')
@@ -39,6 +39,7 @@ class CreateSessionRegistrationsTable extends Migration
             ->on('sessions')
             ->delete('restrict')
             ->update('cascade');
+            $table->string('batch');
             $table->string('points')->default(0.00);
             $table->string('drop_attempt')->default(0);
             $table->string('cancelation_status')->default(0);

@@ -4,9 +4,9 @@ namespace Modules\ExamOfficer\Http\Controllers\Results;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\Level;
-use Modules\Department\Services\Vetting\GenerateVettableResult;
+use Modules\Coodinator\Entities\Session;
+use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Services\Vetting\GenerateVettableResult;
 use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 
@@ -18,7 +18,7 @@ class VettingResultController extends ExamOfficerBaseController
      */
     public function index()
     {
-        return view('examofficer::result.vetting.index',['route'=>'exam.officer.result.vetting.search','levels'=>Level::all(),'sessions'=>Session::all()]);
+        return view('examofficer::result.vetting.index',['route'=>'exam.officer.result.vetting.search','programmes'=>Programme::all(),'sessions'=>Session::all()]);
     }
 
     /**
@@ -30,13 +30,13 @@ class VettingResultController extends ExamOfficerBaseController
     {
         $request->validate([
             'session'=>'required',
-            'level'=>'required',
-            'semester'=>'required',
+            'programme'=>'required',
+            'batch'=>'required',
             'paginate'=>'required'
         ]);
 
         session(['course_registrations'=>$request->all()]);
-        return redirect()->route('exam.officer.result.vetting.view',[$request->semester]);
+        return redirect()->route('exam.officer.result.vetting.view',[1]);
         
     }
 
@@ -59,10 +59,15 @@ class VettingResultController extends ExamOfficerBaseController
     public function view()
     {
         if(session('course_registrations')){
-        
+            
             $vetting = new GenerateVettableResult(session('course_registrations'));
 
-            return view('department::department.course.result.vetting.print',['registrations'=>$vetting->results]);
+            return view('coodinator::department.course.result.vetting.print',[
+                'registrations'=>$vetting->results, 
+                'programme'=>Programme::find(session('course_registrations')['programme']),
+                'batch'=>session('course_registrations')['batch'],
+                'session'=>Session::find(session('course_registrations')['session']),
+            ]);
         }
         return redirect()->route('exam.officer.result.vetting.index');
         

@@ -4,8 +4,8 @@ namespace Modules\Department\Http\Controllers\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\Level;
+use Modules\Coodiator\Entities\Session;
+use Modules\Coodinator\Entities\Programme;
 use Modules\Department\Services\Vetting\GenerateVettableResult;
 use Modules\Core\Http\Controllers\Department\HodBaseController;
 
@@ -17,7 +17,7 @@ class VettingResultController extends HodBaseController
      */
     public function index()
     {
-        return view('department::department.course.result.vetting.index',['sessions'=>Session::all(),'levels'=>Level::all()]);
+        return view('coodinator::department.course.result.vetting.index',['sessions'=>Session::all(),'programmes'=>Programme::all());
     }
 
     /**
