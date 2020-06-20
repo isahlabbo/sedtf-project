@@ -27,6 +27,18 @@
     <a href="{{route('coodinator.programme.index')}}">Programmes</a>
 </li>
 <li>
+    <a href="#">{{currentSession()->name}} Session</a>
+    <ul>
+        <li>
+            <a href="#" data-toggle="modal" data-target="#newSession">New Session</a>
+        </li>
+        
+        <li>
+            <a href="#" data-toggle="modal" data-target="#switchSession">Switch Session</a>
+        </li>
+    </ul>
+</li>
+<li>
     <a href="#">Graduations</a>
     <ul>
         <li>

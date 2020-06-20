@@ -10,6 +10,8 @@
     </div>
     <div class="row">
         @include('sweetalert::alert')
+        @include('coodinator::include.session.switch')
+        @include('coodinator::include.session.new')
         @yield('page-content')
     </div>
 </div>
