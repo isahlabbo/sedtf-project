@@ -43,7 +43,7 @@
 		     			<td>{{$programme->semesters}}</td>
 		     			
 		     			<td>
-		     				<button class="btn bt-color-1 btn-block" data-toggle="modal" data-target="#">
+		     				<button class="btn bt-color-1 btn-block" data-toggle="modal" data-target="#edit_{{$programme->id}}">
 		     					Edit
 		     				</button>
 		     			</td>
@@ -53,7 +53,7 @@
 		     				</button>
 		     			</td>
 		     		</tr>
-		     		
+		     		@include('coodinator::department.programme.edit')
 	     		@endforeach
 	     	</tbody>
 	    </table>

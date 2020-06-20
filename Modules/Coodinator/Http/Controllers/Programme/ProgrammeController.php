@@ -67,9 +67,40 @@ class ProgrammeController extends CoodinatorBaseController
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $programmeId)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'code'=>'required|string',
+            'type'=>'required',
+            'batches'=>'required',
+            'semesters'=>'required',
+            'fee'=>'required',
+            'duration'=>'required',
+            'duration'=>'required',
+            'about'=>'required'
+            
+        ]);
+
+        $programme = Programme::find($programmeId);
+        $programme->update([
+            'name'=>$request->name,
+            'code'=>$request->code,
+            'programme_type_id'=>$request->type,
+            'batches'=>$request->batches,
+            'semesters'=>$request->semesters,
+            'fee'=>$request->fee,
+            'duration'=>$request->duration,
+            'about'=>$request->about,
+        ]);
+
+        foreach ($request->remove as $key => $value) {
+            foreach ($programme->programmeSchedules->where('schedule_id',$value) as $programmeSchedule) {
+                $programmeSchedule->delete();
+            }
+        }
+        
+        return back()->withSuccess('Programme updated successfully');
     }
 
     /**
