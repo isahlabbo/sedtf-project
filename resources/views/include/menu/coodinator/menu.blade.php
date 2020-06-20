@@ -24,6 +24,9 @@
     </ul>
 </li>
 <li>
+    <a href="{{route('coodinator.programme.index')}}">Programmes</a>
+</li>
+<li>
     <a href="#">Graduations</a>
     <ul>
         <li>

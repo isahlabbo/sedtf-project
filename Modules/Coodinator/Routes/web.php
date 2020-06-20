@@ -20,7 +20,24 @@ Route::prefix('coodinator')
 	Route::post('/login', 'Auth\CoodinatorLoginController@login')->name('login');
 	Route::post('logout', 'Auth\CoodinatorLoginController@logout')->name('auth.logout');
     Route::get('/Authorisation/fail', 'Auth\CoodinatorLoginController@unauthorize')->name('auth.auth');
+    #programme routes
 
+    Route::prefix('programmes')
+		->name('programme.')
+		->namespace('Programme')
+		->group(function() {
+        Route::get('/','ProgrammeController@index')->name('index');
+        Route::post('/{programmeId}/update','ProgrammeController@update')->name('update');
+        Route::get('/create','ProgrammeController@create')->name('create');
+        Route::post('/register','ProgrammeController@register')->name('register');
+        
+        //appointment routes
+        Route::prefix('appointment')
+		->name('appointment.')
+		->group(function() {
+            Route::post('/register','CoodinatorLecturerAppointmentController@register')->name('register');
+		});
+	});
     Route::prefix('lecturers')
 		->name('lecturer.')
 		->group(function() {
