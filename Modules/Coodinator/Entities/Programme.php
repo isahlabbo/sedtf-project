@@ -46,4 +46,22 @@ class Programme extends BaseModel
     {
         return $this->belongsTo('Modules\Coodinator\Entities\CourseRegistration');
     }
+
+    public function hasMorningSchedule()
+    {
+        $flag = false;
+        foreach ($this->programmeSchedules->where('schedule_id',1) as $key => $value) {
+            $flag = true;
+        }
+        return $flag;
+    }
+
+    public function hasEveningSchedule()
+    {
+        $flag = false;
+        foreach ($this->programmeSchedules->where('schedule_id',2) as $key => $value) {
+            $flag = true;
+        }
+        return $flag;
+    }
 }

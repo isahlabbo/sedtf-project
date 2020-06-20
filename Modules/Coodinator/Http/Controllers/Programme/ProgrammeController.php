@@ -69,13 +69,21 @@ class ProgrammeController extends CoodinatorBaseController
             'duration'=>$request->duration,
             'about'=>$request->about,
         ]);
-
-        foreach ($request->remove as $key => $value) {
-            foreach ($programme->programmeSchedules->where('schedule_id',$value) as $programmeSchedule) {
-                $programmeSchedule->delete();
+        if($request->remove){
+            foreach ($request->remove as $key => $value) {
+                foreach ($programme->programmeSchedules->where('schedule_id',$value) as $programmeSchedule) {
+                    $programmeSchedule->delete();
+                }
             }
         }
         
+        if($request->add){
+            foreach ($request->add as $key => $value) {
+                if($value){
+                    $programme->programmeSchedules()->create(['schedule_id'=>$value]);
+                }
+            }
+        }
         return back()->withSuccess('Programme updated successfully');
     }
 

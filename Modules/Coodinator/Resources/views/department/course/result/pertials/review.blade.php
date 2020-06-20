@@ -65,7 +65,7 @@
 						</td>
 						<td>
                                    <button class="btn btn-block bt-color-4 btn-block">
-                                        <a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a>
+                                        <a href="{{route($routes['edit'] ?? 'department.result.course.edit',[$result->id])}}" style="color: white">Detailed Info</a>
                                    </button>                        
                               </td>
 						@else

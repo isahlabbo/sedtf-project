@@ -50,7 +50,7 @@ class AdmissionController extends CoodinatorBaseController
         
         $admissionNo = Programme::find($request->programme)->generateAdmissionNo($request->schedule);
 
-        return redirect()->route('coodinator.student.admission.register.generated.number.index',[str_replace('/','-',$admissionNo),$request->schedule]);
+        return redirect()->route('coodinator.student.admission.register.generated.number.index',[str_replace('/','-',$admissionNo),$request->schedule])->withSuccess($admissionNo.' Generated');
     }
 
     public function generatedNumberRegistration()
@@ -65,7 +65,7 @@ class AdmissionController extends CoodinatorBaseController
         
         $student = Programme::where('code',substr($request->admissionNo, 0, 3))->first()->registerNewStudent($request->all());
 
-        return redirect()->route('coodinator.student.view.biodata',[$student->id]);
+        return redirect()->route('coodinator.student.view.biodata',[$student->id])->withSuccess($student->admission->admission_no.' was registered successfully for '.$student->admission->programme->name.' Batch '.$student->batch().' '.$student->admission->year);
     }
 
     /**
@@ -77,7 +77,7 @@ class AdmissionController extends CoodinatorBaseController
     {
         Admission::find($admission_id)->revokeThisAdmission();
 
-        return redirect()->route('coodinator.student.admission.index');
+        return redirect()->route('coodinator.student.admission.index')->withSuccess('Student Account revoked successfully');
     }
 
     /**
@@ -100,7 +100,7 @@ class AdmissionController extends CoodinatorBaseController
     {
         Admission::find($admission_id)->updateThisAdmission($request->all());
 
-        return back();
+        return back()->withSuccess('Admission updated successfully');
 
     }
 
@@ -118,8 +118,6 @@ class AdmissionController extends CoodinatorBaseController
         $admission->student->delete();
         $admission->delete();
 
-        session()->flash('message','Congratulation this admission is deleted successfully');
-
-        return redirect()->route('coodinator.student.admission.index');
+        return redirect()->route('coodinator.student.admission.index')->withSuccess('Admission deleted successfully');
     }
 }

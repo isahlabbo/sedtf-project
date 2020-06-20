@@ -27,27 +27,49 @@ trait AdmissionNumberGenerator
 	{
 		$batch = null;
 		$month = date('m');
-		if(substr($this->code, 0,1) == 'C'){
-            if(in_array($month, [1,2,3])){
+		switch ($this->batches) {
+			case '1':
+				$batch = 'A';
+				break;
+		    case '2':
+				if(in_array($month, [1,2,3,4,5,6])){
+            	    $batch = 'A';
+	            }
+	            if(in_array($month, [7,8,9,10,11,12])){
+	            	$batch = 'B';
+	            }
+				break;
+			case '3':
+				if(in_array($month, [1,2,3,4])){
             	$batch = 'A';
-            }
-            if(in_array($month, [4,5,6])){
-            	$batch = 'B';
-            }
-            if(in_array($month, [7,8,9])){
-            	$batch = 'C';
-            }
-            if(in_array($month, [10,11,12])){
-            	$batch = 'D';
-            }
-		}else{
-			if(in_array($month, [1,2,3,4,5,6])){
-            	$batch = 'A';
-            }
-            if(in_array($month, [7,8,9,10,11,12])){
-            	$batch = 'B';
-            }
+	            }
+	            if(in_array($month, [5,6,7,8])){
+	            	$batch = 'B';
+	            }
+	            if(in_array($month, [9,10,11,12])){
+	            	$batch = 'C';
+	            }
+				break;
+			case '4':
+				if(in_array($month, [1,2,3])){
+            	    $batch = 'A';
+	            }
+	            if(in_array($month, [4,5,6])){
+	            	$batch = 'B';
+	            }
+	            if(in_array($month, [7,8,9])){
+	            	$batch = 'C';
+	            }
+	            if(in_array($month, [10,11,12])){
+	            	$batch = 'D';
+	            }
+				break;					
+			
+			default:
+				$batch = 'A';
+				break;
 		}
+		
 		return $batch;
 	}
 
@@ -78,22 +100,26 @@ trait AdmissionNumberGenerator
             'session_id' => currentSession()->id,
             'schedule_id'=> $this->schedule
     	]);
-    	
-    	return $counter->count + 1;
+
+    	if($counter->count == 0 && $this->schedule == 1){
+    		return $counter->count + 1;
+    	}
+
+    	if($counter->count < 40 && $this->schedule == 2){
+    		return $counter->count + 40;
+    	}
+
+    	return $counter->count;
     }
 
 	public function formatThisSerialNo($no)
 	{
 
-		//if the schedule is evening start allocation from 40 to above
-		if($this->schedule > 2 && $no == 1){
-			$no = 40;
-		}
+		
         
         //if the allocated no for morning reaches 40 or evening reaches 80 then return error
-		if($this->schedule <= 2 && $no >= 40 || $this->schedule > 2 && $no > 80){
-			session()->flash('error', 'Sorry you have exceded the number admission');
-			return back();
+		if($this->schedule == 2 && $no > 80){
+			return back()->withWarning('Sorry you have exceded the number admission');
 		}else{
 
 			//go ahead and format the number

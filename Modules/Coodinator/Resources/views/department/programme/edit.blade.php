@@ -80,45 +80,45 @@
 
                     <div class="form-group">
                         <label class="text text-danger">About Programme</label>
-                        <textarea type="text" name="about" class="form-control" value="{{$programme->about}}" placeholder="Write some thing small about the programme"></textarea> 
+                        <textarea type="text" name="about" class="form-control"  placeholder="Write some thing small about the programme" value="{{$programme->about}}">{{$programme->about}}</textarea> 
                         @error('code')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                    @if($programme->hasMorningSchedule)
+                    @if($programme->hasMorningSchedule())
                     <div class="form-group">
-                        <label class="text text-danger">Add Morning Schedule</label>
-                        <select name="schedules[]" class="form-control">
-                        	<option value="">Add Schedule</option>
-                        	<option value="1">Morning Schedule</option>
+                        <label class="text text-danger">Remove Morning Schedule</label>
+                        <select name="remove[]" class="form-control">
+                            <option value="">Remove Schedule</option>
+                            <option value="1">Morning Schedule</option>
                         </select>
                     </div>
                     @else
                     <div class="form-group">
-                        <label class="text text-danger">Remove Morning Schedule</label>
-                        <select name="remove[]" class="form-control">
-                        	<option value="">Remove Schedule</option>
-                        	<option value="1">Morning Schedule</option>
+                        <label class="text text-danger">Add Morning Schedule</label>
+                        <select name="add[]" class="form-control">
+                            <option value="">Add Schedule</option>
+                            <option value="1">Morning Schedule</option>
                         </select>
                     </div>
                     @endif
 
-                    @if($programme->hasEveningSchedule)
+                    @if($programme->hasEveningSchedule())
                     <div class="form-group">
-                        <label class="text text-danger">Add Evening Schedule</label>
-                        <select name="schedules[]" class="form-control">
-                        	<option value="">Add Schedule</option>
-                        	<option value="2">Evening Schedule</option>
+                        <label class="text text-danger">Remove Evening Schedule</label>
+                        <select name="remove[]" class="form-control">
+                            <option value="">Remove Schedule</option>
+                            <option value="2">Evening Schedule</option>
                         </select>
                     </div>
                     @else
                     <div class="form-group">
-                        <label class="text text-danger">Remove Evening Schedule</label>
-                        <select name="remove[]" class="form-control">
-                        	<option value="">Remove Schedule</option>
-                        	<option value="2">Evening Schedule</option>
+                        <label class="text text-danger">Add Evening Schedule</label>
+                        <select name="add[]" class="form-control">
+                            <option value="">Add Schedule</option>
+                            <option value="2">Evening Schedule</option>
                         </select>
                     </div>
                     @endif

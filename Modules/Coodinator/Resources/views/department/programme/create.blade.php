@@ -80,7 +80,7 @@
 
                     <div class="form-group">
                         <label class="text text-danger">About Programme</label>
-                        <textarea type="text" name="about" class="form-control" value="{{old('about')}}" placeholder="Write some thing small about the programme"></textarea> 
+                        <textarea type="text" name="about" class="form-control" value="{{old('about')}}" placeholder="Write some thing small about the programme" ></textarea> 
                         @error('code')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

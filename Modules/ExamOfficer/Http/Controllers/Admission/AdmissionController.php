@@ -50,7 +50,7 @@ class AdmissionController extends ExamOfficerBaseController
         
         $admissionNo = Programme::find($request->programme)->generateAdmissionNo($request->schedule);
 
-        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[str_replace('/','-',$admissionNo),$request->schedule]);
+        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[str_replace('/','-',$admissionNo),$request->schedule])->withSuccess($admissionNo.' Generated');
     }
 
     public function generatedNumberRegistration()
@@ -64,7 +64,7 @@ class AdmissionController extends ExamOfficerBaseController
     public function registerGeneratedNumber(AdmissionFormRequest $request)
     {
         $student = Programme::where('code',substr($request->admissionNo, 0, 3))->first()->registerNewStudent($request->all());
-        return redirect()->route('exam.officer.student.view.biodata',[$student->id]);
+        return redirect()->route('exam.officer.student.view.biodata',[$student->id])->withSuccess($student->admission->admission_no.' was registered successfully for '.$student->admission->programme->name.' Batch '.$student->batch().' '.$student->admission->year);
     }
 
     /**
@@ -76,7 +76,7 @@ class AdmissionController extends ExamOfficerBaseController
     {
         Admission::find($admission_id)->revokeThisAdmission();
 
-        return redirect()->route('exam.officer.student.admission.index');
+        return redirect()->route('exam.officer.student.admission.index')->withSuccess('Student account revoked successfully');
     }
 
     /**
@@ -99,7 +99,7 @@ class AdmissionController extends ExamOfficerBaseController
     {
         Admission::find($admission_id)->updateThisAdmission($request->all());
 
-        return back();
+        return back()->withSuccess('Admission updated successfully');
 
     }
 
@@ -117,7 +117,6 @@ class AdmissionController extends ExamOfficerBaseController
         $admission->student->delete();
         $admission->delete();
 
-        session()->flash('message','Congratulation this admission is deleted successfully');
-        return redirect()->route('exam.officer.student.admission.index');
+        return redirect()->route('exam.officer.student.admission.index')->flash('message','Admission deleted successfully');
     }
 }
