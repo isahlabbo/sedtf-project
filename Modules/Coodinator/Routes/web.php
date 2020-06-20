@@ -29,6 +29,7 @@ Route::prefix('coodinator')
         Route::get('/','ProgrammeController@index')->name('index');
         Route::post('/{programmeId}/update','ProgrammeController@update')->name('update');
         Route::get('/create','ProgrammeController@create')->name('create');
+        Route::get('/{programmeId}/delete','ProgrammeController@delete')->name('delete');
         Route::post('/register','ProgrammeController@register')->name('register');
         
         //appointment routes

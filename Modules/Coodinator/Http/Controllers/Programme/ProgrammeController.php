@@ -2,12 +2,11 @@
 
 namespace Modules\Coodinator\Http\Controllers\Programme;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\ProgrammeType;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
-
+use Modules\Coodinator\Http\Requests\ProgrammeFormRequest as Request;
 
 class ProgrammeController extends CoodinatorBaseController
 {
@@ -29,18 +28,6 @@ class ProgrammeController extends CoodinatorBaseController
      */
     public function register(Request $request)
     {
-        $request->validate([
-            'name'=>'required|string',
-            'code'=>'required|string',
-            'type'=>'required',
-            'batches'=>'required',
-            'semesters'=>'required',
-            'fee'=>'required',
-            'duration'=>'required',
-            'duration'=>'required'
-            
-        ]);
-
         $programme = Programme::firstOrCreate([
             'name'=>$request->name,
             'code'=>$request->code,
@@ -55,9 +42,9 @@ class ProgrammeController extends CoodinatorBaseController
         foreach ($request->schedules as $key => $value) {
             $programme->programmeSchedules()->create(['schedule_id'=>$value]);
         }
-        session()->flash('message','Programme created successfully
+        
+        return back()->withSuccess('message','Programme created successfully
             ');
-        return back();
     }
 
 
@@ -69,18 +56,6 @@ class ProgrammeController extends CoodinatorBaseController
      */
     public function update(Request $request, $programmeId)
     {
-        $request->validate([
-            'name'=>'required|string',
-            'code'=>'required|string',
-            'type'=>'required',
-            'batches'=>'required',
-            'semesters'=>'required',
-            'fee'=>'required',
-            'duration'=>'required',
-            'duration'=>'required',
-            'about'=>'required'
-            
-        ]);
 
         $programme = Programme::find($programmeId);
         $programme->update([
@@ -108,8 +83,14 @@ class ProgrammeController extends CoodinatorBaseController
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete($programmeId)
     {
-        //
+
+        $programme = Programme::find($programmeId);
+        if(count($programme->admissions) == 0){
+            $programme->delete();
+            return back()->withSuccess('Programme deleted successfully');
+        }
+        return back()->withWarning('We cant delete this programme because there are record of admission in it');
     }
 }

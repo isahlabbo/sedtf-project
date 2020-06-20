@@ -48,9 +48,9 @@
 		     				</button>
 		     			</td>
 		     			<td>
-		     				<button class="btn bt-color-2 btn-block">
+		     				<a href="{{route('coodinator.programme.delete',[$programme->id])}}" class="btn bt-color-2 btn-block" onclick="return confirm('Are you sur you want to delete this programme')">
 		     					Delete
-		     				</button>
+		     				</a>
 		     			</td>
 		     		</tr>
 		     		@include('coodinator::department.programme.edit')
