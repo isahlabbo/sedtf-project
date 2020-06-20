@@ -9,9 +9,8 @@
         </div>
     </div>
     <div class="row">
-        
-        @yield('page-content')
         @include('sweetalert::alert')
+        @yield('page-content')
     </div>
 </div>
 

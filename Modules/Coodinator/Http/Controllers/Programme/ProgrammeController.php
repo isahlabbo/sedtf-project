@@ -3,6 +3,7 @@
 namespace Modules\Coodinator\Http\Controllers\Programme;
 
 use Illuminate\Http\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\ProgrammeType;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
@@ -43,7 +44,7 @@ class ProgrammeController extends CoodinatorBaseController
             $programme->programmeSchedules()->create(['schedule_id'=>$value]);
         }
         
-        return back()->withSuccess('message','Programme created successfully
+        return back()->withSuccess('Programme created successfully
             ');
     }
 

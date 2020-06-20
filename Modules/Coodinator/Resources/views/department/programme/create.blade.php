@@ -29,7 +29,7 @@
                     </div>
 
             		<div class="form-group">
-                        <label class="text text-danger">No of Batches</label>
+                        <label class="text text-danger">No of Batches in year</label>
                         <input type="number" name="batches" class="form-control" value="{{old('batches')}}" placeholder="3">
                         @error('batches')
                             <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="text text-danger">No of Semesters</label>
+                        <label class="text text-danger">No of Semesters for the programme</label>
                         <input type="number" name="semesters" class="form-control" value="{{old('semesters')}}" placeholder="2">
                         @error('semesters')
                             <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="text text-danger">Duration in Month</label>
+                        <label class="text text-danger">Duration to complete the programme in Month</label>
                         <input type="number" name="duration" class="form-control" value="{{old('duration')}}" placeholder="6">
                         @error('duration')
                             <span class="invalid-feedback" role="alert">
