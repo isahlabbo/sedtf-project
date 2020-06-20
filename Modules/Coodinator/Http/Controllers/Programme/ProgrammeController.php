@@ -5,6 +5,7 @@ namespace Modules\Coodinator\Http\Controllers\Programme;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Entities\ProgrammeType;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 
 
@@ -16,47 +17,49 @@ class ProgrammeController extends CoodinatorBaseController
      */
     public function index()
     {
-        return view('coodinator::department.programme.index',['programmes'=>Programme::all()]);
+        return view('coodinator::department.programme.index',['programmeTypes'=>ProgrammeType::all(),'programmes'=>Programme::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('coodinator::create');
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string',
+            'code'=>'required|string',
+            'type'=>'required',
+            'batches'=>'required',
+            'semesters'=>'required',
+            'fee'=>'required',
+            'duration'=>'required',
+            'duration'=>'required'
+            
+        ]);
+
+        $programme = Programme::firstOrCreate([
+            'name'=>$request->name,
+            'code'=>$request->code,
+            'programme_type_id'=>$request->type,
+            'batches'=>$request->batches,
+            'semesters'=>$request->semesters,
+            'fee'=>$request->fee,
+            'duration'=>$request->duration,
+            'about'=>$request->about,
+        ]);
+
+        foreach ($request->schedules as $key => $value) {
+            $programme->programmeSchedules()->create(['schedule_id'=>$value]);
+        }
+        session()->flash('message','Programme created successfully
+            ');
+        return back();
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('coodinator::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('coodinator::edit');
-    }
 
     /**
      * Update the specified resource in storage.

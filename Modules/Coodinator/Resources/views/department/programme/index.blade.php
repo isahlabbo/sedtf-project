@@ -13,13 +13,18 @@
 	     		<tr>
 	     			<th>Name</th>
 	     			<th>Type</th>
+	     			<th>Fee</th>
+	     			<th>Duration</th>
+	     			<th>About</th>
+	     			<th>Code</th>
 	     			<th>No Of Schedule</th>
 	     			<th>Batches in Year</th>
 	     			<th>No Of semesters</th>
 	     			<th>
-	     				<button class="btn bt-color-3 btn-block">
+	     				<button class="btn bt-color-3 btn-block" data-toggle="modal" data-target="#newProgramme">
 		     				New Programme
 		     			</button>
+		     			@include('coodinator::department.programme.create')
 		     		</th>
 	     		</tr>
 	     	</thead>
@@ -29,6 +34,10 @@
 		     		<tr>
 		     			<td>{{$programme->name}}</td>
 		     			<td>{{$programme->programmeType->name}}</td>
+		     			<td>{{$programme->fee}}</td>
+		     			<td>{{$programme->duration}} Months</td>
+		     			<td>{{$programme->about}}</td>
+		     			<td>{{$programme->code}}</td>
 		     			<td>{{count($programme->programmeSchedules)}}</td>
 		     			<td>{{$programme->batches}}</td>
 		     			<td>{{$programme->semesters}}</td>
