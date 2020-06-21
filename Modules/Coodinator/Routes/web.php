@@ -32,13 +32,21 @@ Route::prefix('coodinator')
         Route::get('/{programmeId}/delete','ProgrammeController@delete')->name('delete');
         Route::post('/register','ProgrammeController@register')->name('register');
         
-        //appointment routes
-        Route::prefix('appointment')
-		->name('appointment.')
-		->group(function() {
-            Route::post('/register','CoodinatorLecturerAppointmentController@register')->name('register');
-		});
+
 	});
+
+	Route::prefix('sessions')
+		->name('session.')
+		->namespace('Session')
+		->group(function() {
+        
+        Route::post('/register','SessionController@register')->name('register');
+        
+        Route::post('/switch','SessionController@switch')->name('switch');
+        
+        
+	});
+		
     Route::prefix('lecturers')
 		->name('lecturer.')
 		->group(function() {

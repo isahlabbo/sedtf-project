@@ -9,12 +9,30 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-            	<form method="post" action="{{route('coodinator.programme.register')}}">
+            	<form method="post" action="{{route('coodinator.session.register')}}">
             		@csrf
             		<div class="form-group">
                         <label class="text text-danger">Session Name</label>
                         <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="{{date('Y')}}/{{date('Y')+1}}">
                         @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="text text-danger">Session Start</label>
+                        <input type="date" name="start" class="form-control" value="{{old('start')}}" >
+                        @error('start')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="text text-danger">Session End</label>
+                        <input type="date" name="end" class="form-control" value="{{old('end')}}" >
+                        @error('end')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

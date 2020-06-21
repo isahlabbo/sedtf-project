@@ -102,11 +102,11 @@ trait AdmissionNumberGenerator
     	]);
 
     	if($counter->count == 0 && $this->schedule == 1){
-    		return $counter->count + 1;
+    		$counter->count + 1;
     	}
 
-    	if($counter->count < 40 && $this->schedule == 2){
-    		return $counter->count + 40;
+    	if($counter->count == 0 && $this->schedule == 2){
+    		return $counter->count + 41;
     	}
 
     	return $counter->count;
@@ -118,7 +118,7 @@ trait AdmissionNumberGenerator
 		
         
         //if the allocated no for morning reaches 40 or evening reaches 80 then return error
-		if($this->schedule == 2 && $no > 80){
+		if($this->schedule == 2 && $no > 80 || $this->schedule == 1 && $no > 40){
 			return back()->withWarning('Sorry you have exceded the number admission');
 		}else{
 

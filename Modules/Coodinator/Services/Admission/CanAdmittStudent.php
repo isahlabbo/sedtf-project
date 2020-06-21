@@ -13,7 +13,6 @@ trait CanAdmittStudent
         $this->verifyEmail();
 		$student = $this->registerStudentAdmission();
 
-		session()->flash('message','Congratulation this admission is registered successfully and this student can logged in as student using '.$data['admissionNo'].' as user name and '.$data['admissionNo'].' as his password');
 		return $student;
 	}
     public function verifyEmail()
@@ -31,11 +30,15 @@ trait CanAdmittStudent
         ]);
         //get the admission count
         $admissionCount = null;
-        foreach ($admission->programme->programmeSessionAdmissions->where('session_id',currentSession()->id) as $thisAdmissionCount) {
+        foreach ($admission->programme->programmeSessionAdmissions->where('session_id',currentSession()->id)->where('schedule_id',$this->data['schedule']) as $thisAdmissionCount) {
             $admissionCount = $thisAdmissionCount;
         }
         //increment the count
-        $admissionCount->update(['count'=>$admissionCount->count+1]);
+        if($this->data['schedule'] == 2 && $admissionCount->count == 0){
+            $admissionCount->update(['count'=>$admissionCount->count + 42]);
+        }else{
+            $admissionCount->update(['count'=>$admissionCount->count+1]);
+        }
 
         return $this->registerStudent($admission);
         
