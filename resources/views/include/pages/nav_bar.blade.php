@@ -35,14 +35,7 @@
                             </li>
 
                             @endif
-                            <li>
-                                <a href="#"><i class="fa fa-calendar"></i> Calendar</a>
-                                <!-- sub menu -->
-                                <ul>
-                                    <li><a href="#">View Calendar</a></li> 
-                                </ul>
-                                <!-- / sub menu -->
-                            </li>
+                            
                             @yield('nav-bar')
                             @if(!auth()->check())
                             <li>

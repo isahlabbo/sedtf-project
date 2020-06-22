@@ -26,8 +26,22 @@
 <li>
     <a href="{{route('coodinator.programme.index')}}">Programmes</a>
 </li>
+
 <li>
-    <a href="#">{{currentSession()->name}} Session</a>
+    <a href="#"> <i class="fa fa-message"></i> {{currentSession()->name}} Notification</a>
+    <ul>
+        <li>
+            <a href="#" data-toggle="modal" data-target="#newNotification" >New Notification</a>
+        </li>
+        
+        <li>
+            <a href="#" >Sent Sessions</a>
+        </li>
+    </ul>
+</li>
+
+<li>
+    <a href="#"> <i class="fa fa-calendar"></i> {{currentSession()->name}} Session</a>
     <ul>
         <li>
             <a href="#" data-toggle="modal" data-target="#newSession">New Session</a>
@@ -38,6 +52,7 @@
         </li>
     </ul>
 </li>
+
 <li>
     <a href="#">Graduations</a>
     <ul>
