@@ -7,7 +7,7 @@ trait HasGraduationStatusAt
 
     public function graduatedAt($session)
     {
-        if(empty($this->currentLevelReRegisterCoursesAt($session)) && $this->yearsSinceAdmission() >= 2){
+        if(empty($this->currentLevelReRegisterCoursesAt($session))){
             return true;
         }
         return false;
@@ -15,7 +15,7 @@ trait HasGraduationStatusAt
 
     public function spillededAt($session)
     {
-        if(!empty($this->currentLevelReRegisterCoursesAt($session)) && $this->yearsSinceAdmission() >= 2){
+        if(!empty($this->currentLevelReRegisterCoursesAt($session))){
             return true;
         }
         return false;

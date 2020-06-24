@@ -21,6 +21,11 @@ class CreateNotificationsTable extends Migration
             ->foreign()
             ->references('id')
             ->on('notification_types')
+            $table->integer('notification_to_id')
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('notification_tos')
             ->delete('restrict')
             ->update('cascade');
             $table->text('comment');
