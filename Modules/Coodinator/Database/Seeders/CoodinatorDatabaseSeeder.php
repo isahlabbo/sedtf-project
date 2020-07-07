@@ -23,5 +23,6 @@ class CoodinatorDatabaseSeeder extends Seeder
         $this->call(SessionTableSeeder::class);
         $this->call(SemesterTableSeeder::class);
         $this->call(NotificationTypeTableSeeder::class);
+        $this->call(NotificationToTableSeeder::class);
     }
 }
