@@ -11,6 +11,10 @@ use Modules\Coodinator\Entities\Notification;
 class NotificationController extends CoodinatorBaseController
 {
     
+    public function index()
+    {
+        return view('coodinator::department.notification.index');
+    }
     /**
      * Show the form for creating a new resource.
      * @return Response

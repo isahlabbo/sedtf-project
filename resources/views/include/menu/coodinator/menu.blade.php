@@ -35,7 +35,7 @@
         </li>
         
         <li>
-            <a href="#" >Sent Sessions</a>
+            <a href="{{route('coodinator.notification.index')}}" >Sent Sessions</a>
         </li>
     </ul>
 </li>

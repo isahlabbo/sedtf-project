@@ -11,6 +11,11 @@ class Session extends BaseModel
     	return $this->hasMany(Admission::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function graduatedStudents()
     {
         $students = [];
