@@ -7,16 +7,16 @@
 <div class="col-md-6">
 	<br>
     <div class="card shadow">
-    	<h4 class="text text-danger center">Send New Notification</h4>
+    	<h4 class="text text-danger center">Edit Notification</h4>
     	<div class="card-body">
-    		<form method="post" action="{{route('coodinator.notification.send')}}" enctype="multipart/form-data">
+    		<form method="post" action="{{route('coodinator.notification.update',[$notification->id])}}" enctype="multipart/form-data">
             		@csrf
             		
                     <div class="form-group">
                         <label class="text text-danger">To</label>
                         <select class="form-control" name="notification_to">
-                            <option value="">Select Staff</option>
-                            @foreach($tos as $to)
+                            <option value="{{$notification->notificationTo->id}}">{{$notification->notificationTo->name}}</option>
+                            @foreach($tos->where('id', '!=', $notification->notificationTo->id) as $to)
                                 <option value="{{$to->id}}">{{$to->name}}</option>
                             @endforeach
                         </select>
@@ -30,8 +30,8 @@
                     <div class="form-group">
                         <label class="text text-danger">Notification Type</label>
                         <select class="form-control" name="notification_type">
-                            <option value="">Notification Type</option>
-                            @foreach($types as $type)
+                            <option value="{{$notification->notificationType->id}}">{{$notification->notificationTo->name}}</option>
+                            @foreach($types->where('id', '!=', $notification->notificationType->id) as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
                         </select>
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label class="text text-danger">Message</label>
-                        <textarea name="notification" class="form-control" cols="15" rows="4" placeholder="Type some text here..."></textarea>
+                        <textarea name="notification" class="form-control" cols="15" rows="4" placeholder="Type some text here...">{{$notification->comment}}</textarea>
                         @error('notification')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     
-                    <button class="btn bt-color-1 btn-block">Send</button>
+                    <button class="btn bt-color-1 btn-block">Update</button>
             	</form>
     	</div>
     </div>

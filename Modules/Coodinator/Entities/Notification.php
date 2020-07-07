@@ -8,7 +8,7 @@ class Notification extends BaseModel
 {
     public function notificationType()
     {
-        return $this->belongsTo(Notification::class);
+        return $this->belongsTo(NotificationType::class);
     }
 
     public function notificationTo()

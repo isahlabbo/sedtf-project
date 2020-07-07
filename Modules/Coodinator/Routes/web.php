@@ -39,10 +39,13 @@ Route::prefix('coodinator')
 		->namespace('Notification')
 		->group(function() {
         Route::get('/','NotificationController@index')->name('index');
-        Route::post('/{notificationId}/update','NotificationController@update')->name('update');
-        Route::get('/create','NotificationController@create')->name('create');
-        Route::get('/{notificationId}/delete','NotificationController@delete')->name('delete');
         Route::post('/send','NotificationController@send')->name('send');
+        Route::get('/create','NotificationController@create')->name('create');
+        Route::get('/{notificationId}/edit','NotificationController@edit')->name('edit');
+        Route::post('/{notificationId}/update','NotificationController@update')->name('update');
+        
+        Route::get('/{notificationId}/delete','NotificationController@delete')->name('delete');
+        
         
 	});		
 

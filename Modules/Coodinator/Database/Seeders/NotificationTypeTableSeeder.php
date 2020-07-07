@@ -17,7 +17,7 @@ class NotificationTypeTableSeeder extends Seeder
     {
         Model::unguard();
 
-        $names = ['Result', 'Course Allocation', 'Meeting', 'Lectures','Examination', 'Resumption'];
+        $names = ['Result', 'Course Allocation', 'Meeting', 'Lectures','Examination', 'Resumption','General'];
         foreach($names as $name){
             NotificationType::firstOrCreate(['name'=>$name]);
         }
