@@ -15,17 +15,27 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->integer('notification_type_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('notification_types')
+            ->on('notification_types');
+
             $table->integer('notification_to_id')
             ->nullable()
             ->foreign()
             ->references('id')
             ->on('notification_tos')
+            ->delete('restrict')
+            ->update('cascade');
+
+            $table->integer('session_id')
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('sessions')
             ->delete('restrict')
             ->update('cascade');
             $table->text('comment');

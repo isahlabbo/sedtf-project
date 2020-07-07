@@ -32,8 +32,19 @@ Route::prefix('coodinator')
         Route::get('/{programmeId}/delete','ProgrammeController@delete')->name('delete');
         Route::post('/register','ProgrammeController@register')->name('register');
         
-
 	});
+
+    Route::prefix('notifications')
+		->name('notification.')
+		->namespace('Notification')
+		->group(function() {
+        Route::get('/','NotificationController@index')->name('index');
+        Route::post('/{notificationId}/update','NotificationController@update')->name('update');
+        Route::get('/create','NotificationController@create')->name('create');
+        Route::get('/{notificationId}/delete','NotificationController@delete')->name('delete');
+        Route::post('/send','NotificationController@send')->name('send');
+        
+	});		
 
 	Route::prefix('sessions')
 		->name('session.')

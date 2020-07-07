@@ -20,4 +20,17 @@ class Notification extends BaseModel
     {
         return $this->hasOne('Modules\Lecturer\Entities\LecturerCourseResultUploadNotification');
     }
+
+    public static function send(array $data)
+
+    {
+
+        $this->firstOrCreate([
+            'notification_to_id'=>$data['notification_to'],
+            'notification_type_id'=>2,
+            'comment'=>$data['notification'],
+        ]);
+        
+    }
+    
 }

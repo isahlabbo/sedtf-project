@@ -31,7 +31,7 @@
     <a href="#"> <i class="fa fa-message"></i> {{currentSession()->name}} Notification</a>
     <ul>
         <li>
-            <a href="#" data-toggle="modal" data-target="#newNotification" >New Notification</a>
+            <a href="{{route('coodinator.notification.create')}}" >New Notification</a>
         </li>
         
         <li>
