@@ -16,7 +16,8 @@
                                 {{$notification->notificationType->name}}
                             </div>
                             <div class="card-body">
-                                {{$notification->comment}}
+                                {{substr($notification->comment,0,30)}}... <a href="#" data-toggle="modal" data-target="#notification_{{$notification->id}}" class="text text-primary">Read More</a>
+                                @include('coodinator::department.notification.read')
                             </div>
                         </div>
                     </div>
