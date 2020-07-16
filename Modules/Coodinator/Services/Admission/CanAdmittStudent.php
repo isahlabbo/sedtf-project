@@ -34,10 +34,10 @@ trait CanAdmittStudent
             $admissionCount = $thisAdmissionCount;
         }
         //increment the count
-        if($this->data['schedule'] == 2 && $admissionCount->count == 0){
-            $admissionCount->update(['count'=>$admissionCount->count + 42]);
+        if($this->data['schedule'] == 2 && $admissionCount->count <= 40){
+            $admissionCount->update(['count'=> 42]);
         }else{
-            $admissionCount->update(['count'=>$admissionCount->count+1]);
+            $admissionCount->update(['count'=>$admissionCount->count + 1]);
         }
 
         return $this->registerStudent($admission);

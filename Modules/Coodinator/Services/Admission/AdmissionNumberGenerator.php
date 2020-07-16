@@ -2,6 +2,7 @@
 namespace Modules\Coodinator\Services\Admission;
 
 use Modules\Coodinator\Entities\ReservedProgrammeSessionAdmission;
+use Modules\Coodinator\Entities\ProgrammeSessionAdmission;
 
 trait AdmissionNumberGenerator
 
@@ -96,26 +97,30 @@ trait AdmissionNumberGenerator
 
     public function getAdmissionCounter()
     {
-    	$counter = $this->programmeSessionAdmissions()->firstOrCreate([
+    	$this->programmeSessionAdmissions()->firstOrCreate([
             'session_id' => currentSession()->id,
             'schedule_id'=> $this->schedule
     	]);
 
+    	$counter = ProgrammeSessionAdmission::where([
+    		'session_id'=>currentSession()->id,
+    		'schedule_id'=>$this->schedule,
+    		'programme_id'=>$this->id])->first();
+        $count = $counter->count;
+        
     	if($counter->count == 0 && $this->schedule == 1){
-    		$counter->count + 1;
+    		$count = $counter->count + 1;
     	}
 
-    	if($counter->count == 0 && $this->schedule == 2){
-    		return $counter->count + 41;
+    	if($counter->count <= 40 && $this->schedule == 2){
+    		$count = 41;
     	}
 
-    	return $counter->count;
+    	return $count;
     }
 
 	public function formatThisSerialNo($no)
 	{
-
-		
         
         //if the allocated no for morning reaches 40 or evening reaches 80 then return error
 		if($this->schedule == 2 && $no > 80 || $this->schedule == 1 && $no > 40){

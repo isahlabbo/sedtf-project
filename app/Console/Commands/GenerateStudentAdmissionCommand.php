@@ -29,6 +29,7 @@ class GenerateStudentAdmissionCommand extends Command
     public function __construct()
     {
         parent::__construct();
+
     }
 
     /**
@@ -38,46 +39,48 @@ class GenerateStudentAdmissionCommand extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar(160);
+        $bar = $this->output->createProgressBar(count(Programme::all()));
 
         $bar->setBarWidth(100);
 
         $bar->start();
 
-        $this->generateComputerEngineeringCerticateStudent($bar);
-
-        $this->generateComputerScienceDiplomaStudent($bar);
-
-        $this->generateComputerScienceCertificateStudent($bar);
+        $this->generateStudent($bar);
 
         $bar->finish();
     }
 
-    public function generateComputerScienceCertificateStudent($bar)
+    public function generateStudent($bar)
     {
-        for ($j=1; $j <= 40 ; $j++) { 
-            //generate evening student
-            $number = Programme::find(1)->generateNewAdmission();
+        foreach (Programme::all() as $programme) {
+            foreach ([1,2] as $schedule) {
+                for ($j=1; $j <= 40 ; $j++) {
+                    $admissionNo = $programme->generateAdmissionNo($schedule);
+                    
+                    $programme->registerNewStudent($this->data(['schedule'=>$schedule,'admissionNo'=>$admissionNo]));
+                }
+            }
             $bar->advance();
         }
+    
     }
 
-    public function generateComputerEngineeringCerticateStudent($bar)
+    public function data(array $data)
     {
-        for ($j=1; $j <= 40 ; $j++) { 
-            //generate evening student
-            $number = Programme::find(2)->generateNewAdmission();
-            $bar->advance();
-        }
+        return [
+            "schedule" => $data['schedule'],
+            "first_name" => "isah",
+            "middle_name" => "a",
+            "last_name" => "labbo",
+            "gender" => random_int(1, 3),
+            "religion" => random_int(1, 3),
+            "email" => $data['admissionNo']."@sedtf.com",
+            "phone" => "08162463010",
+            "admissionNo" => $data['admissionNo'],
+            "state" => random_int(1, 37),
+            "lga" => random_int(1, 700),
+            "address" => "addrs",
+            "picture" => null
+        ];
     }
-
-    public function generateComputerScienceDiplomaStudent($bar)
-    {
-        for ($i=1; $i <= 80 ; $i++) { 
-            //generate morning student
-            $number = Programme::find(3)->generateNewAdmission();
-            $bar->advance();
-        }
-    }
-
 }

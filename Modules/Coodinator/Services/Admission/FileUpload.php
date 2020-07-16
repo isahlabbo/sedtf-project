@@ -7,12 +7,17 @@ trait FileUpload
 {
     public function storeFile($file, $location)
     {
-        $path = $location.'/'.str_replace('/', '-', currentSession()->name).'/';
+        if($file){
+            $path = $location.'/'.str_replace('/', '-', currentSession()->name).'/';
 
-        $filename = time().$file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
+            $filename = time().$file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
 
-        $fullPath = $path.$filename;
-        $file->storeAs($path, $filename, $this->fileSystem());
+            $fullPath = $path.$filename;
+            $file->storeAs($path, $filename, $this->fileSystem());
+        }else{
+            $fullPath = 'Images/student.png';
+        }
+        
         
         return $fullPath;
     }
