@@ -5,6 +5,7 @@ namespace Modules\ExamOfficer\Http\Controllers\Graduation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Coodinator\Entities\Session;
+use Modules\Coodinator\Entities\Programme;
 use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 class GraduationController extends ExamOfficerBaseController
@@ -33,14 +34,14 @@ class GraduationController extends ExamOfficerBaseController
     {
         $request->validate(['session'=>'required']);
         $session = Session::find($request->session);
-        return view('examofficer::graduation.graduates',['session'=>$session,'students'=>$session->graduatedStudents()]);
+        return view('examofficer::graduation.graduates',['programme'=>Programme::find($request->programme),'session'=>$session,'students'=>$session->graduatedStudents(Programme::find($request->programme))]);
     }
 
     public function searchSpillingStudents(Request $request)
     {
         $request->validate(['session'=>'required']);
         $session = Session::find($request->session);
-        return view('examofficer::graduation.spilled',['session'=>$session,'students'=>$session->spilledStudents()]);
+        return view('examofficer::graduation.spilled',['programme'=>Programme::find($request->programme),'session'=>$session,'students'=>$session->spilledStudents(Programme::find($request->programme))]);
     }
 
     public function searchWithDrawedStudents(Request $request)

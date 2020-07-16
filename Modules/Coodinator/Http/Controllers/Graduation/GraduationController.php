@@ -28,6 +28,7 @@ class GraduationController extends CoodinatorBaseController
     {
         $request->validate(['session'=>'required']);
         $session = Session::find($request->session);
+        
         return view('coodinator::department.graduation.graduates',['session'=>$session,'students'=>$session->graduatedStudents()]);
     }
 

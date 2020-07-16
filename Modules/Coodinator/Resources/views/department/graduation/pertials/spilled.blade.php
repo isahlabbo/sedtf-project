@@ -4,10 +4,13 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="col-md-12 text-center"><br><br>
-		    	UMARU ALI SHINKAFI POLYTECHNIC SOKOTO<br>
-		    	COLLEGE OF {{strtoupper(department()->college->name)}}<br>
-		    	DEPARTMENT OF {{strtoupper(department()->name)}}<br>
-		    	LIST OF SPILLED OVER STUDENTS IN, {{$session->name}} SESSION<br><br>
+		    	SOKOTO EDUCATION DEVELOPMENT TRUST FUND<br>
+                {{strtoupper($programme->name)}}
+		    	<br>
+		    	LIST OF GRADUATED STUDENTS IN, {{$session->name}} SESSION
+		    	<br>
+                
+		    	<br>
 		    </div>
 			<div class="table-responsive">
 				<table class="table">
@@ -18,7 +21,6 @@
 				     		<td>Last Name</td>
 				     		<td>Admission No</td>
 				     		<td>Phone</td>
-				     		<td>Student</td>
 				     		<td>Re Register Courses</td>
 				     	</tr>
 				    </thead>
@@ -30,7 +32,6 @@
 				     		<td>{{strtoupper($student->last_name)}}</td>
 				     		<td>{{$student->admission->admission_no}}</td>
 				     		<td>{{$student->phone}}</td>
-				     		<td>{{$student->studentType->name}}</td>
 				     		<td>
 				     			@foreach($student->currentLevelReRegisterCoursesAt($session) as $course)
 				     			{{$course->code}}<br>

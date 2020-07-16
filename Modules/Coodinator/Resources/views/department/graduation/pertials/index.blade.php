@@ -18,7 +18,7 @@
 			            @endif
 					@endforeach
 				</select><br>
-				<select class="form-control" name="session">
+				<select class="form-control" name="programme">
 					<option>Programme</option>
 					@foreach(administrator()->programmes() as $programme)
 			            <option value="{{$programme->id}}">{{$programme->name}}</option>

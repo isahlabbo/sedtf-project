@@ -38,7 +38,7 @@ class GenerateStudentStudentCourseRegistrationCommand extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar(160);
+        $bar = $this->output->createProgressBar(count(Student::all()));
 
         $bar->setBarWidth(100);
 
@@ -46,7 +46,8 @@ class GenerateStudentStudentCourseRegistrationCommand extends Command
         foreach(Student::cursor() as $student){
             $session_registration = $student->sessionRegistrations()->firstOrCreate([
             'programme_id'=>$student->admission->programme_id,
-            'session_id'=> currentSession()->id
+            'session_id'=> currentSession()->id,
+            'batch'=> $student->batch()
             ]);
             
             foreach($student->currentLevelCourses() as $course){

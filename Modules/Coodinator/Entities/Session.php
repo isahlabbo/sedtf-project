@@ -16,10 +16,11 @@ class Session extends BaseModel
         return $this->hasMany(Notification::class);
     }
 
-    public function graduatedStudents()
+    public function graduatedStudents($programme)
     {
+
         $students = [];
-        foreach($this->sessionRegistrations->where('programme_id',$this->programme) as $sessionRegistration){
+        foreach($this->sessionRegistrations->where('programme_id',$programme->id) as $sessionRegistration){
             if($sessionRegistration->student->graduatedAt($this)){
                 $students[] = $sessionRegistration->student;
             }
@@ -27,10 +28,10 @@ class Session extends BaseModel
         return $students;
     }
 
-    public function spilledStudents()
+    public function spilledStudents($programme)
     {
         $students = [];
-        foreach($this->sessionRegistrations->where('programme_id',$this->programme) as $sessionRegistration){
+        foreach($this->sessionRegistrations->where('programme_id',$programme->id) as $sessionRegistration){
             if($sessionRegistration->student->spillededAt($this)){
                 $students[] = $sessionRegistration->student;
             }
