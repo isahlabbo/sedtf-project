@@ -18,6 +18,7 @@ class GenerateVettableResult
 		$this->data = $data;
 		
 		$this->results = $this->searchVettableResult();
+		
 	}
 
 	public function searchVettableResult()

@@ -1,6 +1,7 @@
 <div class="col-md-3"></div>
 <div class="col-md-6"><br>
- 	<div class="card">
+ 	<div class="card shadow">
+ 		<div class="card-header h3 shadow">Search Results</div>
  		<div class="card-body">
  			<form action="{{route($route ?? 'department.result.course.vetting.search')}}" method="post">
  				@csrf

@@ -1,13 +1,18 @@
 @extends('layouts.result')
 
+@section('title')
+    SEDTF {{$session->name}} {{$batch}} {{$programme->name}} AB FORMAT result
+@endsection
 @section('page-content')
 <div class="text text-center">
-	SOKOTO ENVIRONMENT DEVELOPMENT TRUST FUND
-	<br><br>
+	SOKOTO EDUCATION DEVELOPMENT TRUST FUND (SEDTF)
+	<br>
+	SHEHU SHAGARI COMPUTER TRAINING INSTITUTE (SSCTI)
+	<br>
 	{{strtoupper($programme->name)}} 
-	<br><br>
+	<br>
 	BATCH {{$batch}} RESULTS OF 
-	<br><br>
+	<br>
 	{{$session->name}} SESSION
 	<br><br>
 	

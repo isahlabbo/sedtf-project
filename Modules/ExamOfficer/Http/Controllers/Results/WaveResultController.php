@@ -4,10 +4,10 @@ namespace Modules\ExamOfficer\Http\Controllers\Results;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Admin\Entities\Session;
+use Modules\Coodinator\Entities\Session;
 use Modules\Student\Entities\Result;
-use Modules\Department\Entities\Level;
-use Modules\Department\Services\Vetting\GenerateVettableResult;
+use Modules\Coodinator\Entities\Programme;
+use Modules\Coodinator\Services\Vetting\GenerateVettableResult;
 use App\Http\Controllers\ExamOfficer\ExamOfficerBaseController;
 
 class WaveResultController extends ExamOfficerBaseController
@@ -18,7 +18,7 @@ class WaveResultController extends ExamOfficerBaseController
      */
     public function index()
     {
-        return view('examofficer::result.wave.index',['route'=>'exam.officer.result.student.wave.search','levels'=>Level::all(),'sessions'=>Session::all()]);
+        return view('examofficer::result.wave.index',['route'=>'exam.officer.result.student.wave.search','programmes'=>Programme::all(),'sessions'=>Session::all()]);
     }
 
     /**
@@ -30,8 +30,9 @@ class WaveResultController extends ExamOfficerBaseController
     {
         $request->validate([
             'session'=>'required',
-            'level'=>'required',
+            'programme'=>'required',
             'semester'=>'required',
+            'batch'=>'required',
             'paginate'=>'required'
         ]);
 
@@ -50,7 +51,12 @@ class WaveResultController extends ExamOfficerBaseController
         
             $vetting = new GenerateVettableResult(session('course_registrations'));
 
-            return view('department::department.course.result.student.wave',['registrations'=>$vetting->results]);
+            return view('coodinator::department.course.result.student.wave',[
+                'registrations'=>$vetting->results,
+                'programme'=>Programme::find(session('course_registrations')['programme']),
+                'session'=>Session::find(session('course_registrations')['session']),
+                'batch'=>session('course_registrations')['batch'],
+            ]);
         }
         return redirect()->route('exam.officer.result.student.wave.index');
     }
