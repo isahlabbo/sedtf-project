@@ -51,6 +51,7 @@ Route::prefix('lecturer')
 
         Route::get('/', 'ResultController@index')->name('index');
         Route::get('/show', 'ResultController@showResult')->name('show');
+        Route::get('/{resultId}/edit', 'ResultController@editResult')->name('edit');
         Route::post('/search', 'ResultController@searchResult')->name('search');
 
         Route::prefix('templete')

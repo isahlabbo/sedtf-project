@@ -5,6 +5,7 @@ namespace Modules\Lecturer\Http\Controllers\Result;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Coodinator\Entities\Course;
+use Modules\Student\Entities\Result;
 use App\Http\Controllers\Lecturer\LecturerBaseController;
 
 class ResultController extends LecturerBaseController
@@ -47,6 +48,11 @@ class ResultController extends LecturerBaseController
     public function showResult()
     {
         return view('lecturer::result.show');
+    }
+
+    public function editResult($resultId)
+    {
+        return view('lecturer::result.edit',['result'=>Result::find($resultId)]);
     }
 
 

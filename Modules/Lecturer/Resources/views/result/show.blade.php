@@ -18,6 +18,8 @@
 						<td>Total Score</td>
 						<td>Grade</td>
 						<td>Remark</td>
+						<td></td>
+
 					</tr>
 				</head>
 				<tbody>
@@ -50,6 +52,12 @@
 						<td>
 							{{$result->remark->name ?? ' '}}
 						</td>
+						@if($result->lecturerCourseResultUpload->session->id == currentSession()->id)
+						<td>
+							<a href="{{route('lecturer.result.edit',[$result->id])}}"><button class="btn bt-color-2">Edit</button></a>
+						</td>
+
+						@endif
 					</tr>
 				
 					@endforeach
