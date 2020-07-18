@@ -11,7 +11,8 @@
 	<div class="card shadow">
 		<div class="card-header h3 shadow">Edit Result</div>
 		<div class="card-body">
-			<form method="post" action="">
+			<form method="post" action="{{route('lecturer.result.update',[$result->id])}}">
+				@csrf
 				<label>CA Score</label>
 			    <input type="number" name="ca" class="form-control" value="{{$result->ca}}">
 			    <br>
@@ -25,7 +26,7 @@
 				<br>
 
 				<label>Waved By</label>
-				<input type="number" name="amended_by" disabled="" class="form-control" value="{{$result->waved_by}}">
+				<input type="number" name="waved_by" disabled="" class="form-control" value="{{$result->waved_by}}">
 				<br>
 
                 <label>Grade</label>

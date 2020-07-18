@@ -55,5 +55,14 @@ class ResultController extends LecturerBaseController
         return view('lecturer::result.edit',['result'=>Result::find($resultId)]);
     }
 
+    public function updateResult(Request $request, $resultId)
+    {
+        $result = Result::find($resultId);
+        $result->update(['ca'=>$request->ca,'exam'=>$request->exam,'amended_by'=>$request->amended_by]);
+        $result->computeGrade();
+
+        return back()->withSuccess('Result updated successfully');
+    }
+
 
 }
