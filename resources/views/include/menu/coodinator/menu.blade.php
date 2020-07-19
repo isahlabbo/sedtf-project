@@ -46,6 +46,10 @@
         <li>
             <a href="#" data-toggle="modal" data-target="#newSession">New Session</a>
         </li>
+
+        <li>
+            <a href="{{route('coodinator.session.index')}}">View Sessions</a>
+        </li>
         
         <li>
             <a href="#" data-toggle="modal" data-target="#switchSession">Switch Session</a>

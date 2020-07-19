@@ -11,6 +11,11 @@ use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 class SessionController extends CoodinatorBaseController
 {
     
+
+    public function index()
+    {
+        return view('coodinator::include.session.index');
+    }
     /**
      * Store a newly created resource in storage.
      * @param Request $request

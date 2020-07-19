@@ -54,6 +54,7 @@ Route::prefix('coodinator')
 		->namespace('Session')
 		->group(function() {
         
+        Route::get('/','SessionController@index')->name('index');
         Route::post('/register','SessionController@register')->name('register');
         
         Route::post('/switch','SessionController@switch')->name('switch');
