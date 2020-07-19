@@ -63,7 +63,7 @@ Route::prefix('exam-officer')
 
 			Route::get('{admissionNo}/schedule/{schedule}/generated-number-registration', 
 			'AdmissionController@generatedNumberRegistration')
-			->name('register.generated.number.index');
+			->name('register.generated.number.index')->middleware('canAdmitt');
 
 			Route::get('{admission_id}/revoke-admission', 
 			'AdmissionController@revokeAdmission')

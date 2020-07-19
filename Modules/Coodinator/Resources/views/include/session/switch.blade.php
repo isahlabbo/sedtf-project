@@ -14,7 +14,7 @@
                         <label class="text text-danger">Session</label>
                         <select name="name" class="form-control">
                         	@foreach(sessions() as $session)
-                        	    @if($session->id > currentSession()->id)
+                        	    @if($session->id != currentSession()->id)
                         	        <option value="{{$session->id}}">{{$session->name}}</option>
                         	    @endif
                         	@endforeach
