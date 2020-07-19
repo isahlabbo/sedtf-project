@@ -54,8 +54,10 @@ Route::prefix('coodinator')
 		->namespace('Session')
 		->group(function() {
         
+        Route::get('/{sessionId}/delete','SessionController@delete')->name('delete');
         Route::get('/','SessionController@index')->name('index');
         Route::post('/register','SessionController@register')->name('register');
+        Route::post('/{sessionId}/update','SessionController@update')->name('update');
         
         Route::post('/switch','SessionController@switch')->name('switch');
         

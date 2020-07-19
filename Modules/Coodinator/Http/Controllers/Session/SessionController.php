@@ -16,6 +16,33 @@ class SessionController extends CoodinatorBaseController
     {
         return view('coodinator::include.session.index');
     }
+
+
+    public function update(Request $request, $sessionId)
+
+    {
+        $request->validate([
+            'name'=>'required',
+            'start'=>'required',
+            'end'=>'required',
+        ]);
+
+        $session = Session::find($sessionId);
+        $session->update($request->all());
+
+        return back()->withSuccess('Session updated Successfully');
+    }
+
+    public function delete($sessionId)
+    {
+        $session = Session::find($sessionId);
+
+        if(count($session->admissions) == 0){
+            $session->delete();
+            return back()->withSuccess($session->name.' Session deleted successfully');
+        }
+        return back()->withWarning('We cant delete this session because student was already registered in');
+    }
     /**
      * Store a newly created resource in storage.
      * @param Request $request

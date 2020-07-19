@@ -33,7 +33,7 @@
                             <a href=""><button class="btn bt-color-3" onclick="return confirm('Are you sure you want to delete this notification">Delete</button></a>
                         </td>
                         <td>
-                            <a href="{"><button class="btn bt-color-2">Edit</button></a>
+                            <a href="#" ><button class="btn bt-color-2">Edit</button></a>
                         </td>
                     </tr>
                 @endforeach
