@@ -47,7 +47,7 @@ Route::prefix('exam-officer')
 
 			Route::get('/generate-admission-number', 
 			'AdmissionController@generateNumberIndex')
-			->name('generate.number.index');
+			->name('generate.number.index')->middleware('canAdmitt');
 
 			Route::post('{admission_id}/update-admission', 
 			'AdmissionController@update')
@@ -55,7 +55,7 @@ Route::prefix('exam-officer')
 
 			Route::post('{admissionNo}/schedule/{schedule}/register-genrated-number', 
 			'AdmissionController@registerGeneratedNumber')
-			->name('register.generated.number');
+			->name('register.generated.number')->middleware('canAdmitt');
 
 			Route::get('{admission_id}/edit-admission', 
 			'AdmissionController@edit')
