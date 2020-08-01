@@ -43,6 +43,23 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="text text-danger">Notification Title</label>
+                        <select class="form-control" name="notification_title">
+                            <option value="">Notification Title</option>
+                            @foreach($titles as $title)
+                                <option value="{{$title->id}}">{{$title->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    
+
+                    <div class="form-group">
                         <label class="text text-danger">Message</label>
                         <textarea name="notification" class="form-control" cols="15" rows="4" placeholder="Type some text here..."></textarea>
                         @error('notification')

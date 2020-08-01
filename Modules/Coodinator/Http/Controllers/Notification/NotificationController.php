@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 use Modules\Coodinator\Entities\NotificationType;
+use Modules\Coodinator\Entities\NotificationTitle;
 use Modules\Coodinator\Entities\NotificationTo;
 use Modules\Coodinator\Entities\Notification;
 
@@ -23,7 +24,11 @@ class NotificationController extends CoodinatorBaseController
     public function create()
     {
 
-        return view('coodinator::department.notification.create',['types'=>NotificationType::all(),'tos'=>NotificationTo::all()]);
+        return view('coodinator::department.notification.create',[
+            'types'=>NotificationType::all(),
+            'titles'=>NotificationTitle::all(),
+            'tos'=>NotificationTo::all()
+        ]);
     }
 
     /**
@@ -36,12 +41,14 @@ class NotificationController extends CoodinatorBaseController
         $request->validate([
             'notification'=>'required|string',
             'notification_to'=>'required',
-            'notification_type'=>'required'
+            'notification_type'=>'required',
+            'notification_title'=>'required'
         ]);
 
         Notification::firstOrCreate([
             'notification_to_id'=>$request->notification_to,
             'notification_type_id'=>$request->notification_type,
+            'notification_title_id'=>$request->notification_title,
             'session_id'=>currentSession()->id,
             'comment'=>$request->notification,
         ]);
@@ -76,12 +83,14 @@ class NotificationController extends CoodinatorBaseController
         $request->validate([
             'notification'=>'required|string',
             'notification_to'=>'required',
-            'notification_type'=>'required'
+            'notification_type'=>'required',
+            'notification_title'=>'required'
         ]);
 
         Notification::find($notificationId)->update([
             'notification_to_id'=>$request->notification_to,
             'notification_type_id'=>$request->notification_type,
+            'notification_title_id'=>$request->notification_title,
             'session_id'=>currentSession()->id,
             'comment'=>$request->notification,
         ]);

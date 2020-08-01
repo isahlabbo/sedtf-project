@@ -16,6 +16,7 @@
                         <th>Message</th>
                         <th>Sent To</th>
                         <th>Nottification Type</th>
+                        <th>Nottification Title</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th></th>
@@ -27,6 +28,7 @@
                         <td>{{$notification->comment}}</td>
                         <td>{{$notification->notificationTo->name}}</td>
                         <td>{{$notification->notificationType->name}}</td>
+                        <td>{{$notification->notificationTitle->name}}</td>
                         <td>{{$notification->created_at}}</td>
                         <td>{{$notification->updated_at}}</td>
                         <td>

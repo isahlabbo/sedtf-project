@@ -69,7 +69,7 @@ class WaveResultController extends ExamOfficerBaseController
             $result->unWaveThisResult();
         }else{
             $result->waveThisResult();
-            $message = 'THe result waving has been register successfully';
+            $message = 'The result waving has been register successfully';
         }
         
         session()->flash('message', $message);

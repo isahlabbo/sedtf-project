@@ -23,6 +23,13 @@ class CreateNotificationsTable extends Migration
             ->references('id')
             ->on('notification_types');
 
+            $table->integer('notification_title_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('notification_titles');
+
             $table->integer('notification_to_id')
             ->nullable()
             ->foreign()

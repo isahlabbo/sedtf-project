@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Modules\Student\Entities\Student;
 
-class GenerateStudentStudentCourseRegistrationCommand extends Command
+class StudentCourseRegistrationCommand extends Command
 {
     /**
      * The name and signature of the console command.
