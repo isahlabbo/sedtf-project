@@ -38,6 +38,15 @@ Auth::routes();
 	        Route::get('/{programmeId}/get-programme-semesters', 'ProgrammeController@getProgrammeSemesters');
 		});
 
+		Route::prefix('notification')
+		   ->name('notification')
+		   ->group(function() {
+	        Route::get('/to/{toId}', 'NotificationController@getProgramme');
+
+	        Route::get('/type/{typeId}', 'NotificationController@getField');
+
+		});   
+
 		Route::prefix('department')
 		   ->name('department')
 		   ->group(function() {

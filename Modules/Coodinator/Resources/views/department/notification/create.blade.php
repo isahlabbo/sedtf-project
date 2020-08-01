@@ -11,24 +11,7 @@
     	<div class="card-body">
     		<form method="post" action="{{route('coodinator.notification.send')}}" enctype="multipart/form-data">
             		@csrf
-            		
-                    <div class="form-group">
-                        <label class="text text-danger">To</label>
-                        <select class="form-control" name="notification_to">
-                            <option value="">Select Staff</option>
-                            @foreach($tos as $to)
-                                <option value="{{$to->id}}">{{$to->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('to')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label class="text text-danger">Notification Type</label>
+            		<div class="form-group">
                         <select class="form-control" name="notification_type">
                             <option value="">Notification Type</option>
                             @foreach($types as $type)
@@ -43,7 +26,37 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="text text-danger">Notification Title</label>
+                        <select class="form-control" name="notification_to">
+                            <option value="">Select Group</option>
+                            @foreach($tos as $to)
+                                <option value="{{$to->id}}">{{$to->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('to')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group" id="specific">
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="programme">
+                            <option value="">Select Programme</option>
+                        </select>
+                        @error('programme')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    
+
+                    <div class="form-group">
                         <select class="form-control" name="notification_title">
                             <option value="">Notification Title</option>
                             @foreach($titles as $title)
@@ -74,5 +87,11 @@
     	</div>
     </div>
 </div>    
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/Ajax/Notification/to.js')}}"></script>
+    <script src="{{asset('js/Ajax/Notification/type.js')}}"></script>
+    <script src="{{asset('js/Ajax/Notification/specific.js')}}"></script>
 @endsection
 
