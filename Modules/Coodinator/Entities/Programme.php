@@ -22,6 +22,11 @@ class Programme extends BaseModel
     	return $this->hasMany(ProgrammeSchedule::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function programmeType()
     {
     	return $this->belongsTo(ProgrammeType::class);

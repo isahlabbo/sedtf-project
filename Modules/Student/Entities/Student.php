@@ -76,6 +76,11 @@ class Student extends Authenticatable
     {
         return $this->hasMany(DropCourse::class);
     }
+
+    public function notifications()
+    {
+        return $this->hasMany('Modules\Coodinator\Entities\Notification');
+    }
     
     public function diferredSessions()
     {

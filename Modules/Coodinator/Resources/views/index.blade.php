@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="card shadow">
                             <div class="card-header bt-color-2">
-                                {{$notification->notificationType->name}}
+                                {{$notification->notificationTitle->name}}
                             </div>
                             <div class="card-body">
                                 {{substr($notification->comment,0,30)}}... <a href="#" data-toggle="modal" data-target="#notification_{{$notification->id}}" class="text text-primary">Read More</a>

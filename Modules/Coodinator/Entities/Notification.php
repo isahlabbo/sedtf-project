@@ -16,6 +16,11 @@ class Notification extends BaseModel
         return $this->belongsTo(NotificationTo::class);
     }
 
+    public function programme()
+    {
+        return $this->belongsTo(Programme::class);
+    }
+
     public function notificationTitle()
     {
         return $this->belongsTo(NotificationTitle::class);
@@ -26,10 +31,19 @@ class Notification extends BaseModel
         return $this->hasOne('Modules\Lecturer\Entities\LecturerCourseResultUploadNotification');
     }
 
+    public function lecturer()
+    {
+        return $this->belongsTo('Modules\Lecturer\Entities\Lecturer');
+    }
+
+    public function student()
+    {
+        return $this->belongsTo('Modules\Student\Entities\Student');
+    }
+
     public static function send(array $data)
 
     {
-
         $this->firstOrCreate([
             'notification_to_id'=>$data['notification_to'],
             'notification_type_id'=>2,

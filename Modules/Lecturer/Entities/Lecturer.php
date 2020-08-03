@@ -60,6 +60,11 @@ class Lecturer extends Authenticatable
         return $this->hasMany(LecturerCourse::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany('Modules\Coodinator\Entities\Notification');
+    }
+
     public function duration()
     {
         if(!$this->to){

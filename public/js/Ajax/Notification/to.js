@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('select[name="notification_to"]').on('change',function(){
         var notification_to_id = $(this).val();
-        if(notification_to_id){
+        var type = $('select[name="notification_type"]').val();
+        if(type == 1){
             $.ajax({
                 url: '/ajax/notification/to/'+notification_to_id,
                 type: 'GET',
@@ -18,7 +19,7 @@ $(document).ready(function(){
                }
             });
         } else {
-            $('select[name="programme"]').empty();
+            $('select[name="programme"]').hide();
         }
     });
 });

@@ -38,6 +38,30 @@ class CreateNotificationsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('programme_id')
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programmes')
+            ->delete('restrict')
+            ->update('cascade');
+
+            $table->integer('student_id')
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('students')
+            ->delete('restrict')
+            ->update('cascade');
+
+            $table->integer('lecturer_id')
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('lecturers')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->integer('session_id')
             ->nullable()
             ->foreign()
