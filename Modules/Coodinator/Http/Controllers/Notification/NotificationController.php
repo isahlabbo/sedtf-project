@@ -9,6 +9,8 @@ use Modules\Coodinator\Entities\NotificationType;
 use Modules\Coodinator\Entities\NotificationTitle;
 use Modules\Coodinator\Entities\NotificationTo;
 use Modules\Coodinator\Entities\Notification;
+use Modules\Coodinator\Entities\Admission;
+use Modules\Lecturer\Entities\Staff;
 
 class NotificationController extends CoodinatorBaseController
 {
@@ -44,8 +46,8 @@ class NotificationController extends CoodinatorBaseController
             'notification_type'=>'required',
             'notification_title'=>'required'
         ]);
-
-        Notification::firstOrCreate([
+        
+        $notification = Notification::create([
             'notification_to_id'=>$request->notification_to,
             'notification_type_id'=>$request->notification_type,
             'notification_title_id'=>$request->notification_title,
@@ -53,7 +55,29 @@ class NotificationController extends CoodinatorBaseController
             'comment'=>$request->notification,
         ]);
 
+        if(isset($request->programme)){
+            $notification->update(['programme_id'=>$request->programme]);
+        }
+
+        if(isset($request->admissionNo)){
+            $notification->update(['student_id'=>$this->getStudent($request->admissionNo)->id]);
+        }
+
+        if(isset($request->staffId)){
+            $notification->update(['lecturer_id'=>$this->getLecturer($request->staffId)->id]);
+        }
+
         return back()->withSuccess('Notification sent successfully');
+    }
+
+    public function getStudent($admissionNo)
+    {
+        return Admission::where('admission_no',$admissionNo)->first()->student;
+    }
+
+    public function getLecturer($staffId)
+    {
+        return Staff::where('staffID',$staffId)->first()->lecturer;
     }
 
     
