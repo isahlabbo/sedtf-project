@@ -9,11 +9,24 @@
         </div>
         <div class="card-body">
             <div class="row">
-                @foreach(currentSession()->notifications->where('notification_to_id', 1) as $notification)
+                @foreach(currentSession()->notifications->where('notification_to_id', 1)->where('lecturer_id',null) as $notification)
                     <div class="col-md-4">
                         <div class="card shadow">
                             <div class="card-header bt-color-2">
                                 {{$notification->notificationType->name}}
+                            </div>
+                            <div class="card-body">
+                                {{substr($notification->comment,0,30)}}... <a href="#" data-toggle="modal" data-target="#notification_{{$notification->id}}" class="text text-primary">Read More</a>
+                                @include('coodinator::department.notification.read')
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                @foreach(lecturer()->notifications->where('session_id', currentSession()->id) as $notification)
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <div class="card-header bt-color-2">
+                                {{$notification->notificationTitle->name}}
                             </div>
                             <div class="card-body">
                                 {{substr($notification->comment,0,30)}}... <a href="#" data-toggle="modal" data-target="#notification_{{$notification->id}}" class="text text-primary">Read More</a>

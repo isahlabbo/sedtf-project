@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-                
+
                 <!-- general student notification -->
                 @foreach(currentSession()->notifications->where('notification_to_id', 3)->where('programme_id',null) as $notification)
                     <div class="col-md-4">
@@ -26,7 +26,7 @@
                 @endforeach
 
                 <!-- student programme notification -->
-                @foreach(student()->admission->programme->notifications as $notification)
+                @foreach(student()->admission->programme->notifications->where('session_id',currentSession()->id) as $notification)
                     <div class="col-md-4">
                         <div class="card shadow">
                             <div class="card-header bt-color-2">
@@ -41,7 +41,7 @@
                 @endforeach
 
                 <!-- specific student notification -->
-                @foreach(student()->notifications as $notification)
+                @foreach(student()->notifications->where('session_id',currentSession()->id) as $notification)
                     <div class="col-md-4">
                         <div class="card shadow">
                             <div class="card-header bt-color-2">
