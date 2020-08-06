@@ -41,6 +41,7 @@
                             </div>
                             <div class="card-body">
                                 <button class="btn bt-color-1 shadow"><a href="{{route('exam.officer.result.course.review',[$upload->id])}}" style="color: white">Review This Result</a></button>
+                                <button class="btn bt-color-3 shadow">{{count($upload->lecturerCourseResultUploadFiles)}} Attempts</button>
                             </div>
                         </div>
                     </div>
