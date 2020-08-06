@@ -10,7 +10,12 @@ class Session extends BaseModel
     {
     	return $this->hasMany(Admission::class);
     }
-
+    
+    public function lecturerCourseResultUploads()
+    {
+        return $this->hasMany('Modules\Lecturer\Entities\LecturerCourseResultUpload');
+    }
+    
     public function notifications()
     {
         return $this->hasMany(Notification::class);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use Modules\Coodinator\Services\Admission\FileUpload;
 use Modules\Coodinator\Entities\Course;
 use Modules\Lecturer\Services\Result\VerifyUploadFile;
 use Modules\Lecturer\Imports\UploadResult;
@@ -15,7 +16,7 @@ use App\Http\Controllers\Lecturer\LecturerBaseController;
 
 class ResultUploadController extends LecturerBaseController
 {
-    use VerifyUploadFile;
+    use VerifyUploadFile, FileUpload;
     /**
      * Display a listing of the resource.
      * @return Response
@@ -48,6 +49,11 @@ class ResultUploadController extends LecturerBaseController
         }else{
             session()->flash('error',$errors);
         }
+
+        //save the uploaded file in the server
+        $file = $this->storeFile($request->result,'Result/'.Course::find($course->code));
+        $result->uploadedBy()->lecturerCourseResultUploadFiles()->firstOrCreate(['file'=>$file]);
+
         return back();
     }
 
