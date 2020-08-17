@@ -7,19 +7,19 @@ trait CanComputeGrade
     {
     	switch ($grade) {
     		case 'A':
-    			$point = 4.00;
+    			$point = 5.00;
     			break;
     		case 'B':
-    			$point = 3.50;
+    			$point = 4.00;
     			break;
     		case 'C':
     			$point = 3.00;
     			break;
     		case 'D':
-    			$point = 2.50;
+    			$point = 2.00;
     			break;
     		case 'E':
-    			$point = 2.00;
+    			$point = 1.00;
     			break;
             
     		default:
