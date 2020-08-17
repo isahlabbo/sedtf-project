@@ -63,5 +63,16 @@
         </li>
     </ul>
 </li>
+<li>
+    <a href="#">Files</a>
+    <ul>
+        <li>
+            <a href="{{route('exam.officer.file.upload.result.index')}}">{{currentSession()->name}} Uploaded Result Files</a>
+        </li>
+        <li>
+            <a href="#">{{currentSession()->name}} Sent Result Files</a>
+        </li>
+    </ul>
+</li>
 
 

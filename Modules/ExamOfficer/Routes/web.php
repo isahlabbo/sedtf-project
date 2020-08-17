@@ -37,6 +37,35 @@ Route::prefix('exam-officer')
 			});
 			
 		});
+
+		// files routes
+
+		Route::prefix('files')
+		->name('file.')
+		->namespace('Results')
+		->group(function() {
+
+			Route::prefix('upload')
+			->name('upload.')
+			->group(function() {
+
+				Route::prefix('result')
+				->name('result.')
+				
+				->group(function() {
+
+					Route::get('/', 'FileController@index')->name('index');
+					
+				});
+
+				// other uploaded files
+				
+			});
+
+			// other files categories here
+			
+		});
+
         //admission routes
         Route::prefix('student/admission')
 		->name('student.admission.')
