@@ -6,63 +6,71 @@ trait ResultGeneralRemark
 {
 	public function generalRemarks()
 	{
-		if(!$this->hasEmcRemarks()){
-			if($this->failedAllCoursesInThisSession()){
-                $remark = 'WITH DRAW';
-			}elseif($this->passedAllCoursesInThisSession()){
-                $remark = 'PASSED';
+		
+		if($this->failedAllCoursesInThisSession()){
+            $remark = 'WITH DRAW';
+		}elseif($this->passedAllCoursesInThisSession()){
+			$gpa = $this->cummulativeGradePointAverage();
+			if($gpa >= 4.50){
+				$remark = 'Distinction';
+			}elseif ($gpa >= 3.50) {
+				$remark = 'Upper Creadit';
+			}elseif ($gpa >= 2.50) {
+				$remark = 'Lower Credit';
+			}elseif ($gpa >= 1.50) {
+				$remark = 'Merit';
+			}elseif ($gpa >= 1.00) {
+				$remark = 'Passed';
 			}else{
-                $remark = $this->toRepeatCourses();
+				$remark = 'Undefine';
 			}
+            
 		}else{
-            $remark = $this->toReRegisterCourses();
+            $remark = $this->toRepeatCourses();
 		}
+		
 		return ['remark'=>$remark,'conditions'=>$this->remarkConditions()];
 	}
 
-	public function hasEmcRemarks()
-	{
-		if($this->cancelation_status == 1 || $this->sessionRegistration->cancelation_status == 1){
-			return true;
-		}
-	}
+	
 
 	public function failedAllCoursesInThisSession()
 	{
-		if($this->sessionRegistration->allCoursesUploaded() && $this->sessionRegistration->passedResults() == 0){
-			return true;
+		
+		foreach ($this->sessionRegistrations as $sessionRegistration) {
+			if($sessionRegistration->allCoursesUploaded() && $sessionRegistration->passedResults() == 0){
+				return true;
+			}
 		}
+		
 	}
 
 	public function passedAllCoursesInThisSession()
 	{
-		if(empty($this->failedResults()) && $this->sessionRegistration->allCoursesUploaded())
-		{
-			return true;
+		foreach ($this->sessionRegistrations as $sessionRegistration) {
+			if(empty($sessionRegistration->failedResults()) && $sessionRegistration->allCoursesUploaded())
+			{
+				return true;
+			}
 		}
 	}
 
 	public function toRepeatCourses()
 	{
-		if(!empty($this->failedResults())){
-		    $courses = 'RPT';
-		}else{
-		    $courses = '';
-		}
-		foreach($this->failedResults() as $course){
-            $courses = $courses.' '.$course->code;
+		foreach ($this->sessionRegistrations as $sessionRegistration) {
+			if(!empty($sessionRegistration->failedResults())){
+			    $courses = 'RPT';
+			}else{
+			    $courses = '';
+			}
+			foreach($sessionRegistration->failedResults() as $course){
+	            $courses = $courses.' '.$course->code;
+			}
 		}
 		return $courses;
 	}
 
-	public function toReRegisterCourses()
-	{
-		$courses = 'RGT';
-		foreach($this->courseRegistrations->where('cancelation_status',1) as $courseRegistration){
-            $courses = $courses.' '.$courseRegistration->course->code;
-		}
-		return $courses;
-	}
+	
     
     public function remarkConditions()
     {

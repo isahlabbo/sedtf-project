@@ -54,9 +54,6 @@
 
     	
     	<td>
-            {{$registration->generalRemarks()['remark']}}<br>
-            @foreach($registration->generalRemarks()['conditions'] as $condition)
-                {{$condition}}<br>
-            @endforeach
+            {{$registration->sessionRegistration->student->generalRemarks()['remark']}}<br>
     	</td>
     </tr>
