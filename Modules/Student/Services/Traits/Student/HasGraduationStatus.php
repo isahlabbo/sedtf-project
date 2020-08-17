@@ -33,7 +33,12 @@ trait HasGraduationStatus
 
     public function graduated()
     {
-        if(empty($this->currentLevelReRegisterCourses()) && $this->yearsSinceAdmission() >= 2){
+        foreach ($this->sessionRegistrations as $sessionRegistration) {
+            $failedCourses = $sessionRegistration->failedResults();
+            $passedCourses = $sessionRegistration->passedResults();
+        }
+        
+        if(count($failedCourses) == 0 && $passedCourses > 0){
             return true;
         }
         return false;

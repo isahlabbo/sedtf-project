@@ -15,17 +15,18 @@ Route::prefix('student')
 ->name('student.')
 ->group(function() {
     Route::get('/', 'StudentController@verify');
-	Route::get('/dashboard', 'StudentController@index')->name('dashboard');
+	Route::get('/dashboard', 'StudentController@index')->name('dashboard')->middleware('graduated');
 	Route::get('/login', 'Auth\StudentLoginController@showLoginForm')->name('auth.login');
 	Route::get('/unauthorize-student', 'Auth\StudentLoginController@unauthorize')->name('auth.auth');
 	Route::post('/login', 'Auth\StudentLoginController@login')->name('login');
 	Route::post('logout', 'Auth\StudentLoginController@logout')->name('auth.logout');
-   Route::get('/graduation/status/page','StudentGraduationController@graduation')->name('graduation.status.page');
+   Route::get('/graduation/status/page','StudentGraduationController@graduation')->name('graduation.page');
    Route::get('/withdraw/status/page','StudentGraduationController@withDraw')->name('withdraw.status.page');
    //diferring routes
     Route::prefix('diferring')
 	->name('diferring.')
 	->namespace('Student')
+	->middleware('graduated')
 	->group(function() {
 	    Route::get('/', 'DiferringController@index')->name('index');
 	    Route::post('/apply', 'DiferringController@apply')->name('apply');
@@ -33,6 +34,7 @@ Route::prefix('student')
 	});
 	Route::prefix('courses')
 	->name('course.')
+	->middleware('graduated')
 	->namespace('Course')
 	->group(function() {
 
