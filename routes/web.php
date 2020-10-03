@@ -1,5 +1,5 @@
 <?php
-
+use Modules\Coodinator\Entities\Programme;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',['programmes'=>Programme::all()]);
 })->name('welcome');
 
 Auth::routes();

@@ -23,6 +23,14 @@ class CreateStudentsTable extends Migration
             ->on('admissions')
             ->delete('restrict')
             ->update('cascade');
+            $table->integer('application_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('applications')
+            ->delete('restrict')
+            ->update('cascade');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('middle_name')->nullable();
