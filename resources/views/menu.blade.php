@@ -11,7 +11,7 @@
 							<div class="hero_box_content">
 								<h2 class="hero_box_title">{{$programme->name}}</h2>
 								@if($programme->application_status == 1)
-								<a href="#" class="hero_box_link"><button class="btn">Apply Now</button></a>
+								<a href="{{route('programme.application.create',[$programme->id])}}" class="hero_box_link"><button class="btn">Apply Now</button></a>
 								@endif
 							</div>
 						</div>

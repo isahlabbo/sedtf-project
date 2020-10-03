@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/programme/{programmeId}/application', 'ApplicationController@create')->name('programme.application.create');
 
 Route::prefix('student')
 ->name('student.')

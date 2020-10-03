@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome',['programmes'=>Programme::all()]);
 })->name('welcome');
 
+
 Auth::routes();
 
     Route::prefix('ajax')

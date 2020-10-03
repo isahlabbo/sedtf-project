@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.fancybox.css')}}" />
     <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.steps.css') }}" />
+
     <!--styles -->
 </head>
 <body  style="background-color: #effacd">
@@ -40,6 +42,14 @@
     <script src="{{asset('js/jquery.fancybox.pack.js')}}"></script>
     <script src="{{asset('js/jquery.fancybox-media.js')}}"></script>
     <script src="{{asset('js/retina.min.js')}}"></script>
+
     <!-- scripts -->
+    <script src="{{ asset('js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+
+    <script src="{{ asset('js/jquery.wizard-init.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"> </script>
+
 </body>
 </html>
