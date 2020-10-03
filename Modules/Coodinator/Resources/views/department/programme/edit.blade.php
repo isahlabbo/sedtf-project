@@ -20,11 +20,23 @@
                     </div>
                     <div class="form-group">
                         <label class="text text-danger">Programme Type</label>
-                        <select name="type">
+                        <select name="application_status">
                         	<option value="{{$programme->programmeType->id}}">{{$programme->programmeType->name}}</option>
                         	@foreach($programmeTypes->where('id','!=',$programme->programmeType->id) as $programmeType)
                                 <option value="{{$programmeType->id}}">{{$programmeType->name}}</option>
                         	@endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text text-danger">Programme Application</label>
+                        <select name="type">
+                        	<option value="{{$programme->applictaion_status}}">{{$programme->application_status == 0 ? 'Not Active' : 'Active'}}</option>
+                        	@if($programme->application_status == 0)
+                                <option value="1">Activate {{$programme->name}} Application</option>
+                            @else
+                                <option value="0">De-Activate {{$programme->name}} Application</option>
+                        	@endif
                         </select>
                     </div>
 

@@ -29,6 +29,7 @@ class CreateProgrammesTable extends Migration
             $table->text('about');
             $table->text('code');
             $table->integer('semesters')->default(1);
+            $table->boolean('application_status')->default(0);
             $table->integer('batches')->default(2);
             $table->integer('active')->default(1);
             $table->timestamps();

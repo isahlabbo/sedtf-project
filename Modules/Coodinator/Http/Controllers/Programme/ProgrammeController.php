@@ -68,6 +68,7 @@ class ProgrammeController extends CoodinatorBaseController
             'fee'=>$request->fee,
             'duration'=>$request->duration,
             'about'=>$request->about,
+            'application_status'=>$request->application_status,
         ]);
         if($request->remove){
             foreach ($request->remove as $key => $value) {

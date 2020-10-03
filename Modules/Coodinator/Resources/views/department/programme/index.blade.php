@@ -1,19 +1,22 @@
 @extends('coodinator::layouts.master')
 
 @section('title')
-    Available staffs in College
+    {{currentSession()->name}} SEDTF Registered and updated prpgrammes
 @endsection
 
 @section('page-content')
 	@if($programmes)
-	<div class="col-md-12">
-	<div class="table-responsive" >
+	
+	<div class="col-md-12 card shadow">
+	<div class="card-header">{{currentSession()->name}} SEDTF Registered and updated prpgrammes</div>
+	<div class="table-responsive card-body" >
 	    <table class="table">
 	     	<thead>
 	     		<tr>
 	     			<th>Name</th>
 	     			<th>Type</th>
 	     			<th>Fee</th>
+	     			<th>Application</th>
 	     			<th>Duration</th>
 	     			<th>About</th>
 	     			<th>Code</th>
@@ -35,6 +38,7 @@
 		     			<td>{{$programme->name}}</td>
 		     			<td>{{$programme->programmeType->name}}</td>
 		     			<td>{{$programme->fee}}</td>
+		     			<td>{{$programme->application_status == 0 ? 'Not Active' : 'Active'}}</td>
 		     			<td>{{$programme->duration}} Months</td>
 		     			<td>{{$programme->about}}</td>
 		     			<td>{{$programme->code}}</td>
