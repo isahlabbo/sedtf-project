@@ -11,6 +11,8 @@
 |
 */
 Route::get('/programme/{programmeId}/application', 'ApplicationController@create')->name('programme.application.create');
+Route::post('/programme/{programmeId}/application/register', 'ApplicationController@register')
+->name('programme.application.register');
 
 Route::prefix('student')
 ->name('student.')

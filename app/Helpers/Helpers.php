@@ -30,6 +30,23 @@ if (!function_exists('programmes')) {
     }
 }
 
+if (!function_exists('grade')) {
+    function grade()
+    {
+        return [
+            'A1',
+            'B2',
+            'B3',
+            'C4',
+            'C5',
+            'C6',
+            'D7',
+            'E8',
+            'F9',
+        ];
+    }
+}
+
 if (!function_exists('notificationTypes')) {
     function notificationTypes()
     {

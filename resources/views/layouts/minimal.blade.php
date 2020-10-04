@@ -21,7 +21,9 @@
 </head>
 <body  style="background-color: #effacd">
     <main>
+        @include('sweetalert::alert')
     	@yield('page-content')
+
     </main>
     <!-- footer -->
     <!-- scripts -->

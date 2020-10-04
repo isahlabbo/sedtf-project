@@ -14,8 +14,7 @@ class AdmissionIsGoingOn
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        
+    {    
         if(time() < strtotime(currentSession()->end)){
             return $next($request);
         }else{

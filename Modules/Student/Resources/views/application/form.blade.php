@@ -1,4 +1,4 @@
-<form id="wizard-vertical" action="#" method="POST" enctype="multipart/form-data">
+<form id="wizard-vertical" action="{{route('programme.application.register',[$programme->id])}}" method="POST" enctype="multipart/form-data">
 	@csrf
 	<h3>Personal Information</h3>
 	<section>
@@ -44,7 +44,7 @@
 		</div>
         
 	</section>	
-	<h3>Address</h3>
+	<h3 >Address</h3>
 	<section>
 		<div class="form-group clearfix">
 			<label class="col-lg-4 control-label " for="area">Nationality</label>
@@ -80,36 +80,42 @@
 	
 	<h3>Qualification</h3>
 	<section>
+	    
         <div class="form-group clearfix">
 			<label class="col-lg-4 control-label " for="area">Qualification Type</label>
 			<div class="col-lg-8">
 				<select class="form-control" name="qulaification_type_id">
 					<option value="">Choose Qualification</option>
+					@foreach($qualifications as $qualification)
+					    <option value="{{$qualification->id}}">{{$qualification->name}}</option>
+					@endforeach
 				</select>
 			</div>
 		</div>
 
 		<div class="form-group clearfix">
+		    @foreach([1,2,3,4,5,6,7,8,9] as $subject)
 			<div class="col-lg-12">
-                <label class="col-lg-4 control-label " for="area">Subject</label>
+                <label class="col-lg-4 control-label " for="area">Subject {{$subject}}</label>
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-md-10">
-                            <select class="form-control" name="sbject">
-                                <option value="1">English</option>
+                        <div class="col-md-9">
+                            <select class="form-control" name="subject[name[]]">
+                                <option value="1">Choose Subject</option>
                             </select>
                         </div>
-                        <div class="col-md-2">
-                            <select class="form-control" name="sbject">
-                                <option value="1">A</option>
-                                <option value="1">B</option>
-                                <option value="1">C</option>
+                        <div class="col-md-3">
+                            <select class="form-control" name="subiect[grade[]]">
+							    <option value="">Grade</option>
+                                @foreach(grade() as $grade)
+                                    <option value="{{$grade}}">{{$grade}}</option>
+								@endforeach
                             </select>
                         </div>
-                    </div>
-                    
+                    </div> 
                 </div>
 			</div>
+			@endforeach
 		</div>
         
 	</section>

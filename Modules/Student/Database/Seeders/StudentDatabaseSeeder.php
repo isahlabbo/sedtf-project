@@ -16,5 +16,8 @@ class StudentDatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call(RemarkTableSeeder::class);
+        $this->call(MaritalStatusTableSeeder::class);
+        $this->call(QualificationTypeTableSeeder::class);
+        $this->call(QualificationTypeSubjectTableSeeder::class);
     }
 }
