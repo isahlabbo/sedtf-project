@@ -34,7 +34,7 @@
         <div class="form-group clearfix">
 			<label class="col-lg-4 control-label " for="husband_last_name">Marital Status</label>
 			<div class="col-lg-8">
-				<select name="gender" id="" class="form-control">
+				<select name="marital_status" id="" class="form-control">
                     <option value="">Select Marital status</option>
 					@foreach($maritalStatuses as $maritalStatus)
                         <option value="{{$maritalStatus->id}}">{{$maritalStatus->name}}</option>
@@ -122,14 +122,23 @@
 	    
         <div class="form-group clearfix">
 			<label class="col-lg-4 control-label " for="area">Qualification Type</label>
+			
 			<div class="col-lg-8">
-				<select class="form-control" name="qualification_type_id">
-					<option value="">Choose Qualification</option>
-					@foreach($qualifications as $qualification)
-					    <option value="{{$qualification->id}}">{{$qualification->name}}</option>
-					@endforeach
-				</select>
+				<div class="row">
+				    <div class="col-md-9">
+						<select class="form-control" name="qualification_type_id">
+							<option value="">Choose Qualification</option>
+							@foreach($qualifications as $qualification)
+								<option value="{{$qualification->id}}">{{$qualification->name}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="col-md-3">
+				        <input type="text" name="year" id="" class="form-control" placeholder="Year">
+					</div>
+				</div>
 			</div>
+			
 		</div>
 
 		<div class="form-group clearfix">

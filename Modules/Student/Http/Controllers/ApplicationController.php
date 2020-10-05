@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Student\Entities\QualificationType;
 use Modules\Student\Entities\MaritalStatus;
+use Modules\Student\Entities\Application;
 use Modules\Student\Entities\Sponsor;
 use Modules\Lecturer\Entities\Gender;
 use Modules\Coodinator\Entities\Programme;
@@ -58,9 +59,9 @@ class ApplicationController extends Controller
             'other_name'=>$request->other_name,
             'email'=>$request->email,
             'phone'=>$request->phone,
-            'gender_id'=>$request->gender_id,
+            'gender_id'=>$request->gender,
             'session_id'=>currentSession()->id,
-            'marital_status_id'=>$request->marital_status_id,
+            'marital_status_id'=>$request->marital_status,
             'date_of_birth'=>$request->date_of_birth,
             'programme_id'=>$programmeId,
             'application_no'=>$programme->generateApplicationNo(),
@@ -79,11 +80,12 @@ class ApplicationController extends Controller
                     $application->applicationQualifications()->firstOrCreate([
                         'qualification_type_subject_id'=>$subjectValue,
                         'grade'=>$gradeValue,
+                        'year'=>$request->year,
                     ]);
                 }
             }
         }
-        return back()->withSuccess('Application submitted successfully');
+        return redirect()->route('programme.application.slip',[$application->programme->id,$application->id])->withSuccess('Application submitted successfully');
     }
 
     /**
@@ -91,9 +93,13 @@ class ApplicationController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function slip($programmeId, $applicationId)
     {
-        return view('student::show');
+        $application = Application::find($applicationId);
+        if(is_null($application)){
+            return back()->withWarning('invalid application ID');
+        }
+        return view('student::application.slip',['application'=>$application]);
     }
 
     /**

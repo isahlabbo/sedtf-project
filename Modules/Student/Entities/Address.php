@@ -13,6 +13,6 @@ class Address extends BaseModel
 
     public function lga()
     {
-        return $this->belongsTo('Module\Coodinator\Entities\Lga');
+        return $this->belongsTo('Modules\Coodinator\Entities\Lga');
     }
 }

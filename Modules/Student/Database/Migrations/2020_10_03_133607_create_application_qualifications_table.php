@@ -35,6 +35,7 @@ class CreateApplicationQualificationsTable extends Migration
             ->update('cascade');
             
             $table->string('grade')->nullable();
+            $table->string('year')->nullable();
             $table->timestamps();
         });
     }

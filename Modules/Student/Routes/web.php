@@ -11,6 +11,8 @@
 |
 */
 Route::get('/programme/{programmeId}/application', 'ApplicationController@create')->name('programme.application.create');
+Route::get('/programme/{programmeId}/application/{applicationId}/slip', 'ApplicationController@slip')
+->name('programme.application.slip');
 Route::post('/programme/{programmeId}/application/register', 'ApplicationController@register')
 ->name('programme.application.register');
 

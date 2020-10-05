@@ -13,7 +13,12 @@ class Application extends BaseModel
 
     public function gender()
     {
-        return $this->belongsTo('Module\Lecturer\Entities\Gender');
+        return $this->belongsTo('Modules\Lecturer\Entities\Gender');
+    }
+
+    public function programme()
+    {
+        return $this->belongsTo('Modules\Coodinator\Entities\Programme');
     }
 
     public function maritalStatus()
@@ -29,6 +34,13 @@ class Application extends BaseModel
     public function applicationQualifications()
     {
         return $this->hasMany(ApplicationQualification::class);
+    }
+
+    public function qualificationName()
+    {
+        foreach ($this->applicationQualifications as $applicationQualification) {
+            return $applicationQualification->qualificationTypeSubject->qualificationType->name;
+        }
     }
 
 }

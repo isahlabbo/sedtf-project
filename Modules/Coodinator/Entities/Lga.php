@@ -8,7 +8,7 @@ class Lga extends BaseModel
 {
     public function state()
     {
-    	return $this->belongsTo(Lga::class);
+    	return $this->belongsTo(State::class);
     }
 
     public function studentAccounts()

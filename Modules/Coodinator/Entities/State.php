@@ -10,4 +10,9 @@ class State extends BaseModel
     {
     	return $this->hasMany(Lga::class);
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }
