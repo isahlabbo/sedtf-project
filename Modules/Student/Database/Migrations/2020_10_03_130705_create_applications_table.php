@@ -33,6 +33,15 @@ class CreateApplicationsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
 
+            $table->integer('session_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('sessions')
+            ->delete('restrict')
+            ->update('cascade');
+
             $table->integer('marital_status_id')
             ->unsigned()
             ->nullable()
@@ -67,6 +76,7 @@ class CreateApplicationsTable extends Migration
             $table->string('phone');
             $table->string('image');
             $table->string('date_of_birth');
+            $table->string('application_no');
             
             $table->timestamps();
         });

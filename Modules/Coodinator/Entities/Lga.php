@@ -15,4 +15,9 @@ class Lga extends BaseModel
     {
     	return $this->hasMany('Modules\Student\Entities\StudentAccount');
     }
+
+    public function addresses()
+    {
+    	return $this->hasMany('Modules\Student\Entities\Address');
+    }
 }

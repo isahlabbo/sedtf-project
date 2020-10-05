@@ -22,6 +22,8 @@ Auth::routes();
 	   ->namespace('Ajax')
 	   ->name('ajax')
 	   ->group(function() {
+		Route::get('/qualification/type/{typeId}/subjects', 'AddressController@getQualificationSubjects');
+
         //address ajax routes
 	    Route::prefix('address')
 		   ->name('address')

@@ -8,11 +8,11 @@ class ApplicationQualification extends BaseModel
 {
     public function application()
     {
-        return $this->belongsTo(Application::class)
+        return $this->belongsTo(Application::class);
     }
 
     public function qualificationTypeSubject()
     {
-        return $this->belongsTo(QualificationTypeSubject::class)
+        return $this->belongsTo(QualificationTypeSubject::class);
     }
 }

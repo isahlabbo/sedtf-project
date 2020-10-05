@@ -32,6 +32,11 @@ class Programme extends BaseModel
     	return $this->belongsTo(ProgrammeType::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany('Modules\Student\Entities\Application');
+    }
+
     public function admissions()
     {
     	return $this->hasMany(Admission::class);
@@ -68,5 +73,22 @@ class Programme extends BaseModel
             $flag = true;
         }
         return $flag;
+    }
+
+    public function generateApplicationNo()
+    {
+        return $this->code.'_'
+        .substr(date('Y'),2,2)
+        .$this->getBatch()
+        .$this->getApplicationCount();
+    }
+
+    public function getApplicationCount()
+    {
+        $count = 1;
+        foreach ($this->applications->where(['session_id'=>currentSession()->id]) as $application) {
+            $count +1;
+        }
+        return $count;
     }
 }
