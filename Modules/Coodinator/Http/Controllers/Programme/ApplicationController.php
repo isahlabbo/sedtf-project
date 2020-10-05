@@ -4,6 +4,7 @@ namespace Modules\Coodinator\Http\Controllers\Programme;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Student\Entities\Application;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 
 class ApplicationController extends CoodinatorBaseController
@@ -41,9 +42,13 @@ class ApplicationController extends CoodinatorBaseController
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function review($applicationId)
     {
-        return view('coodinator::show');
+        $application = Application::find($applicationId);
+        if(is_null($application)){
+            return back()->withWarning('Invalid ApplicationID');
+        }
+        return view('coodinator::department.programme.application.view',['application'=>$application]);
     }
 
     /**

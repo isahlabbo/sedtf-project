@@ -37,9 +37,9 @@
                                 <button class="btn bt-color-1 btn-block">
                                     Edit
                                 </button>
-                                <button class="btn bt-color-2 btn-block">
+                                <a href="{{route('coodinator.programme.application.review',[$application->id])}}"><button class="btn bt-color-2 btn-block">
                                     View
-                                </button>
+                                </button></a>
                                 <button class="btn bt-color-3 btn-block">
                                     Delete
                                 </button>

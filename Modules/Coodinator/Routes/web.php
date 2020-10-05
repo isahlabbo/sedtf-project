@@ -35,6 +35,7 @@ Route::prefix('coodinator')
 		->name('application.')
 		->group(function() {
             Route::get('/','ApplicationController@index')->name('index');
+            Route::get('/{applicationId}/review','ApplicationController@review')->name('review');
 		});
 	});
 
