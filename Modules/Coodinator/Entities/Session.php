@@ -15,6 +15,11 @@ class Session extends BaseModel
     {
         return $this->hasMany('Modules\Lecturer\Entities\LecturerCourseResultUpload');
     }
+
+    public function applications()
+    {
+        return $this->hasMany('Modules\Student\Entities\Application');
+    }
     
     public function notifications()
     {

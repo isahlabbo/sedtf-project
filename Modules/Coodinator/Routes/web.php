@@ -31,7 +31,11 @@ Route::prefix('coodinator')
         Route::get('/create','ProgrammeController@create')->name('create');
         Route::get('/{programmeId}/delete','ProgrammeController@delete')->name('delete');
         Route::post('/register','ProgrammeController@register')->name('register');
-        
+        Route::prefix('application')
+		->name('application.')
+		->group(function() {
+            Route::get('/','ApplicationController@index')->name('index');
+		});
 	});
 
     Route::prefix('notifications')

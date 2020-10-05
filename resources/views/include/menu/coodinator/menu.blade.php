@@ -21,11 +21,16 @@
         <li>
             <a href="{{route('coodinator.student.admission.index')}}">View Student Detail</a>
         </li>
+        
     </ul>
 </li>
 <li>
     <a href="{{route('coodinator.programme.index')}}">Programmes</a>
 </li>
+<li>
+    <a href="{{route('coodinator.programme.application.index')}}">Applications</a>
+</li>
+
 
 <li>
     <a href="#"> <i class="fa fa-message"></i> {{currentSession()->name}} Notification</a>
