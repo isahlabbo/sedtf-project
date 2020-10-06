@@ -15,6 +15,7 @@ use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\Lga;
 use Modules\Coodinator\Entities\State;
 use Modules\Coodinator\Services\Admission\FileUpload;
+use Modules\Student\Http\Requests\ApplicationFormRequest;
 
 class ApplicationController extends Controller
 {
@@ -49,8 +50,9 @@ class ApplicationController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function register(Request $request, $programmeId)
+    public function register(ApplicationFormRequest $request, $programmeId)
     {
+        
         $lga = Lga::find($request->lga);
         $programme = Programme::find($programmeId);
         $address = $lga->addresses()->firstOrCreate(['address'=>$request->address]);
