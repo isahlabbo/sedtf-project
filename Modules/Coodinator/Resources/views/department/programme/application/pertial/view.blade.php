@@ -91,6 +91,12 @@
                             </tr>
                             
                         </table>
+                        <li>BE NOTIFY THAT</li>
+                        <P>You are to carry along this slip with original coppy of all your document and verification fee #1000.00</P>
+                        
+                        <button class="btn bt-color-1" data-toggle="modal" data-target="#approve">Aprove Application</button>
+                        
+                        @include('coodinator::department.programme.application.pertial.approve')
                     </ol>    
                     </strong>
                 </div>

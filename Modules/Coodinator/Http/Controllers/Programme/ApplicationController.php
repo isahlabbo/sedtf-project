@@ -56,9 +56,20 @@ class ApplicationController extends CoodinatorBaseController
      * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function approve(Request $request, $applicationId)
     {
-        return view('coodinator::edit');
+        $application = Application::find($applicationId);
+        if(is_null($application)){
+            return back()->withWarning('Invalid ApplicationID');
+        }
+        $admissionNo = $application->programme->generateAdmissionNo($request->schedule);
+        $data = $application->data();
+        $data['schedule'] = $request->schedule;
+        $data['admissionNo'] = $admissionNo;
+        $student = $application->programme->registerNewStudent($data);
+        return redirect()->route('coodinator.student.view.biodata',[$student->id])
+        ->withSuccess($student->admission
+        ->admission_no.' was registered successfully for '.$student->admission->programme->name.' Batch '.$student->batch().' '.$student->admission->year);
     }
 
     /**

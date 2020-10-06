@@ -33,6 +33,11 @@ class Admission extends BaseModel
     	return $this->hasOne('Modules\Student\Entities\Student');
     }
 
+    public function application()
+    {
+    	return $this->belongsTo('Modules\Student\Entities\Application');
+    }
+
     public function schedule()
     {
         return $this->belongsTo('Modules\Student\Entities\Schedule');

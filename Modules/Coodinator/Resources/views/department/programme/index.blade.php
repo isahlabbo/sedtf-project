@@ -24,7 +24,7 @@
 	     			<th>Batches in Year</th>
 	     			<th>No Of semesters</th>
 	     			<th>
-	     				<button class="btn bt-color-3 btn-block" data-toggle="modal" data-target="#newProgramme">
+	     				<button class="btn bt-color-3" data-toggle="modal" data-target="#newProgramme">
 		     				New Programme
 		     			</button>
 		     			@include('coodinator::department.programme.create')
@@ -47,12 +47,10 @@
 		     			<td>{{$programme->semesters}}</td>
 		     			
 		     			<td>
-		     				<button class="btn bt-color-1 btn-block" data-toggle="modal" data-target="#edit_{{$programme->id}}">
+		     				<button class="btn bt-color-1" data-toggle="modal" data-target="#edit_{{$programme->id}}">
 		     					Edit
 		     				</button>
-		     			</td>
-		     			<td>
-		     				<a href="{{route('coodinator.programme.delete',[$programme->id])}}" class="btn bt-color-2 btn-block" onclick="return confirm('Are you sur you want to delete this programme')">
+		     				<a href="{{route('coodinator.programme.delete',[$programme->id])}}" class="btn bt-color-2" onclick="return confirm('Are you sur you want to delete this programme')">
 		     					Delete
 		     				</a>
 		     			</td>

@@ -68,6 +68,15 @@ class CreateApplicationsTable extends Migration
             ->on('sponsors')
             ->delete('restrict')
             ->update('cascade');
+
+            $table->integer('religion_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('religions')
+            ->delete('restrict')
+            ->update('cascade');
             
             $table->string('first_name');
             $table->string('last_name');

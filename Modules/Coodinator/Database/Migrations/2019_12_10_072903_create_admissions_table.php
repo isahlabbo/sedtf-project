@@ -31,6 +31,14 @@ class CreateAdmissionsTable extends Migration
             ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
+            $table->integer('application_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('applications')
+            ->delete('restrict')
+            ->update('cascade');
             $table->integer('session_id')
             ->unsigned()
             ->nullable()

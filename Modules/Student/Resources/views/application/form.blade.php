@@ -3,25 +3,21 @@
 	<h3>Personal Information</h3>
 	<section>
 		<div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="first_name">First Name</label>
 			<div class="col-lg-8">
 				<input value="{{old('first_name')}}" placeholder="First Name" class="form-control required" id="userName1" name="first_name" type="text">
 			</div>
 		</div>
 		<div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="husband_last_name">Last Name</label>
 			<div class="col-lg-8">
 				<input value="" value="{{old('last_name')}}" placeholder="Last Name"  id="husband_last_name" name="last_name" type="text" class="required form-control" >
 			</div>
 		</div>
         <div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="husband_last_name">Other Name</label>
 			<div class="col-lg-8">
 				<input value="" value="{{old('other_name')}}" placeholder="Other Name"  id="husband_last_name" name="other_name" type="text" class="required form-control" >
 			</div>
 		</div>
         <div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="husband_last_name">Gender</label>
 			<div class="col-lg-8">
 				<select name="gender" id="" class="form-control">
                     <option value="">Select Gender</option>
@@ -32,7 +28,6 @@
 			</div>
 		</div>
         <div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="husband_last_name">Marital Status</label>
 			<div class="col-lg-8">
 				<select name="marital_status" id="" class="form-control">
                     <option value="">Select Marital status</option>
@@ -48,22 +43,29 @@
 				<input value="{{old('date_of_birth')}}" class="form-control required"  name="date_of_birth" type="date">
 			</div>
 		</div>
-		
+		<div class="form-group clearfix">
+			<div class="col-lg-8">
+				<select class="form-control" name="religion">
+					<option value="">Choose Religion</option>
+					@foreach($religions as $religion)
+                        <option value="{{$religion->id}}">{{$religion->name}}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
         
 	</section>	
 	<h3 >Address</h3>
 	<section>
 	    <div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="house_no">E-mail Addreaa</label>
 			<div class="col-lg-8">
-				<input value="{{old('email')}}" class="form-control required"  name="email" type="email">
+				<input value="{{old('email')}}" class="form-control required" placeholder="E-mail Address"  name="email" type="email">
 			</div>
 		</div>
 
 		<div class="form-group clearfix">
-			<label class="col-lg-4 control-label " for="house_no">Phone</label>
 			<div class="col-lg-8">
-				<input value="{{old('phone')}}" class="form-control required"  name="phone" type="text">
+				<input value="{{old('phone')}}" class="form-control required" placeholder="Phone"  name="phone" type="text">
 			</div>
 		</div>
 
@@ -142,14 +144,14 @@
 		</div>
 
 		<div class="form-group clearfix">
-		    @foreach([1,2,3,4,5,6,7,8,9] as $subject)
-			<div class="col-lg-12">
-                <label class="col-lg-4 control-label " for="area">Subject {{$subject}}</label>
-                <div class="col-lg-8">
+		    @foreach([1,2,3,4,5,6,7,8,9,10] as $subject)
+			<div class="row clearfix">
+                <label class="col-md-2 control-label " for="area">Subject {{$subject}}</label>
+                <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-9">
                             <select class="form-control" name="subjects[]">
-                                <option value="">Choose Subject</option>
+                                <option value="">Choose Subject {{$subject}}</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -161,7 +163,7 @@
                             </select>
                         </div>
                     </div> 
-                </div>
+                </div><br>
 			</div>
 			@endforeach
 		</div>

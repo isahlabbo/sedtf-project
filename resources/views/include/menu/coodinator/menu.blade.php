@@ -21,19 +21,17 @@
         <li>
             <a href="{{route('coodinator.student.admission.index')}}">View Student Detail</a>
         </li>
-        
+        <li>
+            <a href="{{route('coodinator.programme.application.index')}}">Applications</a>
+        </li>
     </ul>
 </li>
 <li>
     <a href="{{route('coodinator.programme.index')}}">Programmes</a>
 </li>
-<li>
-    <a href="{{route('coodinator.programme.application.index')}}">Applications</a>
-</li>
-
 
 <li>
-    <a href="#"> <i class="fa fa-message"></i> {{currentSession()->name}} Notification</a>
+    <a href="#"> <i class="fa fa-message"></i>Notifications</a>
     <ul>
         <li>
             <a href="{{route('coodinator.notification.create')}}" >New Notification</a>
@@ -46,7 +44,7 @@
 </li>
 
 <li>
-    <a href="#"> <i class="fa fa-calendar"></i> {{currentSession()->name}} Session</a>
+    <a href="#"> <i class="fa fa-calendar"></i>Sessions</a>
     <ul>
         <li>
             <a href="#" data-toggle="modal" data-target="#newSession">New Session</a>

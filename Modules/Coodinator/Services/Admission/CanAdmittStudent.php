@@ -25,6 +25,7 @@ trait CanAdmittStudent
             'admission_no'=>$this->data['admissionNo'],
             'schedule_id'=>$this->data['schedule'],
             'coodinator_id'=>currentCoodinator()->id,
+            'application_id'=>$this->data['application_id'],
             'session_id'=>currentSession()->id,
             'year'=> substr(currentSession()->name, 5)
         ]);
@@ -68,8 +69,11 @@ trait CanAdmittStudent
             'lga_id'=>$this->data['lga'],
             'address'=>$this->data['address']
         ]);
-
-        $image = $this->storeFile($this->data['picture'],str_replace('/','-',$student->admission->programme->name).'/Admission/Profile');
+        if(isset($this->data['image'])) {
+            $image = $this->data['image'];
+        }else {
+            $image = $this->storeFile($this->data['picture'],str_replace('/','-',$student->admission->programme->name).'/Admission/Profile');
+        }
         $account->update(['picture'=>$image]);
 
 	}

@@ -96,6 +96,8 @@
                             </tr>
                             
                         </table>
+                        <li>BE NOTIFY THAT</li>
+                        <P>You are to carry along this slip with original coppy of all your document and verification fee #1000.00</P>
                     </ol>    
                     </strong>
                 </div>

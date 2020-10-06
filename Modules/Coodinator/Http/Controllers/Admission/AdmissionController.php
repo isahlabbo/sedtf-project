@@ -62,10 +62,11 @@ class AdmissionController extends CoodinatorBaseController
 
     public function registerGeneratedNumber(AdmissionFormRequest $request)
     {
-        
+        dd($request->all());
         $student = Programme::where('code',substr($request->admissionNo, 0, 3))->first()->registerNewStudent($request->all());
 
-        return redirect()->route('coodinator.student.view.biodata',[$student->id])->withSuccess($student->admission->admission_no.' was registered successfully for '.$student->admission->programme->name.' Batch '.$student->batch().' '.$student->admission->year);
+        return redirect()->route('coodinator.student.view.biodata',[$student->id])
+        ->withSuccess($student->admission->admission_no.' was registered successfully for '.$student->admission->programme->name.' Batch '.$student->batch().' '.$student->admission->year);
     }
 
     /**

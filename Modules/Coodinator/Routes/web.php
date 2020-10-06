@@ -36,6 +36,7 @@ Route::prefix('coodinator')
 		->group(function() {
             Route::get('/','ApplicationController@index')->name('index');
             Route::get('/{applicationId}/review','ApplicationController@review')->name('review');
+            Route::post('/{applicationId}/approve','ApplicationController@approve')->name('approve');
 		});
 	});
 

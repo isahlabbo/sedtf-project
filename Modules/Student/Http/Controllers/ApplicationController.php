@@ -10,6 +10,7 @@ use Modules\Student\Entities\MaritalStatus;
 use Modules\Student\Entities\Application;
 use Modules\Student\Entities\Sponsor;
 use Modules\Lecturer\Entities\Gender;
+use Modules\Lecturer\Entities\Religion;
 use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\Lga;
 use Modules\Coodinator\Entities\State;
@@ -38,7 +39,8 @@ class ApplicationController extends Controller
             'qualifications'=>QualificationType::all(),
             'states'=>State::all(),
             'maritalStatuses'=>MaritalStatus::all(),
-            'genders'=>Gender::all()
+            'genders'=>Gender::all(),
+            'religions'=>Religion::all()
             ]);
     }
 
@@ -60,6 +62,7 @@ class ApplicationController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'gender_id'=>$request->gender,
+            'religion_id'=>$request->religion,
             'session_id'=>currentSession()->id,
             'marital_status_id'=>$request->marital_status,
             'date_of_birth'=>$request->date_of_birth,
