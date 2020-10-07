@@ -29,7 +29,8 @@ class ApplicationFormRequest extends FormRequest
             "sponsor_name" => "required|string",
             "sponsor_address" => "required|string",
             "qualification_type_id" => "required",
-            "year" => "required"
+            "year" => "required",
+            "image" => "required",
         ];
     }
 

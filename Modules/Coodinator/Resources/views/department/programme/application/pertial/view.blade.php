@@ -25,7 +25,11 @@
                     </strong>
                 </div>
                 <div class="col-md-2">
-                      <img src="{{storage_url($application->image)}}" alt="" width="130" heigth="150">
+                    <a href="" onclick="printdiv('biodata')" class="btn bt-color-1 pull-right m-3">
+                        <i class="fa fa-print"></i>
+                        <span>Print</span>
+                    </a>
+                    <img src="{{storage_url($application->image)}}" alt="" width="130" heigth="150">
                 </div>
                 <div class="col-md-1"></div>
             </div>
