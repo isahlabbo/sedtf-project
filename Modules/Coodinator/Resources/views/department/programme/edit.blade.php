@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label class="text text-danger">Programme Type</label>
-                        <select name="application_status">
+                        <select name="type">
                         	<option value="{{$programme->programmeType->id}}">{{$programme->programmeType->name}}</option>
                         	@foreach($programmeTypes->where('id','!=',$programme->programmeType->id) as $programmeType)
                                 <option value="{{$programmeType->id}}">{{$programmeType->name}}</option>
