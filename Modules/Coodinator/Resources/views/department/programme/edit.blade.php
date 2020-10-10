@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <label class="text text-danger">Programme Application</label>
-                        <select name="type">
+                        <select name="application_status">
                         	<option value="{{$programme->applictaion_status}}">{{$programme->application_status == 0 ? 'Not Active' : 'Active'}}</option>
                         	@if($programme->application_status == 0)
                                 <option value="1">Activate {{$programme->name}} Application</option>

@@ -57,7 +57,7 @@ class ProgrammeController extends CoodinatorBaseController
      */
     public function update(Request $request, $programmeId)
     {
-
+        
         $programme = Programme::find($programmeId);
         $programme->update([
             'name'=>$request->name,
@@ -68,8 +68,14 @@ class ProgrammeController extends CoodinatorBaseController
             'fee'=>$request->fee,
             'duration'=>$request->duration,
             'about'=>$request->about,
-            'application_status'=>$request->application_status,
+        
         ]);
+        if ($request->application_status) {
+            $programme->update([
+                'application_status'=>$request->application_status
+                ]);
+        }
+        
         if($request->remove){
             foreach ($request->remove as $key => $value) {
                 foreach ($programme->programmeSchedules->where('schedule_id',$value) as $programmeSchedule) {
