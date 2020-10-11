@@ -26,7 +26,7 @@
 
     </head>
 
-    <body class="fixed-left">
+    <body class="fixed-left" style="background-color: #effacd">
         <div id="wrapper">
             <div class="content-page">
                 <div class="content">
