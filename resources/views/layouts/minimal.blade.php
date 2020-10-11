@@ -16,6 +16,8 @@
             return false;
         }
     </script>
+    <link rel="stylesheet" href="{{ asset('css/jquery.steps.css') }}" />
+
     <!-- style -->
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
@@ -27,7 +29,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.fancybox.css')}}" />
     <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/jquery.steps.css') }}" />
 
     <!--styles -->
 </head>
@@ -63,7 +64,7 @@
     <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
 
     <script src="{{ asset('js/jquery.wizard-init.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"> </script>
+
     @yield('scripts')
 </body>
 </html>
