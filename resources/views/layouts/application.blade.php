@@ -67,6 +67,6 @@
 
         <!--wizard initialization-->
         <script src="{{asset('js/application/jquery.wizard-init.js')}}"></script>
-
+        @yield('scripts')
     </body>
 </html>
