@@ -80,7 +80,8 @@ class GenerateStudentAdmissionCommand extends Command
             "state" => random_int(1, 37),
             "lga" => random_int(1, 700),
             "address" => "addrs",
-            "picture" => null
+            "picture" => null,
+            "application_id" => null
         ];
     }
 }
