@@ -57,7 +57,7 @@ class ProgrammeController extends CoodinatorBaseController
      */
     public function update(Request $request, $programmeId)
     {
-        
+       
         $programme = Programme::find($programmeId);
         $programme->update([
             'name'=>$request->name,
@@ -70,7 +70,7 @@ class ProgrammeController extends CoodinatorBaseController
             'about'=>$request->about,
         
         ]);
-        if ($request->application_status) {
+        if ($request->application_status == 0 || $request->application_status == 0) {
             $programme->update([
                 'application_status'=>$request->application_status
                 ]);

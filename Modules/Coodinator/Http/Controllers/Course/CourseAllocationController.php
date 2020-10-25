@@ -23,88 +23,61 @@ class CourseAllocationController extends CoodinatorBaseController
 
     public function register(Request $request)
     {
-        foreach ($this->preparedAllocationDatas($request->all()) as $data) {
-            //check if the data has course lecturer allocation
-            if($data['allocation']['course_master_lecturer_id']){
-                $lecturer = Lecturer::find($data['allocation']['course_master_lecturer_id']);
-                
-                LecturerCourseAllocation::updateOrCreate([
-                    'course_id'=>$data['allocation']['course_id'],
-                    'department_id'=>$data['allocation']['department_id'],
-                ],
-                [
-                    'lecturer_id'=>$lecturer->id,
-                    'course_id'=>$data['allocation']['course_id'],
-                    'department_id'=>$data['allocation']['department_id'],
-                ]);
-
-                $course_lecturer = LecturerCourse::where(['course_id'=>$data['allocation']['course_id'],'is_active'=>1,'lecturer_course_status_id'=>1,])->first();
-
-                if($course_lecturer && $course_lecturer->is_active == 1){
-                    $course_lecturer->is_active = 0;
-                    $course_lecturer->to = time();
-                    $course_lecturer->save();
-                }
-
-                LecturerCourse::updateOrCreate([
-                    'lecturer_id'=>$lecturer->id,
-                    'course_id'=> $data['allocation']['course_id'],
-                    'department_id'=> $data['allocation']['department_id']
-                ],
-                [
-                    'lecturer_course_status_id'=>1,
-                    'course_id'=> $data['allocation']['course_id'],
-                    'department_id'=> $data['allocation']['department_id'],
-                    'from' => time()
-                ]);
+        $request->validate(['lecturer'=>'required']);
+        
+        if($this->courseHasAllocation($request->all())){
+            $allocation = $this->getLecturerCourse($request->all());
+            if($allocation->lecturer->id != $request->lecturer){
+                $allocation->update(['is_active'=>0]);
+                $this->createNewAllocation($request->all());
+            }else{
+                session()->flash('error',['The allocation already exist please choose another lecturer for the re allocation']);
             }
-
-            //check if the course has lecturer assistance
-            if($data['allocation']['course_assistance_lecturer_id']){
-                $lecturer = Lecturer::find($data['allocation']['course_assistance_lecturer_id']);
-
-                LecturerCourseAllocation::updateOrCreate([
-                    'course_id'=>$data['allocation']['course_id'],
-                    'department_id'=>$data['allocation']['department_id']
-                ],[
-                    'lecturer_id'=>$lecturer->id,
-                    'course_id'=>$data['allocation']['course_id'],
-                    'department_id'=>$data['allocation']['department_id']
-                ]);
-
-                $course_lecturer = LecturerCourse::where(['course_id'=>$data['allocation']['course_id'],'is_active'=>1,'lecturer_course_status_id'=>2])->first();
-
-                if($course_lecturer && $course_lecturer->is_active == 1){
-                    $course_lecturer->is_active = 0;
-                    $course_lecturer->to = time();
-                    $course_lecturer->save();
-                }
-
-                LecturerCourse::updateOrCreate([
-                    'lecturer_id'=>$lecturer->id,
-                    'course_id'=> $data['allocation']['course_id'],
-                    'department_id'=> $data['allocation']['department_id']
-                ],
-                [
-                    'lecturer_course_status_id'=>2,
-                    'course_id'=> $data['allocation']['course_id'],
-                    'department_id'=> $data['allocation']['department_id'],
-                    'from' => time()
-                ]);
-            }
+        }else{
+            $this->createNewAllocation($request->all());
         }
-        session()->flash('message','The course allocation is updated successfully');
-        return redirect()->route('department.course.allocation.index');
+
+        if(!session('error')){
+            session()->flash('message','The course allocation is updated successfully');
+        }
+
+        return back();
     }
-    
-    public function preparedAllocationDatas(array $inputs)
+
+    public function searchCourses(Request $request)
     {
-        $datas = [];
-        $number_of_allocation_data = count($inputs) / 2;
-        for ($i=0; $i < $number_of_allocation_data; $i++) { 
-            $datas[] = $inputs[$i];
+        $request->validate(['programme'=>'required']);
+        return redirect()->route('exam.officer.department.course.allocation.view',$request->programme);
+        
+    }
+    public function viewCourses($programmeId)
+    {
+        return view('examofficer::course.courseAllocation.register',[
+            'route'=>'exam.officer.department.course.allocation.register',
+            'programme'=>Programme::find($programmeId)
+        ]);
+    }
+    public function createNewAllocation(array $data)
+    {
+        LecturerCourse::create([
+            'course_id'=> $data['course'],
+            'lecturer_id'=>$data['lecturer'],
+            'from' => time()
+        ]);
+    }
+
+    public function getLecturerCourse(array $data)
+    {
+        return $course_lecturer = LecturerCourse::where(['course_id'=>$data['course'],'is_active'=>1])->first();
+    }
+
+    public function courseHasAllocation(array $data)
+    {
+        if(!Course::find($data['course'])->courseLecturer()){
+            return false;
         }
-        return $datas;
+
+        return true;
     }
     
 }

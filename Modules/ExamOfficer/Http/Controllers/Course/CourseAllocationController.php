@@ -14,7 +14,7 @@ class CourseAllocationController extends ExamOfficerBaseController
 {
     public function index()
     {
-        return view('examofficer::.course.courseAllocation.index',[
+        return view('examofficer::course.courseAllocation.index',[
             'route'=>'exam.officer.department.course.allocation.search'
         ]);
     }

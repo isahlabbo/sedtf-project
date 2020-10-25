@@ -26,8 +26,26 @@
         </li>
     </ul>
 </li>
+
 <li>
     <a href="{{route('coodinator.programme.index')}}">Programmes</a>
+</li>
+
+<li>
+    <a href="#">Academic</a>
+    <ul>
+        <li>
+        <a href="{{route('coodinator.course.allocation.index')}}">Courses Allocation</a>
+        </li>
+
+        <li>
+            <a href="{{route('coodinator.course.create')}}">Register Course</a>
+        </li>
+        
+        <li>
+            <a href="{{route('coodinator.course.index')}}">View Courses</a>
+        </li>
+    </ul>
 </li>
 
 <li>

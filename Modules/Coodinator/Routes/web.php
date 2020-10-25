@@ -215,6 +215,8 @@ Route::prefix('coodinator')
 			->name('allocation.')
 			->group(function() {
 				Route::get('/', 'CourseAllocationController@index')->name('index');
+				
+				Route::post('/search-courses', 'CourseAllocationController@searchCourses')->name('search');
 				Route::post('/register', 'CourseAllocationController@register')->name('register');
 				
 			});

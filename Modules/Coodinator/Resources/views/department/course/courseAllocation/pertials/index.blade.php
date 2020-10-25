@@ -6,7 +6,7 @@
         <br>
 	    <div class="card">
         	<div class="card-body">
-        		<form action="{{route($route ?? 'coodinator.course.allocation.register')}}" method="post">
+        		<form action="{{route($route ?? 'coodinator.course.allocation.search')}}" method="post">
     			@csrf
     			<label>Programme</label>
     			<select class="form-control" name="programme">
