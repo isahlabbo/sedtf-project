@@ -1,9 +1,9 @@
-@extends('department::layouts.master')
+@extends('coodinator::layouts.master')
 
 @section('title')
     department registered courses
 @endsection
 
 @section('page-content')
-    @include('department::department.course.pertials.index')
+    @include('coodinator::department.course.pertials.index')
 @endsection

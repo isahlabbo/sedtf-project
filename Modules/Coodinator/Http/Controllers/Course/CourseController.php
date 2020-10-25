@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Department\Http\Controllers\Course;
+namespace Modules\Coodinator\Http\Controllers\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Coodinator\Entities\Course;
-use Modules\Core\Http\Controllers\Department\HodBaseController;
+use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 
-class CourseController extends HodBaseController
+class CourseController extends CoodinatorBaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CourseController extends HodBaseController
      */
     public function index()
     {
-        return view('department::department.course.index');
+        return view('coodinator::department.course.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CourseController extends HodBaseController
      */
     public function create()
     {
-        return view('department::department.course.create');
+        return view('coodinator::department.course.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class CourseController extends HodBaseController
      */
     public function edit($course_id)
     {
-        return view('department::department.course.edit',['course'=>Course::find($course_id)]);
+        return view('coodinator::department.course.edit',['course'=>Course::find($course_id)]);
     }
 
     /**
@@ -68,12 +68,10 @@ class CourseController extends HodBaseController
         $course->update([
             'code'=>$request->code,
             'title'=>$request->title,
-            'level_id'=>$request->level,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
-        session()->flash('message','Course is updated successfully');
-        return redirect()->route('department.course.index');
+        return redirect()->route('coodinator.course.index')->withSuccess('Course Updated');
     }
 
     /**
@@ -83,21 +81,23 @@ class CourseController extends HodBaseController
      */
     public function delete($course_id)
     {
-        $errors = [];
+        $errors = null;
         $course = Course::find($course_id);
         //check if this course is not allocated to any lecturer
         if($course->lecturerCourseAllocation){
-            $errors[] = 'Sorry this course is already been allocated to some lecturer to delete it you have to delete the allocation';
+            $error = 'Sorry this course is already been allocated to some lecturer to delete it you have to delete the allocation';
         }
         if($course->departmentCourses){
-            $errors[] = 'Sorry this course is already been assigned to some department to delete it you have to delete the department course assignment';
+            $error = 'Sorry this course is already been assigned to some department to delete it you have to delete the department course assignment';
         }
         if(empty($errors)){
+            foreach ($course->programmeCourses as $programmeCourse) {
+                $programmeCourse->delete();
+            }
             $course->delete();
-            session()->flash('message','Course is deleted successfully');
+            return redirect()->route('coodinator.course.index')->withSuccess('Course Deleted');
         }else{
-            session()->flash('error',$errors);
+            return redirect()->route('coodinator.course.index')->withWarning($error);
         }
-        return redirect()->route('department.course.index');
     }
 }

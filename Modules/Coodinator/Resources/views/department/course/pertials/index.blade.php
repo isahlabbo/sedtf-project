@@ -1,8 +1,10 @@
 @if(count(administrator()->programmes())>0)
+    <div class="col-md-12"><br></div>
     @foreach(administrator()->programmes() as $programme)
     <div class="col-md-12">
+	
     <div class="card">
-    	<div class="card-header cws-button bt-color-3">{{strtoupper($programme->name)}} COURSES</div>
+    	<div class="card-header bt-color-1">{{strtoupper($programme->name)}} COURSES</div>
     	<div class="card-body">
     		<table class="table">
 	     	<thead>
@@ -24,9 +26,9 @@
 	     			<td>{{$programmeCourse->course->unit}}</td>
 	     			<td>{{$programmeCourse->course->semester->name}}</td>
 	     			<td>
-	     				<button class=" cws-button bt-color-1" onclick="confirm('Are you sure you want to delete this course from the list of courses in this department')"><a href="{{route($route['delete'] ?? 'department.course.delete',['course_id'=>$programmeCourse->course->id])}}" style="color: white">Delete</a> </i>
+	     				<button class=" cws-button bt-color-1" onclick="confirm('Are you sure you want to delete this course from the list of courses in this department')"><a href="{{route($route['delete'] ?? 'coodinator.course.delete',['course_id'=>$programmeCourse->course->id])}}" style="color: white">Delete</a> </i>
 	     				</button>
-	     				<button class="button-fullwidth cws-button bt-color-2"><a href="{{route($route['edit'] ?? 'department.course.edit',['course_id'=>$programmeCourse->course->id])}}" style="color: white">Edit</a></i>
+	     				<button class="button-fullwidth cws-button bt-color-2"><a href="{{route($route['edit'] ?? 'coodinator.course.edit',['course_id'=>$programmeCourse->course->id])}}" style="color: white">Edit</a></i>
 	     				</button>
 	     			</td>
 	     		</tr>

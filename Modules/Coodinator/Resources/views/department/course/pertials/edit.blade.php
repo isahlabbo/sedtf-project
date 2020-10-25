@@ -4,14 +4,14 @@
 		<div class="card-body">
 		    <div class="row">
 		    	<div class="col-md-12">
-		    		<h3 class="text text-success">Edit Course</h3>
+		    		<h3 class="text text-danger">Edit Course</h3>
 		    	</div>
 		    </div>
 		    
-		    <form class="login-form" action="{{route($route ?? 'department.course.update',['course_id'=>$course->id])}}" method="post">
+		    <form class="login-form" action="{{route($route ?? 'coodinator.course.update',['course_id'=>$course->id])}}" method="post">
 		        @csrf
 		        <div class="form-group">
-		        	<label class="text text-success">Couser Title</label>
+		        	<label class="text text-danger">Couser Title</label>
 		            <input type="text" name="title" class="form-control" value="{{$course->title}}">
 		            @error('title')
 		                <span class="invalid-feedback" role="alert">
@@ -20,7 +20,7 @@
 		            @enderror
 		        </div>
 		        <div class="form-group">
-		        	<label class="text text-success">Couser Code</label>
+		        	<label class="text text-danger">Couser Code</label>
 		            <input type="text" name="code" class="form-control" value="{{$course->code}}">
 		            @error('code')
 		                <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
 		            </select>
 		        </div>
 		        <div class="form-group">
-		        	<label class="text text-success">Progamme</label>
+		        	<label class="text text-danger">Progamme</label>
 		            <select name="programme" class="form-control">
 		            	<option value="{{$course->courseProgramme()->id}}">{{$course->courseProgramme()->name}}</option>
 		            	@foreach(administrator()->programmes() as $programme)
@@ -58,7 +58,7 @@
 		            @enderror
 		        </div>
 		        <div class="form-group">
-		        	<label class="text text-success">Semester</label>
+		        	<label class="text text-danger">Semester</label>
 		            <select name="semester" class="form-control">
 		            	<option value="{{$course->semester->id}}">{{$course->semester->name}}</option>
 		            	@foreach(administrator()->semesters() as $semester)
@@ -75,7 +75,7 @@
 		                </span>
 		            @enderror
 		        </div>
-		        <button class="button-fullwidth cws-button bt-color-3">Save Changes</button>
+		        <button class="btn bt-color-1 btn-block">Save Changes</button>
 		    </form><br><br>
 		</div>
 	</div>
