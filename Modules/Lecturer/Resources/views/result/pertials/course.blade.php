@@ -26,12 +26,12 @@
 			@endforeach
 	    </optgroup>
 	    <optgroup label="Other Lecturer Courses">
-	    	@foreach(department()->staffs as $staff)
-	    	    @if($staff->lecturer->id != $lecturer->id)
-				    @foreach($staff->lecturer->lecturerCourses->where('lecturer_course_status_id',2) as $lecturer_course)
-					    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->is_active == 1 && $lecturer_course->course->hasRegisteredStudent())
-					    <option value="{{$lecturer_course->course->id}}">
-					    	{{$lecturer_course->course->code}}
+	    	@foreach(lecturers() as $currentLecturer)
+	    	    @if($currentLecturer->id != $lecturer->id)
+				    @foreach($currentLecturer->lecturerCourses->where('lecturer_course_status_id',2) as $currentLecturerCourse)
+					    @if(!$currentLecturerCourse->hasUploadedCurrentSessionResult() && $currentLecturerCourse->is_active == 1 && $lecturer_course->course->hasRegisteredStudent())
+					    <option value="{{$currentLecturerCourse->course->id}}">
+					    	{{$currentLecturerCourse->course->code}}
 					    </option>
 					    @endif
 					@endforeach

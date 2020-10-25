@@ -2,6 +2,7 @@
 
 use Modules\Coodinator\Entities\Session;
 use Modules\Coodinator\Entities\Coodinator;
+use Modules\Lecturer\Entities\Lecturer;
 use Modules\Coodinator\Entities\Programme;
 use Modules\Coodinator\Entities\NotificationType;
 
@@ -51,6 +52,13 @@ if (!function_exists('notificationTypes')) {
     function notificationTypes()
     {
         return NotificationType::all();
+    }
+}
+
+if (!function_exists('lecturers')) {
+    function lecturers()
+    {
+        return Lecturer::all();
     }
 }
 

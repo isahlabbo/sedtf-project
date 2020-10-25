@@ -1,16 +1,5 @@
 
 <li>
-    <a href="#">Admission</a>
-    <ul>
-        <li>
-            <a href="{{route('exam.officer.student.admission.generate.number.index')}}">New Admission</a>
-        </li>
-        <li>
-            <a href="{{route('exam.officer.student.admission.index')}}">Registered Students</a>
-        </li>
-    </ul>
-</li>
-<li>
     <a href="#">Graduation</a>
     <ul>
         <li>
