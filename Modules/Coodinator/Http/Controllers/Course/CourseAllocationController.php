@@ -5,6 +5,7 @@ namespace Modules\Coodinator\Http\Controllers\Course;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Lecturer\Entities\Lecturer;
+use Modules\Coodinator\Entities\Programme;
 use Modules\Department\Entities\LecturerCourse;
 use Modules\Department\Entities\LecturerCourseAllocation;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
@@ -47,7 +48,7 @@ class CourseAllocationController extends CoodinatorBaseController
     public function searchCourses(Request $request)
     {
         $request->validate(['programme'=>'required']);
-        return redirect()->route('exam.officer.department.course.allocation.view',$request->programme);
+        return redirect()->route('coodinator.course.allocation.view',$request->programme);
         
     }
     public function viewCourses($programmeId)
