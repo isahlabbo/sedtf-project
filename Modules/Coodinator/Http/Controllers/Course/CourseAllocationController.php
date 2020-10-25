@@ -4,10 +4,10 @@ namespace Modules\Coodinator\Http\Controllers\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Coodinator\Entities\Course;
 use Modules\Lecturer\Entities\Lecturer;
 use Modules\Coodinator\Entities\Programme;
-use Modules\Department\Entities\LecturerCourse;
-use Modules\Department\Entities\LecturerCourseAllocation;
+use Modules\Lecturer\Entities\LecturerCourse;
 use App\Http\Controllers\Coodinator\CoodinatorBaseController;
 
 
@@ -53,8 +53,8 @@ class CourseAllocationController extends CoodinatorBaseController
     }
     public function viewCourses($programmeId)
     {
-        return view('examofficer::course.courseAllocation.register',[
-            'route'=>'exam.officer.department.course.allocation.register',
+        return view('coodinator::department.course.courseAllocation.register',[
+            'route'=>'coodinator.course.allocation.register',
             'programme'=>Programme::find($programmeId)
         ]);
     }
