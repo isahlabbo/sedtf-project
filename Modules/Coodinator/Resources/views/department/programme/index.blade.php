@@ -8,7 +8,7 @@
 	@if($programmes)
 	
 	<div class="col-md-12 card shadow">
-	<div class="card-header">{{currentSession()->name}} SEDTF Registered and updated prpgrammes</div>
+	<div class="card-header">{{currentSession()->name}} SEDTF Registered and updated programmes</div>
 	<div class="table-responsive card-body" >
 	    <table class="table">
 	     	<thead>

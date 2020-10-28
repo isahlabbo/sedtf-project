@@ -70,7 +70,7 @@ class ProgrammeController extends CoodinatorBaseController
             'about'=>$request->about,
         
         ]);
-        if ($request->application_status == 0 || $request->application_status == 0) {
+        if ($request->application_status == 0 || $request->application_status == 1) {
             $programme->update([
                 'application_status'=>$request->application_status
                 ]);

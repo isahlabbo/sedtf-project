@@ -28,7 +28,7 @@
 	    <optgroup label="Other Lecturer Courses">
 	    	@foreach(lecturers() as $currentLecturer)
 	    	    @if($currentLecturer->id != $lecturer->id)
-				    @foreach($currentLecturer->lecturerCourses->where('lecturer_course_status_id',2) as $currentLecturerCourse)
+				    @foreach($currentLecturer->lecturerCourses->where('lecturer_course_status_id',1) as $currentLecturerCourse)
 					    @if(!$currentLecturerCourse->hasUploadedCurrentSessionResult() && $currentLecturerCourse->is_active == 1 && $lecturer_course->course->hasRegisteredStudent())
 					    <option value="{{$currentLecturerCourse->course->id}}">
 					    	{{$currentLecturerCourse->course->code}}
